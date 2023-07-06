@@ -1,43 +1,51 @@
 <script lang="ts">
-export default {
-  name: "Main",
-  methods: {
-    gotoFunction1() {
-      this.$router.push('/Register')
-    }
 
-  }
+ export default {
+  name:"Main"
 }
 </script>
 
+
 <template>
-  <div class="absolute top-0 left-0 flex space-x-28 bg-teal-300 text-2xl font-mono h-20 w-full">
-    <span class="text-emerald-50 ml-60 mt-6 font-bold" @click="gotoFunction1">
-      功能1
-    </span>
-    <span class="text-emerald-50  mt-6 font-bold">
-      功能2
-    </span>
-    <span class="text-emerald-50  mt-6 font-bold">
-      功能3
-    </span>
-    <span class="absolute top-0 right-0">
-      <select name="function" id="function-select" class="h-20">
-        <option value="">你好，用户</option>
-        <option value="function1">功能1</option>
-        <option value="function2">功能2</option>
-        <option value="function3">功能3</option>
-      </select>
-    </span>
+  <div class="absolute inset-0 bg-background -z-50"></div>
 
+  <div class="absolute inset-0">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center h-16">
+        <div class="flex-shrink-0">
+          <h1 class="text-white text-lg font-semibold">My Website</h1>
+        </div>
+        <div class="hidden md:block ml-10">
+          <div class="flex items-baseline space-x-4">
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Home
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              About
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Services
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
-  <div class="absolute top-20 left-0 bg-slate-200 text-xl font-mono w-48 h-full text-center">
-    <ul>
-      <li class="mt-5 font-bold">导入共享单车数据</li>
-      <li class="mt-5 font-bold">可视化分析单车数据</li>
-      <li class="mt-5 font-bold">预测单车需求</li>
-      <li class="mt-5 font-bold">动态定价</li>
-    </ul>
-
-  </div>
+  
+  
 </template>

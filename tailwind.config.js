@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "tjw-sb": "url('/background.jpg')",
+        "background": "url('./public/background.jpg')",
       },
     },
   },
