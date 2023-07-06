@@ -21,7 +21,7 @@
   >
     <div class="absolute inset-0 bg-white/75 -z-20 dark:bg-black/40"></div>
     
-    <span class="text-2xl text-center font-semibold basis-1/4">田佳文调度系统</span>
+    <span class="text-2xl text-center font-semibold basis-1/4">共享单车1.0调度系统</span>
 
     <div class="m-2 flex flex-col gap-2 basis-1/2">
       <div class="mb-3 text-center ">
