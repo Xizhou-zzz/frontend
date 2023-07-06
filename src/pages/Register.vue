@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <div class="absolute inset-0 bg-background -z-50"></div>
+  <div class="absolute inset-0 bg-cover bg-center bg-background -z-50"></div>
     <Card
     class="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-2/5 h-2/5 flex flex-col gap-2"
   >

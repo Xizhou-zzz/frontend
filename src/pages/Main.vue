@@ -1,28 +1,31 @@
 <script lang="ts">
-
  export default {
-  name:"Main"
-}
+  name: "Main",
+  methods: {
+    gotoFunction1() {
+      this.$router.push('/Register')
+    }
+  }
+  }
 </script>
 
 
 <template>
-<!-- <<<<<<< HEAD
-  <div class="absolute inset-0 bg-background -z-50"></div>
-=======
+  <div class="absolute inset-0  bg-cover bg-center bg-background1 -z-50"></div>
+
   <div class="absolute top-0 left-0 flex space-x-28 bg-teal-300 text-2xl font-mono h-20 w-full">
     <span class="text-emerald-50 font-bold mt-6">
       共享单车调度系统
     </span>
-    <span class="text-emerald-50 ml-60 mt-6 font-bold" @click="gotoFunction1">
+    <button class="text-emerald-50 ml-60 mt-1 font-bold" @click="gotoFunction1">
       功能1
-    </span>
-    <span class="text-emerald-50  mt-6 font-bold">
+    </button>
+    <button class="text-emerald-50  mt-1 font-bold">
       功能2
-    </span>
-    <span class="text-emerald-50  mt-6 font-bold">
+    </button>
+    <button class="text-emerald-50  mt-1 font-bold">
       功能3
-    </span>
+    </button>
     <span class="absolute top-0 right-0">
       <select name="function" id="function-select" class="h-20">
         <option value="">你好，用户</option>
@@ -41,50 +44,4 @@
       <li class="mt-5 font-bold">动态定价</li>
     </ul>
   </div>
-
-  <div>
-    <span class="font-bold text-center">
-      欢迎来到共享单车调度系统！
-    </span>
->>>>>>> 066b9608b908da177467ee8a7fdb755e2f5e0e6f -->
-
-  <div class="absolute inset-0">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center h-16">
-        <div class="flex-shrink-0">
-          <h1 class="text-white text-lg font-semibold">My Website</h1>
-        </div>
-        <div class="hidden md:block ml-10">
-          <div class="flex items-baseline space-x-4">
-            <a
-              href="#"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Home
-            </a>
-            <a
-              href="#"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              About
-            </a>
-            <a
-              href="#"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Services
-            </a>
-            <a
-              href="#"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-  
-  
 </template>

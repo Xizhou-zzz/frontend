@@ -8,22 +8,26 @@ import axios from 'axios';
       this.$router.push('/Register')
     },
 
+    // gotoUser(){
+    //     axios.post('/api/login', 
+    //     {
+    //       username,
+    //       password,
+    //     }
+    //     )
+    //   .then(response => {
+    //     // 处理成功响应
+    //     console.log(response.data);
+    //     this.$router.push('/Main');
+    //   })
+    //   .catch(error => {
+    //     // 处理错误响应
+    //     console.error(error);
+    //     Err()
+    //   });
+    // }
     gotoUser(){
-        axios.post('/api/login', 
-        {
-          username,
-          password,
-        }
-        )
-      .then(response => {
-        // 处理成功响应
-        console.log(response.data);
-      })
-      .catch(error => {
-        // 处理错误响应
-        console.error(error);
-        Err()
-      });
+      this.$router.push('/Main');
     }
   }
 }
@@ -38,13 +42,13 @@ import axios from 'axios';
 </script>
 
 <template>
-  <div class="absolute inset-0 bg-background -z-50"></div>
+  <div class="absolute inset-0 bg-cover bg-center bg-background -z-50"></div>
     <Card
     class="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-2/5 h-2/5 flex flex-col gap-2"
   >
     <div class="absolute inset-0 bg-white/75 -z-20 dark:bg-black/40"></div>
     
-    <span class="text-2xl text-center font-semibold basis-1/4">共享单车1.0调度系统</span>
+    <span class="text-2xl text-center font-semibold basis-1/4">共享单车调度系统</span>
 
     <div class="m-2 flex flex-col gap-2 basis-1/2">
       <div class="mb-3 text-center ">
