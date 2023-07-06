@@ -11,9 +11,9 @@
 
 
 <template>
-  <div class="absolute inset-0  bg-cover bg-center bg-background1 -z-50"></div>
+  <div class="absolute inset-0  bg-cover bg-center bg-background2 -z-50"></div>
 
-  <div class="absolute top-0 left-0 flex space-x-28 bg-teal-300 text-2xl font-mono h-20 w-full">
+  <!-- <div class="absolute top-0 left-0 flex space-x-28 bg-teal-300 text-2xl font-mono h-20 w-full">
     <span class="text-emerald-50 font-bold mt-6">
       共享单车调度系统
     </span>
@@ -43,5 +43,42 @@
       <li class="mt-5 font-bold">预测单车需求</li>
       <li class="mt-5 font-bold">动态定价</li>
     </ul>
+  </div> -->
+  <div class="absolute inset-0">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center h-16">
+        <div class="flex-shrink-0">
+          <h1 class="text-white text-lg font-semibold">My Website</h1>
+        </div>
+        <div class="hidden md:block ml-10">
+          <div class="flex items-baseline space-x-4">
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Home
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              About
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Services
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
 </template>
