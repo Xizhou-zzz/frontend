@@ -67,15 +67,15 @@ import axios from "axios";
         console.error(error);
         Err()
       });
-    },
+    }
     // gotoUser(){
     //   this.$router.push('/Main');
     // },
 
-    printUsername() {
-      console.log(this.username);
-      console.log("hello,world");
-  }
+  //   printUsername() {
+  //     console.log(this.username);
+  //     console.log("hello,world");
+  // }
   }
 }
   function Err() {
@@ -114,6 +114,7 @@ import axios from "axios";
           v-model="password"
         />
       </div>
+      <span class="text-red-400">{{ message }}</span>
     </div>
 
     <div class="flex gap-4 justify-center basis-1/4">
