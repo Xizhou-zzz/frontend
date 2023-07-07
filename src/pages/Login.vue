@@ -54,30 +54,32 @@ export default {
     gotoRegister() {
       this.$router.push('/Register')
     },
-
-    // gotoUser() {
-    //   axios.post('/api/login',
-    //     {
-    //       username: this.username,
-    //       password: this.password
-    //     }
-    //   )
-    //     .then(response => {
-    //       // 处理成功响应
-    //       console.log(response.data);
-    //       this.$router.push('/Main');
-    //     })
-    //     .catch(error => {
-    //       // 处理错误响应
-    //       console.error(error);
-    //       Err()
-    //     });
+    gotoUser() {
+      axios.post('/api/login',
+        {
+          username: this.username,
+          password: this.password
+        }
+      )
+        .then(response => {
+          // 处理成功响应
+          console.log(response.data);
+          this.$router.push('/Main');
+        })
+        .catch(error => {
+          // 处理错误响应
+          console.error(error);
+          Err()
+        });
+    },
+    // gotoUser(){
+    //   this.$router.push('/Main');
     // },
 
-    // printUsername() {
-    //   console.log(this.username);
-    //   console.log("hello,world");
-    // }
+    printUsername() {
+      console.log(this.username);
+      console.log("hello,world");
+    }
   }
 }
 function Err() {
@@ -104,7 +106,7 @@ function Err() {
     </div>
 
     <div class="flex gap-4 justify-center basis-1/4">
-      <button @click="gotoUser" class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold">
+      <button @click="gotoUser" class="rounded bg-indigo-500 ... ... w-1/4 h-1/2">
         登录
       </button>
       <button @click="gotoRegister" class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold"
