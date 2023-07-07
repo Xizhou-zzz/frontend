@@ -1,12 +1,7 @@
 <script lang="ts">
-<<<<<<< HEAD
-
-export default {
-  name: "LoginPage",
-=======
 import axios from "axios";
- export default {
-  name:"Register",
+export default {
+  name: "Register",
   data() {
     return {
       username: '',
@@ -14,27 +9,26 @@ import axios from "axios";
       againpassword: ''
     };
   },
->>>>>>> c1d86d5df5f29a2eceae91ab6be1f5c97e0f74f5
   methods: {
     gotoLogin() {
       this.$router.push('/')
     },
 
-    goReguster(){
-        axios.post('/api/Register',
+    goReguster() {
+      axios.post('/api/Register',
         {
-          username:this.username,
-          password:this.password,
+          username: this.username,
+          password: this.password,
         }
-        )
-      .then(response => {
-        // 处理成功响应
-        console.log(response.data);
-      })
-      .catch(error => {
-        // 处理错误响应
-        console.error(error);
-      });
+      )
+        .then(response => {
+          // 处理成功响应
+          console.log(response.data);
+        })
+        .catch(error => {
+          // 处理错误响应
+          console.error(error);
+        });
     }
   }
 }
@@ -51,62 +45,27 @@ import axios from "axios";
     <div class="m-2 flex flex-col gap-2 basis-1/2">
 
       <div class="text-center basis-1/3">
-<<<<<<< HEAD
-        <Label for="username" class="mb-2">账号</Label>
-        <Input class=" rounded" type="text" placeholder="请输入账号..." />
+        <label for="username" class="mb-2">账号</label>
+        <input class=" rounded" type="text" placeholder="请输入账号..." v-model="username" />
       </div>
 
       <div class="text-center basis-1/3">
-        <Label for="password" class="mb-2">密码</Label>
-        <Input rounded class=" rounded" type="password" placeholder="请输入密码..." />
+        <label for="password" class="mb-2">密码</label>
+        <input rounded class=" rounded" type="password" placeholder="请输入密码..." v-model="password" />
       </div>
 
       <div class="text-center basis-1/3 mr-20">
-        <Label for="password" class="mb-2">请再次输入密码</Label>
-        <Input rounded class=" rounded" type="password" placeholder="请再次输入密码..." />
-=======
-        <label for="username" class="mb-2">账号</label>
-        <input
-          class = " rounded" 
-          type="text"
-          placeholder="请输入账号..."
-          v-model="username"
-        />
-      </div>
-
-      <div class = "text-center basis-1/3">
-        <label for="password" class="mb-2">密码</label>
-        <input
-          rounded
-          class = " rounded"
-          type="password"
-          placeholder="请输入密码..."
-          v-model="password"
-        />
-      </div>
-
-      <div class = "text-center basis-1/3 mr-20">
         <label for="password" class="mb-2">请再次输入密码</label>
-        <input
-          rounded
-          class = " rounded"
-          type="password"
-          placeholder="请再次输入密码..."
-          v-model="againpassword"
-        />
->>>>>>> c1d86d5df5f29a2eceae91ab6be1f5c97e0f74f5
+        <input rounded class=" rounded" type="password" placeholder="请再次输入密码..." v-model="againpassword" />
       </div>
 
     </div>
 
     <div class="flex gap-4 justify-center basis-1/4">
-<<<<<<< HEAD
-      <button @click="gotoLoginpage" class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2">登录</button>
-      <button class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2" color="alternative">注册</button>
-=======
-      <button  @click="gotoLogin" class="rounded bg-indigo-500 ... ... w-1/4 h-1/2">登录</button>
-      <button class= "rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2" color="alternative" >注册</button>
->>>>>>> c1d86d5df5f29a2eceae91ab6be1f5c97e0f74f5
+      <button @click="gotoLogin"
+        class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold">已有账号？登录...</button>
+      <button class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold"
+        color="alternative ">确认</button>
     </div>
   </Card>
 </template>
