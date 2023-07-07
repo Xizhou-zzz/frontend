@@ -36,7 +36,8 @@ export default {
 }
 
 function Err() {
-  this.message = "用户名不存在或密码错误";
+  if (this.password != this.againpassword)
+      this.message = "两次输入的密码不相同";
 }
 </script>
 
