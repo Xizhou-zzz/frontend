@@ -52,17 +52,20 @@ export default {
         </div>
         <div class="hidden md:block ml-20">
           <div class="flex items-baseline space-x-10">
-            <a href="#/Register"
+            <a href="#/Import"
               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
               导入共享单车数据
             </a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+            <a href="#/Visualize"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
               可视化分析单车数据
             </a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+            <a href="#/Predict"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
               预测单车需求
             </a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+            <a href="#/Price"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
               动态定价
             </a>
           </div>
@@ -77,6 +80,7 @@ export default {
             <option class="text-cyan-700 px-3 py-2 text-sm font-bold" value="function3">退出登录</option>
 
           </select>
+
         </div>
 
       </div>
