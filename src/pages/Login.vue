@@ -38,7 +38,7 @@ import axios from "axios";
 // }
 
  export default {
-  name:"LoginPage",
+  name:"Login",
   data() {
     return {
       username: '',
@@ -94,7 +94,7 @@ import axios from "axios";
 
     <div class="m-2 flex flex-col gap-2 basis-1/2">
       <div class="mb-3 text-center">
-        <label for="username" class="mb-2">账号{{ username }}</label>
+        <label for="username" class="mb-2">账号</label>
         <input
           class="h-8 rounded"
           type="text"
