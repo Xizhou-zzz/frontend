@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import * as echarts from 'echarts';
 
 export default {
@@ -10,6 +10,7 @@ export default {
     },
     methods: {
         renderChart() {
+
             const options = {
                 xAxis: {
                     type: 'category',
