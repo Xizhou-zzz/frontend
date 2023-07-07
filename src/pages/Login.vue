@@ -47,31 +47,31 @@ export default {
     };
   },
   methods: {
-    gotoUser() {
-      this.$router.push('/Main');
-    },
+    // gotoUser() {
+    //   this.$router.push('/Main');
+    // },
 
     gotoRegister() {
       this.$router.push('/Register')
     },
-    // gotoUser() {
-    //   axios.post('/api/login',
-    //     {
-    //       username: this.username,
-    //       password: this.password
-    //     }
-    //   )
-    //     .then(response => {
-    //       // 处理成功响应
-    //       console.log(response.data);
-    //       this.$router.push('/Main');
-    //     })
-    //     .catch(error => {
-    //       // 处理错误响应
-    //       console.error(error);
-    //       Err()
-    //     });
-    // }
+    gotoUser() {
+      axios.post('http://localhost:5000/api/login',
+        {
+          username: this.username,
+          password: this.password
+        }
+      )
+        .then(response => {
+          // 处理成功响应
+          console.log(response.data);
+          this.$router.push('/Main');
+        })
+        .catch(error => {
+          // 处理错误响应
+          console.error(error);
+          this.message = "用户名不存在或密码错误"
+        });
+    }
     // gotoUser(){
     //   this.$router.push('/Main');
     // },
@@ -81,9 +81,6 @@ export default {
     //     console.log("hello,world");
     // }
   }
-}
-function Err() {
-  this.message = "用户名不存在或密码错误";
 }
 </script>
 

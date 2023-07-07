@@ -15,30 +15,28 @@ export default {
       this.$router.push('/')
     },
 
-    goReguster() {
-      axios.post('/api/Register',
-        {
-          username: this.username,
-          password: this.password,
+    goRegister() {
+      if (this.password != this.againpassword)
+        this.message = '前后两次输入密码不同'
+      else{
+        this.message = ''
+        axios.post('http://localhost:5000/api/Register',
+          {
+            username: this.username,
+            password: this.password,
+          }
+        )
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.error(error);
+          });
         }
-      )
-        .then(response => {
-          // 处理成功响应
-          console.log(response.data);
-        })
-        .catch(error => {
-          // 处理错误响应
-          console.error(error);
-          Err()
-        });
     }
   }
 }
 
-function Err() {
-  if (this.password != this.againpassword)
-      this.message = "两次输入的密码不相同";
-}
 </script>
 
 <template>
@@ -65,12 +63,14 @@ function Err() {
         <input rounded class=" rounded" type="password" placeholder="请再次输入密码..." v-model="againpassword" />
       </div>
 
+      <span class="text-red-400 text-center">{{ message }}</span>
+
     </div>
 
     <div class="flex gap-4 justify-center basis-1/4">
       <button @click="gotoLogin"
         class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold">已有账号？登录...</button>
-      <button class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold"
+      <button @click= "goRegister" class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold"
         color="alternative">确认</button>
     </div>
   </Card>
