@@ -1,16 +1,38 @@
 <script lang="ts">
+import * as echarts from 'echarts';
+
 export default {
     name: "Visualize",
+
+    mounted() {
+        this.chart = echarts.init(this.$refs.chart);
+        this.renderChart();
+    },
     methods: {
-        // gotoFunction1() {
-        //     this.$router.push('/Register')
-        // }
+        renderChart() {
+            const options = {
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [820, 932, 901, 934, 1290, 1330, 1320],
+                    type: 'bar'
+                }]
+            };
+
+            this.chart.setOption(options);
+
+        }
     }
 }
 </script>
 
 <template>
-    <div class="absolute inset-0  bg-cover bg-center bg-background2 -z-50"></div>
+    <div class="absolute inset-0  bg-cover bg-center bg-fixed bg-background2 -z-50"></div>
     <div class="absolute inset-0">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
             <div class="flex items-center h-16">
@@ -56,7 +78,30 @@ export default {
             </div>
         </nav>
     </div>
-    <div>
-        这是数据可视化分析界面
+
+    <div class="absolute top-48 left-0">
+        <nav class="max-h-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
+            <div class="flex items-center h-16">
+                <div class="hidden md:block ml-20">
+                    <div class="flex items-baseline space-y-10 flex flex-col">
+                        <a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+                            同一地点不同时间的单车需求量
+                        </a>
+
+                        <a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+                            同一时间不同地点的单车需求量
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="bg-slate-300">
+        <div ref="chart" style="width: 400px; height: 300px;"></div>
+    </div>
+    <div class="text-gray-300 font-bold">
+        请选择左侧你想获得的图表
     </div>
 </template>
