@@ -6,7 +6,8 @@ export default {
     return {
       username: '',
       password: '',
-      againpassword: ''
+      againpassword: '',
+      message: ''
     };
   },
   methods: {
@@ -28,11 +29,15 @@ export default {
         .catch(error => {
           // 处理错误响应
           console.error(error);
+          Err()
         });
     }
   }
 }
 
+function Err() {
+  this.message = "用户名不存在或密码错误";
+}
 </script>
 
 <template>

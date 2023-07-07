@@ -71,15 +71,15 @@ export default {
           console.error(error);
           Err()
         });
-    },
+    }
     // gotoUser(){
     //   this.$router.push('/Main');
     // },
 
-    printUsername() {
-      console.log(this.username);
-      console.log("hello,world");
-    }
+    //   printUsername() {
+    //     console.log(this.username);
+    //     console.log("hello,world");
+    // }
   }
 }
 function Err() {
@@ -103,6 +103,7 @@ function Err() {
         <label for="password" class="mb-2">密码</label>
         <input rounded class="h-8 rounded" type="password" placeholder="请输入密码..." v-model="password" />
       </div>
+      <span class="text-red-400">{{ message }}</span>
     </div>
 
     <div class="flex gap-4 justify-center basis-1/4">
