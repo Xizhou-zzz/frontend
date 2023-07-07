@@ -8,27 +8,27 @@ import axios from 'axios';
       this.$router.push('/Register')
     },
 
-    // gotoUser(){
-    //     axios.post('/api/login', 
-    //     {
-    //       username,
-    //       password,
-    //     }
-    //     )
-    //   .then(response => {
-    //     // 处理成功响应
-    //     console.log(response.data);
-    //     this.$router.push('/Main');
-    //   })
-    //   .catch(error => {
-    //     // 处理错误响应
-    //     console.error(error);
-    //     Err()
-    //   });
-    // }
     gotoUser(){
-      this.$router.push('/Main');
+        axios.post('/api/login', 
+        {
+          username,
+          password,
+        }
+        )
+      .then(response => {
+        // 处理成功响应
+        console.log(response.data);
+        this.$router.push('/Main');
+      })
+      .catch(error => {
+        // 处理错误响应
+        console.error(error);
+        Err()
+      });
     }
+    // gotoUser(){
+    //   this.$router.push('/Main');
+    // }
   }
 }
   function Err() {
