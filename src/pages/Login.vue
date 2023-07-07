@@ -107,7 +107,7 @@ function Err() {
     </div>
 
     <div class="flex gap-4 justify-center basis-1/4">
-      <button @click="gotoUser" class="rounded bg-indigo-500 ... ... w-1/4 h-1/2">
+      <button @click="gotoUser" class="rounded bg-indigo-500 ... ... w-1/4 h-1/2 font-bold">
         登录
       </button>
       <button @click="gotoRegister" class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold"

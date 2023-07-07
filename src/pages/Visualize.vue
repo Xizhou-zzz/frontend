@@ -11,28 +11,58 @@ export default {
     methods: {
         renderChart() {
             const options = {
-                xAxis: {
-                    type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                },
-                yAxis: {
-                    type: 'value'
-                },
-                series: [{
-                    data: [820, 932, 901, 934, 1290, 1330, 1320],
-                    type: 'bar'
-                }]
+                series: [
+                    {
+                        type: 'pie',
+                        data: [
+                            {
+                                value: 335,
+                                name: '直接访问'
+                            },
+                            {
+                                value: 234,
+                                name: '联盟广告'
+                            },
+                            {
+                                value: 1548,
+                                name: '搜索引擎'
+                            }
+                        ]
+                    }
+                ]
             };
-
             this.chart.setOption(options);
-
+        },
+        login() {
+            const url = 'http://localhost:5000/Visualize'; // Flask服务器的地址
+            const data = {
+                username: this.username,
+                password: this.password
+            };
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(response => {
+                    this.result = response.result;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
+
     }
 }
 </script>
 
 <template>
+    <!-- 页面背景图片 -->
     <div class="absolute inset-0  bg-cover bg-center bg-fixed bg-background2 -z-50"></div>
+    <!-- 页面最上方的导航栏 -->
     <div class="absolute inset-0">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
             <div class="flex items-center h-16">
@@ -79,29 +109,34 @@ export default {
         </nav>
     </div>
 
+    <!-- 页面左方的导航栏 -->
     <div class="absolute top-48 left-0">
         <nav class="max-h-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
+
             <div class="flex items-center h-16">
                 <div class="hidden md:block ml-20">
-                    <div class="flex items-baseline space-y-10 flex flex-col">
+
+                    <div class="absolute left-5 top-0 flex items-baseline space-y-8 flex flex-col w-56">
+                        <div class="absolute left-1 ml-2 text-white rounded-md text-sm font-bold">
+                            请选择图表类型:
+                        </div>
                         <a href="#"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+                            class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
                             同一地点不同时间的单车需求量
                         </a>
 
                         <a href="#"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+                            class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
                             同一时间不同地点的单车需求量
                         </a>
                     </div>
+
                 </div>
             </div>
+
         </nav>
     </div>
-    <div class="bg-slate-300">
+    <!-- <div class="bg-slate-300">
         <div ref="chart" style="width: 400px; height: 300px;"></div>
-    </div>
-    <div class="text-gray-300 font-bold">
-        请选择左侧你想获得的图表
-    </div>
+    </div> -->
 </template>
