@@ -49,27 +49,6 @@ export default {
             };
             this.chart.setOption(options);
         },
-        // login() {
-        //     const url = 'http://localhost:5000/Visualize'; // Flask服务器的地址
-        //     const data = {
-        //         username: this.username,
-        //         password: this.password
-        //     };
-        //     fetch(url, {
-        //         method: 'GET',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(data)
-        //     })
-        //         .then(response => response.json())
-        //         .then(response => {
-        //             this.result = response.result;
-        //         })
-        //         .catch(error => {
-        //             console.error('Error:', error);
-        //         });
-        // }
 
     }
 }

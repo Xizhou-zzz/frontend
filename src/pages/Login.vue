@@ -70,10 +70,6 @@ export default {
           }
         });
     }
-    //   printUsername() {
-    //     console.log(this.username);
-    //     console.log("hello,world");
-    // }
   }
 }
 </script>

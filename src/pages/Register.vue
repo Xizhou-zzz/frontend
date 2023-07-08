@@ -42,14 +42,10 @@ export default {
               this.message = "用户名已存在，请输入新的用户名";
             }
           });
-        // .catch(error => {
-        //   console.error(error);
-        // });
       }
     }
   }
 }
-
 </script>
 
 <template>
