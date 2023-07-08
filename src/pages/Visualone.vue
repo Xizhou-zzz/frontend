@@ -2,7 +2,7 @@
 import * as echarts from 'echarts';
 
 export default {
-    name: "Visualize",
+    name: "Visualone",
 
     mounted() {
         this.chart = echarts.init(this.$refs.chart);
@@ -121,8 +121,7 @@ export default {
                         <div class="absolute left-1 ml-2 text-white rounded-md text-sm font-bold">
                             请选择图表类型:
                         </div>
-                        <a href="#/Visualone"
-                            class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+                        <a href="#/Visualone" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
                             同一地点不同时间的单车需求量
                         </a>
 
@@ -136,5 +135,9 @@ export default {
             </div>
 
         </nav>
+    </div>
+    <!-- 图表一 -->
+    <div class="bg-slate-300">
+        <div ref="chart" style="width: 400px; height: 300px;"></div>
     </div>
 </template>
