@@ -52,28 +52,28 @@ export default {
     gotoRegister() {
       this.$router.push('/Register')
     },
-    // gotoUser() {
-    //   axios.post('http://localhost:5000/api/login',
-    //     {
-    //       username: this.username,
-    //       password: this.password
-    //     }
-    //   )
-    //     .then(response => {
-    //       // 处理成功响应
-    //       console.log(response.data);
-    //       this.$router.push('/Main');
-    //     })
-    //     .catch(error => {
-    //       // 处理错误响应
-    //       console.error(error);
-    //       this.message = "用户名不存在或密码错误"
-    //     });
-    // }
-    //   printUsername() {
-    //     console.log(this.username);
-    //     console.log("hello,world");
-    // }
+    gotoUser() {
+      axios.post('http://localhost:5000/api/login',
+        {
+          username: this.username,
+          password: this.password
+        }
+      )
+        .then(response => {
+          // 处理成功响应
+          console.log(response.data);
+          this.$router.push('/Main');
+        })
+        .catch(error => {
+          // 处理错误响应
+          console.error(error);
+          this.message = "用户名不存在或密码错误"
+        });
+    },
+      printUsername() {
+        console.log(this.username);
+        console.log("hello,world");
+    }
   }
 }
 </script>
