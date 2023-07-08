@@ -1,37 +1,7 @@
 <script>
-import * as echarts from 'echarts';
 export default {
     name: "Visualize",
-    mounted() {
-        this.chart = echarts.init(this.$refs.chart);
-        this.renderChart();
-    },
     methods: {
-        renderChart() {
-
-            const options = {
-                series: [
-                    {
-                        type: 'pie',
-                        data: [
-                            {
-                                value: 335,
-                                name: '直接访问'
-                            },
-                            {
-                                value: 234,
-                                name: '联盟广告'
-                            },
-                            {
-                                value: 1548,
-                                name: '搜索引擎'
-                            }
-                        ]
-                    }
-                ]
-            };
-            this.chart.setOption(options);
-        },
         // login() {
         //     const url = 'http://localhost:5000/Visualize'; // Flask服务器的地址
         //     const data = {
@@ -74,12 +44,9 @@ export default {
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
                             导入共享单车数据
                         </a>
-
                         <a href="#/Visualize" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
                             可视化分析单车数据
                         </a>
-
-
                         <a href="#/Predict"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
                             预测单车需求
@@ -107,7 +74,6 @@ export default {
             </div>
         </nav>
     </div>
-
     <!-- 页面左方的导航栏 -->
     <div class="absolute top-48 left-0">
         <nav class="max-h-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
@@ -129,10 +95,8 @@ export default {
                             同一时间不同地点的单车需求量
                         </a>
                     </div>
-
                 </div>
             </div>
-
         </nav>
     </div>
 </template>
