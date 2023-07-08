@@ -34,10 +34,17 @@ export default {
         )
           .then(response => {
             console.log(response.data);
-          })
-          .catch(error => {
-            console.error(error);
+            if (response.data.result == "NOTFOUND") {
+              // this.$router.push('/Main');
+              this.message = "注册成功！";
+            }
+            else {
+              this.message = "用户名已存在，请输入新的用户名";
+            }
           });
+        // .catch(error => {
+        //   console.error(error);
+        // });
       }
     }
   }
