@@ -7,6 +7,7 @@ import Predict from "./pages/Predict.vue"
 import Price from "./pages/Price.vue"
 import Import from "./pages/Import.vue"
 import Visualone from "./pages/Visualone.vue"
+import Visualtwo from "./pages/Visualtwo.vue"
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -43,7 +44,13 @@ const router = createRouter({
         {
             path: "/Visualone",
             component: Visualone
+        },
+        {
+            path: "/Visualtwo",
+            component: Visualtwo
         }
+
+
 
     ]
 });

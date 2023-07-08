@@ -2,7 +2,7 @@
 import * as echarts from 'echarts';
 
 export default {
-    name: "Visualone",
+    name: "Visualtwo",
 
     mounted() {
         this.chart = echarts.init(this.$refs.chart);
@@ -11,24 +11,36 @@ export default {
     methods: {
         renderChart() {
 
+            // const options = {
+            //     series: [
+            //         {
+            //             type: 'pie',
+            //             data: [
+            //                 {
+            //                     value: 335,
+            //                     name: '直接访问'
+            //                 },
+            //                 {
+            //                     value: 234,
+            //                     name: '联盟广告'
+            //                 },
+            //                 {
+            //                     value: 1548,
+            //                     name: '搜索引擎'
+            //                 }
+            //             ]
+            //         }
+            //     ]
+            // };
             const options = {
+                xAxis: {
+                    data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+                },
+                yAxis: {},
                 series: [
                     {
-                        type: 'pie',
-                        data: [
-                            {
-                                value: 335,
-                                name: '直接访问'
-                            },
-                            {
-                                value: 234,
-                                name: '联盟广告'
-                            },
-                            {
-                                value: 1548,
-                                name: '搜索引擎'
-                            }
-                        ]
+                        type: 'scatter',
+                        data: [220, 182, 191, 234, 290, 330, 310]
                     }
                 ]
             };
@@ -121,12 +133,12 @@ export default {
                         <div class="absolute left-1 ml-2 text-white rounded-md text-sm font-bold">
                             请选择图表类型:
                         </div>
-                        <a href="#/Visualone" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
+                        <a href="#/Visualone"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
                             同一地点不同时间的单车需求量
                         </a>
 
-                        <a href="#/Visualtwo"
-                            class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+                        <a href="#/Visualtwo" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
                             同一时间不同地点的单车需求量
                         </a>
                     </div>

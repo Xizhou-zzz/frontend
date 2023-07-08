@@ -1,9 +1,7 @@
 <script>
 import * as echarts from 'echarts';
-
 export default {
     name: "Visualize",
-
     mounted() {
         this.chart = echarts.init(this.$refs.chart);
         this.renderChart();
@@ -126,7 +124,7 @@ export default {
                             同一地点不同时间的单车需求量
                         </a>
 
-                        <a href="#"
+                        <a href="#/Visualtwo"
                             class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
                             同一时间不同地点的单车需求量
                         </a>
