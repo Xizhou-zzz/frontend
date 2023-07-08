@@ -62,7 +62,7 @@ export default {
         .then(response => {
           // 处理成功响应
           console.log(response.data);
-          if (response.data == "success") {
+          if (response.data.result == "success") {
             this.$router.push('/Main');
             this.message = "";
           } else {
