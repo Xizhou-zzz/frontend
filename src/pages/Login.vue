@@ -46,9 +46,9 @@ export default {
     };
   },
   methods: {
-    gotoUser() {
-      this.$router.push('/Main');
-    },
+    // gotoUser() {
+    //   this.$router.push('/Main');
+    // },
     gotoRegister() {
       this.$router.push('/Register')
     },
@@ -62,18 +62,24 @@ export default {
         .then(response => {
           // 处理成功响应
           console.log(response.data);
-          this.$router.push('/Main');
-        })
-        .catch(error => {
-          // 处理错误响应
-          console.error(error);
-          this.message = "用户名不存在或密码错误"
+          if (response.data == "success") {
+            this.$router.push('/Main');
+            this.message = "";
+          } else {
+            this.message = "用户名不存在或密码错误";
+          }
+
         });
-    },
-      printUsername() {
-        console.log(this.username);
-        console.log("hello,world");
+      // .catch(error => {
+      //   // 处理错误响应
+      //   console.error(error);
+      //   this.message = "用户名不存在或密码错误"
+      // });
     }
+    //   printUsername() {
+    //     console.log(this.username);
+    //     console.log("hello,world");
+    // }
   }
 }
 </script>
@@ -88,7 +94,7 @@ export default {
     <div class="m-2 flex flex-col gap-2 basis-1/2">
       <div class="mb-3 text-center">
         <label for="username" class="mb-2 font-semibold">用户名</label>
-        <input class="h-8 rounded" type="text" placeholder="请输入账号..." v-model="username" />
+        <input class="h-8 rounded" type="text" placeholder="请输入用户名..." v-model="username" />
       </div>
       <div class="text-center">
         <label for="password" class="mb-2 ml-3 font-semibold">密码</label>
