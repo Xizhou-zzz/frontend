@@ -9,7 +9,8 @@ module.exports = {
       backgroundImage: {
         "background": "url('/background.jpg')",
         "background1": "url('/background1.jpg')",
-        "background2": "url('/background2.jpg')"
+        "background2": "url('/background2.jpg')",
+        "exit": "url('/exit.png')"
       },
     },
   },
