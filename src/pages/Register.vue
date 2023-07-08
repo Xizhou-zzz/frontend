@@ -63,17 +63,17 @@ export default {
 
       <div class="text-center basis-1/4">
         <label for="username" class="mb-2 ml-0 font-semibold">用户名</label>
-        <input class=" rounded" type="text" placeholder="请输入用户名..." v-model="username" />
+        <input class=" rounded" type="text" maxlength=30 placeholder="请输入用户名..." v-model="username" />
       </div>
 
       <div class="text-center basis-1/4">
         <label for="password" class="mb-2 ml-3 font-semibold">密码</label>
-        <input rounded class=" rounded" type="password" placeholder="请输入密码..." v-model="password" />
+        <input rounded class=" rounded" type="password" maxlength=30 placeholder="请输入密码..." v-model="password" />
       </div>
 
       <div class="text-center basis-1/4 mr-20">
         <label for="password" class="mb-2 ml-3 font-semibold">请再次输入密码</label>
-        <input rounded class=" rounded" type="password" placeholder="请再次输入密码..." v-model="againpassword" />
+        <input rounded class=" rounded" type="password" maxlength=30 placeholder="请再次输入密码..." v-model="againpassword" />
       </div>
 
       <div class="text-red-400 text-center basis-1/4">{{ message }}</div>

@@ -94,11 +94,11 @@ export default {
     <div class="m-2 flex flex-col gap-2 basis-1/2">
       <div class="mb-3 text-center">
         <label for="username" class="mb-2 font-semibold">用户名</label>
-        <input class="h-8 rounded" type="text" placeholder="请输入用户名..." v-model="username" />
+        <input class="h-8 rounded" type="text" maxlength=30 placeholder="请输入用户名..." v-model="username" />
       </div>
       <div class="text-center">
         <label for="password" class="mb-2 ml-3 font-semibold">密码</label>
-        <input rounded class="h-8 rounded" type="password" placeholder="请输入密码..." v-model="password" />
+        <input rounded class="h-8 rounded" type="password" maxlength=30 placeholder="请输入密码..." v-model="password" />
       </div>
       <span class="text-red-400 text-center">{{ message }}</span>
     </div>
