@@ -94,7 +94,7 @@ export default {
         <label for="password" class="mb-2 ml-3 font-semibold">密码</label>
         <input rounded class="h-8 rounded" type="password" placeholder="请输入密码..." v-model="password" />
       </div>
-      <span class="text-red-400">{{ message }}</span>
+      <span class="text-red-400 text-center">{{ message }}</span>
     </div>
 
     <div class="flex gap-4 justify-center basis-1/4">
