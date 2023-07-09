@@ -9,7 +9,17 @@ export default {
         this.renderChart();
     },
     methods: {
-        renderChart() {
+        getDataFromServer() {
+            axios.get('http://localhost:5000/api/Visualize')
+                    .then(response => {
+                    const data = response.data;  // 获取后端发送的数据
+                    this.renderChart(data);  // 将数据传递给renderChart方法
+                })
+                    .catch(error => {
+                    console.error(error);
+                });
+        },
+        renderChart(data) {
 
             const options = {
                 series: [
