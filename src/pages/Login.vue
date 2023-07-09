@@ -68,18 +68,8 @@ export default {
           } else {
             this.message = "用户名不存在或密码错误";
           }
-
         });
-      // .catch(error => {
-      //   // 处理错误响应
-      //   console.error(error);
-      //   this.message = "用户名不存在或密码错误"
-      // });
     }
-    //   printUsername() {
-    //     console.log(this.username);
-    //     console.log("hello,world");
-    // }
   }
 }
 </script>

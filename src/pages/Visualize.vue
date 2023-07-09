@@ -2,28 +2,9 @@
 export default {
     name: "Visualize",
     methods: {
-        // login() {
-        //     const url = 'http://localhost:5000/Visualize'; // Flask服务器的地址
-        //     const data = {
-        //         username: this.username,
-        //         password: this.password
-        //     };
-        //     fetch(url, {
-        //         method: 'GET',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(data)
-        //     })
-        //         .then(response => response.json())
-        //         .then(response => {
-        //             this.result = response.result;
-        //         })
-        //         .catch(error => {
-        //             console.error('Error:', error);
-        //         });
-        // }
-
+        gotoLogin() {
+            this.$router.push('/')
+        }
     }
 }
 </script>
@@ -59,16 +40,8 @@ export default {
                 </div>
 
                 <div class="absolute top-3 right-5">
-                    <select name="function" id="function-select"
-                        class="h-10 rounded-md text-cyan-700 px-3 py-2 text-sm font-bold">
-
-                        <option class="text-cyan-700 px-3 py-2 text-sm font-bold" value="">你好，用户</option>
-                        <option class="text-cyan-700 px-3 py-2 text-sm font-bold" value="function1">功能1</option>
-                        <option class="text-cyan-700 px-3 py-2 text-sm font-bold" value="function2">功能2</option>
-                        <option class="text-cyan-700 px-3 py-2 text-sm font-bold" value="function3">退出登录</option>
-
-                    </select>
-
+                    <button @click="gotoLogin" class="bg-exit bg-cover bg-center py-4 px-4 rounded" title="退出登录">
+                    </button>
                 </div>
 
             </div>
