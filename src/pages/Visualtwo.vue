@@ -12,6 +12,28 @@ export default {
         gotoLogin() {
             this.$router.push('/')
         },
+        getDataFromServer1() {
+            this.$router.push('/Visualone')
+            axios.get('http://localhost:5000/api/Visualone')
+                .then(response => {
+                    const data = response.data;  // 获取后端发送的数据
+                    this.renderChart(data);  // 将数据传递给renderChart方法
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+        getDataFromServer2() {
+            this.$router.push('/Visualtwo')
+            axios.get('http://localhost:5000/api/Visualtwo')
+                .then(response => {
+                    const data = response.data;  // 获取后端发送的数据
+                    this.renderChart(data);  // 将数据传递给renderChart方法
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
         renderChart() {
             const options = {
                 xAxis: {
@@ -85,14 +107,14 @@ export default {
                         <div class="absolute left-1 ml-2 text-white rounded-md text-sm font-bold">
                             请选择图表类型:
                         </div>
-                        <a href="#/Visualone"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            同一地点不同时间的单车需求量
-                        </a>
-
-                        <a href="#/Visualtwo" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
-                            同一时间不同地点的单车需求量
-                        </a>
+                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+                            @click="getDataFromServer1">
+                            订单数按星期分布饼状图
+                        </button>
+                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+                            @click="getDataFromServer2">
+                            不同时间单车需求散点图
+                        </button>
                     </div>
 
                 </div>
