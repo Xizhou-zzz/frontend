@@ -11,11 +11,11 @@ export default {
     methods: {
         getDataFromServer() {
             axios.get('http://localhost:5000/api/Visualize')
-                    .then(response => {
+                .then(response => {
                     const data = response.data;  // 获取后端发送的数据
                     this.renderChart(data);  // 将数据传递给renderChart方法
                 })
-                    .catch(error => {
+                .catch(error => {
                     console.error(error);
                 });
         },
@@ -102,14 +102,22 @@ export default {
                         <div class="absolute left-1 ml-2 text-white rounded-md text-sm font-bold">
                             请选择图表类型:
                         </div>
-                        <a href="#/Visualone" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
+                        <!-- <a href="#/Visualone" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
                             同一地点不同时间的单车需求量
-                        </a>
-
-                        <a href="#/Visualtwo"
+                        </a> -->
+                        <button @click="getDataFromServer"
+                            class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
+                            同一地点不同时间的单车需求量
+                        </button>
+                        <button @click="gotoUser"
                             class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
                             同一时间不同地点的单车需求量
-                        </a>
+                        </button>
+
+                        <!-- <a href="#/Visualtwo"
+                            class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
+                            同一时间不同地点的单车需求量
+                        </a> -->
                     </div>
 
                 </div>
