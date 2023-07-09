@@ -1,6 +1,6 @@
 <script>
 import * as echarts from 'echarts';
-
+import axios from "axios";
 export default {
     name: "Visualtwo",
 
@@ -34,16 +34,21 @@ export default {
                     console.error(error);
                 });
         },
-        renderChart() {
+        renderChart(data) {
             const options = {
                 xAxis: {
-                    data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+                    data: ['0:00-0:59', '1:00-1:59', '2:00-2:59', '3:00-3:59',
+                   '4:00-4:59', '5:00-5:59', '6:00-6:59', '7:00-7:59',
+                   '8:00-8:59', '9:00-9:59', '10:00-10:59', '11:00-11:59',
+                   '12:00-12:59', '13:00-13:59', '14:00-14:59', '15:00-15:59',
+                   '16:00-16:59', '17:00-17:59', '18:00-18:59', '19:00-19:59',
+                   '20:00-20:59', '21:00-21:59', '22:00-22:59', '23:00-23:59']
                 },
                 yAxis: {},
                 series: [
                     {
                         type: 'scatter',
-                        data: [220, 182, 191, 234, 290, 330, 310]
+                        data: data
                     }
                 ]
             };
