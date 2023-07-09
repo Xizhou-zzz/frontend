@@ -1,6 +1,6 @@
 <script>
 import * as echarts from 'echarts';
-
+import axios from "axios";
 export default {
     name: "Visualone",
 
@@ -25,24 +25,11 @@ export default {
                 series: [
                     {
                         type: 'pie',
-                        data: [
-                            {
-                                value: 335,
-                                name: '直接访问'
-                            },
-                            {
-                                value: 234,
-                                name: '联盟广告'
-                            },
-                            {
-                                value: 1548,
-                                name: '搜索引擎'
-                            }
-                        ]
+                        data: data
                     }
                 ]
             };
-            this.chart.setOption(options);
+        this.chart.setOption(options);
 
         },
     }
