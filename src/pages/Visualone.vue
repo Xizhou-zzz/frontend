@@ -1,6 +1,6 @@
 <script>
 import * as echarts from 'echarts';
-
+import axios from "axios";
 export default {
     name: "Visualone",
 
@@ -10,7 +10,7 @@ export default {
     },
     methods: {
         getDataFromServer() {
-            axios.get('http://localhost:5000/api/Visualize')
+            axios.get('http://localhost:5000/api/Visualone')
                 .then(response => {
                     const data = response.data;  // 获取后端发送的数据
                     this.renderChart(data);  // 将数据传递给renderChart方法
@@ -25,24 +25,11 @@ export default {
                 series: [
                     {
                         type: 'pie',
-                        data: [
-                            {
-                                value: 335,
-                                name: '直接访问'
-                            },
-                            {
-                                value: 234,
-                                name: '联盟广告'
-                            },
-                            {
-                                value: 1548,
-                                name: '搜索引擎'
-                            }
-                        ]
+                        data: data
                     }
                 ]
             };
-            this.chart.setOption(options);
+        this.chart.setOption(options);
 
         },
     }
