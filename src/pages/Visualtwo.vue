@@ -14,25 +14,36 @@ export default {
         },
         getDataFromServer1() {
             this.$router.push('/Visualone')
-            axios.get('http://localhost:5000/api/Visualone')
-                .then(response => {
-                    const data = response.data;  // 获取后端发送的数据
-                    this.renderChart(data);  // 将数据传递给renderChart方法
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+            // axios.get('http://localhost:5000/api/Visualone')
+            //     .then(response => {
+            //         const data = response.data;  // 获取后端发送的数据
+            //         this.renderChart(data);  // 将数据传递给renderChart方法
+            //     })
+            //     .catch(error => {
+            //         console.error(error);
+            //     });
         },
         getDataFromServer2() {
             this.$router.push('/Visualtwo')
-            axios.get('http://localhost:5000/api/Visualtwo')
-                .then(response => {
-                    const data = response.data;  // 获取后端发送的数据
-                    this.renderChart(data);  // 将数据传递给renderChart方法
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+            // axios.get('http://localhost:5000/api/Visualtwo')
+            //     .then(response => {
+            //         const data = response.data;  // 获取后端发送的数据
+            //         this.renderChart(data);  // 将数据传递给renderChart方法
+            //     })
+            //     .catch(error => {
+            //         console.error(error);
+            //     });
+        },
+        getDataFromServer3() {
+            this.$router.push('/Visualthree')
+            // axios.get('http://localhost:5000/api/Visualthree')
+            //     .then(response => {
+            //         const data = response.data;  // 获取后端发送的数据
+            //         this.renderChart(data);  // 将数据传递给renderChart方法
+            //     })
+            //     .catch(error => {
+            //         console.error(error);
+            //     });
         },
         renderChart(data) {
             const options = {
@@ -116,9 +127,13 @@ export default {
                             @click="getDataFromServer1">
                             订单数按星期分布饼状图
                         </button>
-                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+                        <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700"
                             @click="getDataFromServer2">
                             不同时间单车需求散点图
+                        </button>
+                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+                            @click="getDataFromServer3">
+                            不同位置单车需求热力图
                         </button>
                     </div>
 

@@ -1,8 +1,8 @@
 <script>
 import * as echarts from 'echarts';
-import axios from "axios";
+
 export default {
-    name: "Visualone",
+    name: "Visualthree",
 
     mounted() {
         this.chart = echarts.init(this.$refs.chart);
@@ -45,42 +45,25 @@ export default {
             //         console.error(error);
             //     });
         },
-        // renderChart(data) {
-        //     const options = {
-        //         series: [
-        //             {
-        //                 type: 'pie',
-        //                 data: data
-        //             }
-        //         ]
-        //     };
-        //     this.chart.setOption(options);
-        // },
         renderChart() {
+            var data = [
+                [0, 0, 10],
+                [1, 0, 15],
+                [2, 0, 20],
+            ];
             const options = {
+                xAxis: {},
+                yAxis: {},
                 series: [
                     {
-                        type: 'pie',
-                        data: [
-                            {
-                                value: 335,
-                                name: '直接访问'
-                            },
-                            {
-                                value: 234,
-                                name: '联盟广告'
-                            },
-                            {
-                                value: 1548,
-                                name: '搜索引擎'
-                            }
-                        ]
+                        type: 'heatmap',
+                        data: data
                     }
                 ]
             };
-
             this.chart.setOption(options);
         },
+
     }
 }
 </script>
@@ -88,8 +71,8 @@ export default {
 <template>
     <!-- 页面背景图片 -->
     <div class="absolute inset-0  bg-cover bg-center bg-fixed bg-background2 -z-50"></div>
+    <!-- 页面最上方的导航栏 -->
     <div class="absolute inset-0">
-        <!-- 页面最上方的导航栏 -->
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
             <div class="flex items-center h-16">
                 <div class="flex-shrink-0">
@@ -138,7 +121,7 @@ export default {
                         <div class="absolute left-1 ml-2 text-white rounded-md text-sm font-bold">
                             请选择图表类型:
                         </div>
-                        <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700"
+                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
                             @click="getDataFromServer1">
                             订单数按星期分布饼状图
                         </button>
@@ -146,7 +129,7 @@ export default {
                             @click="getDataFromServer2">
                             不同时间单车需求散点图
                         </button>
-                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+                        <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700"
                             @click="getDataFromServer3">
                             不同位置单车需求热力图
                         </button>
