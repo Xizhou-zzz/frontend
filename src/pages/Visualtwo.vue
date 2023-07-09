@@ -13,28 +13,6 @@ export default {
             this.$router.push('/')
         },
         renderChart() {
-
-            // const options = {
-            //     series: [
-            //         {
-            //             type: 'pie',
-            //             data: [
-            //                 {
-            //                     value: 335,
-            //                     name: '直接访问'
-            //                 },
-            //                 {
-            //                     value: 234,
-            //                     name: '联盟广告'
-            //                 },
-            //                 {
-            //                     value: 1548,
-            //                     name: '搜索引擎'
-            //                 }
-            //             ]
-            //         }
-            //     ]
-            // };
             const options = {
                 xAxis: {
                     data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
