@@ -8,6 +8,7 @@ import Price from "./pages/Price.vue"
 import Import from "./pages/Import.vue"
 import Visualone from "./pages/Visualone.vue"
 import Visualtwo from "./pages/Visualtwo.vue"
+import Visualthree from "./pages/Visualthree.vue"
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -48,6 +49,10 @@ const router = createRouter({
         {
             path: "/Visualtwo",
             component: Visualtwo
+        },
+        {
+            path: "/Visualthree",
+            component: Visualthree
         }
 
 

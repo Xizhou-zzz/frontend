@@ -2,7 +2,7 @@
 import * as echarts from 'echarts';
 
 export default {
-    name: "Visualtwo",
+    name: "Visualthree",
 
     mounted() {
         this.chart = echarts.init(this.$refs.chart);
@@ -46,15 +46,18 @@ export default {
             //     });
         },
         renderChart() {
+            var data = [
+                [0, 0, 10],
+                [1, 0, 15],
+                [2, 0, 20],
+            ];
             const options = {
-                xAxis: {
-                    data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-                },
+                xAxis: {},
                 yAxis: {},
                 series: [
                     {
-                        type: 'scatter',
-                        data: [220, 182, 191, 234, 290, 330, 310]
+                        type: 'heatmap',
+                        data: data
                     }
                 ]
             };
@@ -122,11 +125,11 @@ export default {
                             @click="getDataFromServer1">
                             订单数按星期分布饼状图
                         </button>
-                        <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700"
+                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
                             @click="getDataFromServer2">
                             不同时间单车需求散点图
                         </button>
-                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+                        <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700"
                             @click="getDataFromServer3">
                             不同位置单车需求热力图
                         </button>
