@@ -9,11 +9,21 @@ function getData() {
 
 export function foo() {
     // Promise
-    
+
 }
 
 
+export async function getVisualOneData() {
+    const res = await axios.get('http://localhost:5000/api/Visualone')
+    return res.data
+}
+
 export async function getVisualTwoData() {
     const res = await axios.get('http://localhost:5000/api/Visualtwo')
+    return res.data
+}
+
+export async function getVisualThreeData() {
+    const res = await axios.get('http://localhost:5000/api/Visualthree')
     return res.data
 }
