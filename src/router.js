@@ -9,10 +9,15 @@ import Import from "./pages/Import.vue"
 import Visualone from "./pages/Visualone.vue"
 import Visualtwo from "./pages/Visualtwo.vue"
 import Visualthree from "./pages/Visualthree.vue"
+import A from './pages/A.vue'
 
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
+        {
+            path: '/A',
+            component: A
+        },
         {
             path: "/Register",
             component: Register
