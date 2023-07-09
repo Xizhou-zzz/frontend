@@ -11,7 +11,9 @@ export default {
 
 
 <template>
+  <!-- 页面背景图片 -->
   <div class="absolute inset-0  bg-cover bg-center bg-background2 -z-50"></div>
+  <!-- 页面最上方导航栏 -->
   <div class="absolute inset-0">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
       <div class="flex items-center h-16">
@@ -43,8 +45,10 @@ export default {
           <button @click="gotoLogin" class="bg-exit bg-cover bg-center py-4 px-4 rounded" title="退出登录">
           </button>
         </div>
-
       </div>
     </nav>
+    <div class="mt-20 font-bold text-gray-300 text-4xl text-center">
+      欢迎来到共享单车调度系统！
+    </div>
   </div>
 </template>
