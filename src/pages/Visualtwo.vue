@@ -24,15 +24,15 @@ export default {
             //     });
         },
         getDataFromServer2() {
-            this.$router.push('/Visualtwo')
-            // axios.get('http://localhost:5000/api/Visualtwo')
-            //     .then(response => {
-            //         const data = response.data;  // 获取后端发送的数据
-            //         this.renderChart(data);  // 将数据传递给renderChart方法
-            //     })
-            //     .catch(error => {
-            //         console.error(error);
-            //     });
+            // this.$router.push('/Visualtwo')
+            axios.get('http://localhost:5000/api/Visualtwo')
+                .then(response => {
+                    const data = response.data;  // 获取后端发送的数据
+                    this.renderChart(data);  // 将数据传递给renderChart方法
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         },
         getDataFromServer3() {
             this.$router.push('/Visualthree')
