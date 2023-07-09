@@ -158,7 +158,7 @@ export default {
         </nav>
     </div>
     <!-- 图表一 -->
-    <div class="bg-slate-300">
-        <div ref="chart" style="width: 400px; height: 300px;"></div>
+    <div class="bg-slate-300 ml-20">
+        <div ref="chart" style="width: 700px; height: 300px;"></div>
     </div>
 </template>
