@@ -1,41 +1,6 @@
 <script lang="ts">
 import axios from "axios";
 
-// import { ref } from "vue";
-
-// const username = ref("");
-// const password = ref("");
-// const message = ref("");
-
-// function gotoRegister() {
-//   this.$router.push("/Register");
-// }
-
-// function gotoUser() {
-//   axios
-//     .post("/api/login", {
-//       username: username.value,
-//       password: password.value,
-//     })
-//     .then((response) => {
-//       // 处理成功响应
-//       console.log(response.data);
-//       this.$router.push("/Main");
-//     })
-//     .catch((error) => {
-//       // 处理错误响应
-//       console.error(error);
-//       Err();
-//     });
-// }
-// function Err() {
-//   message.value = "用户名不存在或密码错误";
-// }
-
-// function printUsername() {
-//   console.log(username.value);
-//   console.log("hello,world");
-// }
 export default {
   name: "Login",
   data() {

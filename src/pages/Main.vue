@@ -47,7 +47,7 @@ export default {
         </div>
       </div>
     </nav>
-    <div class="mt-56 font-bold text-white text-4xl text-center">
+    <div class="mt-56 font-bold text-white text-4xl text-center font-serif">
       欢迎来到共享单车调度系统！
     </div>
   </div>
