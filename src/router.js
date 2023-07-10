@@ -10,6 +10,8 @@ import Visualone from "./pages/Visualone.vue"
 import Visualtwo from "./pages/Visualtwo.vue"
 import Visualthree from "./pages/Visualthree.vue"
 import A from './pages/A.vue'
+import Mainforadmin from "./pages/Mainforadmin.vue"
+import Manageuser from "./pages/Manageuser.vue"
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -58,6 +60,14 @@ const router = createRouter({
         {
             path: "/Visualthree",
             component: Visualthree
+        },
+        {
+            path: "/Mainforadmin",
+            component: Mainforadmin
+        },
+        {
+            path: "/Manageuser",
+            component: Manageuser
         }
 
 
