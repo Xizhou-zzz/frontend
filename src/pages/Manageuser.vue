@@ -65,13 +65,15 @@ export default {
                     <th class="px-4 py-2 border-b border-r">姓名</th>
                     <th class="px-4 py-2 border-b border-r">年龄</th>
                     <th class="px-4 py-2 border-b border-r">性别</th>
+                    <th class="px-4 py-2 border-b border-r">操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="person in people" :key="person.id">
-                    <td class="px-4 py-2 border-b border-r">{{ person.name }}</td>
-                    <td class="px-4 py-2 border-b border-r">{{ person.age }}</td>
-                    <td class="px-4 py-2 border-b border-r">{{ person.gender }}</td>
+                    <td class="px-4 py-2 border-b border-r text-center">{{ person.name }}</td>
+                    <td class="px-4 py-2 border-b border-r text-center">{{ person.age }}</td>
+                    <td class="px-4 py-2 border-b border-r text-center">{{ person.gender }}</td>
+                    <td class="px-4 py-2 border-b border-r text-center"><button class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除</button></td>
                     </tr>
                 </tbody>
                 </table>
