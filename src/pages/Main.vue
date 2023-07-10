@@ -26,7 +26,7 @@ export default {
               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
               导入共享单车数据
             </a>
-            <a href="#/Visualize"
+            <a href="#/Visualone"
               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
               可视化分析单车数据
             </a>

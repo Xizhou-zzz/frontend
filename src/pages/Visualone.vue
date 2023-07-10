@@ -105,7 +105,7 @@ async function renderChart3() {
               导入共享单车数据
             </a>
 
-            <a href="#/Visualize" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
+            <a href="#/Visualone" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
               可视化分析单车数据
             </a>
 
@@ -150,18 +150,18 @@ async function renderChart3() {
             <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700" @click="renderChart3">
               不同位置单车需求热力图
             </button>
-            <!-- <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700"
-                            @click="() => { router.push('/Visualone') }">
-                            订单数按星期分布饼状图
-                        </button>
-                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
-                            @click="() => { router.push('/Visualtwo') }">
-                            不同时间单车需求散点图
-                        </button>
-                        <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
-                            @click="() => { router.push('/Visualthree') }">
-                            不同位置单车需求热力图
-                        </button> -->
+            <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700"
+              @click="() => { router.push('/Visualone') }">
+              订单数按星期分布饼状图
+            </button>
+            <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+              @click="() => { router.push('/Visualtwo') }">
+              不同时间单车需求散点图
+            </button>
+            <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+              @click="() => { router.push('/Visualthree') }">
+              不同位置单车需求热力图
+            </button>
           </div>
 
         </div>
