@@ -7,14 +7,14 @@ export default {
         }
     },
     data() {
-    return {
-      people: [
-        { id: 1, name: '张三', age: 25, gender: '男' },
-        { id: 2, name: '李四', age: 30, gender: '女' },
-        { id: 3, name: '王五', age: 28, gender: '男' },
-      ]
+        return {
+            people: [
+                { id: 1, name: '张三', age: 25, gender: '男' },
+                { id: 2, name: '李四', age: 30, gender: '女' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+            ]
+        }
     }
-  }
 }
 </script>
 
@@ -50,7 +50,7 @@ export default {
                     </div>
                 </div>
 
-                    
+
                 <div class="absolute top-3 right-5">
                     <button @click="gotoLogin" class="bg-exit bg-cover bg-center py-4 px-4 rounded" title="退出登录">
                     </button>
@@ -58,24 +58,24 @@ export default {
             </div>
         </nav>
 
-                <div>
-                <table class="table bg-white border border-gray-300 w-full my-4">
+        <div>
+            <table class="table bg-white border border-gray-300 w-full my-4">
                 <thead>
                     <tr>
-                    <th class="px-4 py-2 border-b border-r">姓名</th>
-                    <th class="px-4 py-2 border-b border-r">年龄</th>
-                    <th class="px-4 py-2 border-b border-r">性别</th>
+                        <th class="px-4 py-2 border-b border-r">姓名</th>
+                        <th class="px-4 py-2 border-b border-r">年龄</th>
+                        <th class="px-4 py-2 border-b border-r">性别</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="person in people" :key="person.id">
-                    <td class="px-4 py-2 border-b border-r">{{ person.name }}</td>
-                    <td class="px-4 py-2 border-b border-r">{{ person.age }}</td>
-                    <td class="px-4 py-2 border-b border-r">{{ person.gender }}</td>
+                        <td class="px-4 py-2 border-b border-r">{{ person.name }}</td>
+                        <td class="px-4 py-2 border-b border-r">{{ person.age }}</td>
+                        <td class="px-4 py-2 border-b border-r">{{ person.gender }}</td>
                     </tr>
                 </tbody>
-                </table>
-            </div>
+            </table>
+        </div>
 
     </div>
 </template>
@@ -86,8 +86,8 @@ export default {
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-th, td {
-  @apply px-4 py-2;
+th,
+td {
+    @apply px-4 py-2;
 }
-
 </style>
