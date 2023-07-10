@@ -19,6 +19,8 @@ export default {
                 <div class="flex-shrink-0">
                     <h1 class="text-white text-lg font-semibold">共享单车调度系统</h1>
                 </div>
+
+
                 <div class="hidden md:block ml-20">
                     <div class="flex items-baseline space-x-10">
                         <a href="#/Manageuser" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
@@ -39,12 +41,42 @@ export default {
                     </div>
                 </div>
 
+                    
                 <div class="absolute top-3 right-5">
                     <button @click="gotoLogin" class="bg-exit bg-cover bg-center py-4 px-4 rounded" title="退出登录">
                     </button>
                 </div>
             </div>
         </nav>
+
+        <div class = "flex justify-center">
+                <table class="table-auto cmin-w-full bg-white flex justify-center">
+                    <thead>
+                        <tr>
+                        <th>Song</th>
+                        <th>Artist</th>
+                        <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                        <td>Malcolm Lockyer</td>
+                        <td>1961</td>
+                        </tr>
+                        <tr>
+                        <td>Witchy Woman</td>
+                        <td>The Eagles</td>
+                        <td>1972</td>
+                        </tr>
+                        <tr>
+                        <td>Shining Star</td>
+                        <td>Earth, Wind, and Fire</td>
+                        <td>1975</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
 
     </div>
 </template>

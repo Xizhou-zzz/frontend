@@ -25,18 +25,6 @@ export default {
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
                             管理用户
                         </a>
-                        <!-- <a href="#/Visualone"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            增加用户数据
-                        </a>
-                        <a href="#/Predict"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            删除用户数据
-                        </a>
-                        <a href="#/Price"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            修改用户数据
-                        </a> -->
                     </div>
                 </div>
 
