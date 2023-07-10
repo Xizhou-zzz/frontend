@@ -12,34 +12,39 @@ export default {
     data() {
         return {
             people: [
-                { id: 1, name: '张三', age: 25, gender: '男' },
-                { id: 2, name: '李四', age: 30, gender: '女' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
-                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 1, username: '张三', password: 25, typology: '男' },
+                { id: 2, username: '李四', password: 30, typology: '女' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
 
             ]
         }
+    },
+    mounted() {
+        // 在组件挂载后执行的操作
+        //getUsers();
     }
+    
 }
 </script>
 
@@ -83,21 +88,21 @@ export default {
             </div>
         </nav>
 
-        <div class="flex justify-center table-container h-96 overflow-y-auto">
+        <div class="flex justify-center table-container max-h-96 overflow-y-auto">
             <table class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
                 <thead>
                     <tr>
-                        <th class="px-4 py-2 border border-slate-300">姓名</th>
-                        <th class="px-4 py-2 border border-slate-300">年龄</th>
-                        <th class="px-4 py-2 border border-slate-300">性别</th>
+                        <th class="px-4 py-2 border border-slate-300">用户名</th>
+                        <th class="px-4 py-2 border border-slate-300">密码</th>
+                        <th class="px-4 py-2 border border-slate-300">类型</th>
                         <th class="px-4 py-2 border border-slate-300">操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(person, index) in people" :key="index">
-                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.name }}</td>
-                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.age }}</td>
-                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.gender }}</td>
+                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.username }}</td>
+                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.password }}</td>
+                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.typology }}</td>
                         <td class="px-4 py-2 text-center border border-slate-300">
                             <button @click="deleteRow(index)"
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除
