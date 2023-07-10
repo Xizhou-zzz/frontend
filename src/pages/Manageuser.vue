@@ -15,6 +15,28 @@ export default {
                 { id: 1, name: '张三', age: 25, gender: '男' },
                 { id: 2, name: '李四', age: 30, gender: '女' },
                 { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+                { id: 3, name: '王五', age: 28, gender: '男' },
+
             ]
         }
     }
@@ -61,7 +83,7 @@ export default {
             </div>
         </nav>
 
-        <div class="flex justify-center">
+        <div class="flex justify-center table-container h-96 overflow-y-auto">
             <table class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
                 <thead>
                     <tr>
