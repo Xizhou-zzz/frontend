@@ -4,6 +4,9 @@ export default {
     methods: {
         gotoLogin() {
             this.$router.push('/')
+        },
+        deleteRow(index) {
+            this.people.splice(index, 1);
         }
     },
     data() {
@@ -58,23 +61,25 @@ export default {
             </div>
         </nav>
 
-        <div>
-            <table class="table bg-white border border-gray-300 w-full my-4">
+        <div class="flex justify-center">
+            <table class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
                 <thead>
                     <tr>
-                        <th class="px-4 py-2 border-b border-r">姓名</th>
-                        <th class="px-4 py-2 border-b border-r">年龄</th>
-                        <th class="px-4 py-2 border-b border-r">性别</th>
-                        <th class="px-4 py-2 border-b border-r">操作</th>
+                        <th class="px-4 py-2 border border-slate-300">姓名</th>
+                        <th class="px-4 py-2 border border-slate-300">年龄</th>
+                        <th class="px-4 py-2 border border-slate-300">性别</th>
+                        <th class="px-4 py-2 border border-slate-300">操作</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="person in people" :key="person.id">
-                        <td class="px-4 py-2 border-b border-r text-center">{{ person.name }}</td>
-                        <td class="px-4 py-2 border-b border-r text-center">{{ person.age }}</td>
-                        <td class="px-4 py-2 border-b border-r text-center">{{ person.gender }}</td>
-                        <td class="px-4 py-2 border-b border-r text-center"><button
-                                class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除</button>
+                    <tr v-for="(person, index) in people" :key="index">
+                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.name }}</td>
+                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.age }}</td>
+                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.gender }}</td>
+                        <td class="px-4 py-2 text-center border border-slate-300">
+                            <button @click="deleteRow(index)"
+                                class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除
+                            </button>
                         </td>
                     </tr>
                 </tbody>
