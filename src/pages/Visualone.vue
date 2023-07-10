@@ -67,18 +67,60 @@ async function renderChart2() {
 async function renderChart3() {
   echart.dispose();
   echart = echarts.init(chart.value);
-  var data = [
-    [0, 0, 10],
-    [1, 0, 15],
-    [2, 0, 20],
-  ];
   const options = {
-    xAxis: {},
-    yAxis: {},
+    xAxis: {
+      type: 'category',
+      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    },
+    yAxis: {
+      type: 'category',
+      data: ['早上', '中午', '下午', '晚上']
+    },
+    visualMap: {
+      min: 0,
+      max: 100,
+      calculable: true,
+      orient: 'horizontal',
+      left: 'center',
+      bottom: 10
+    },
     series: [
       {
+        name: '热力图示例',
         type: 'heatmap',
-        data: data
+        data: [
+          [0, 0, 30],
+          [0, 1, 40],
+          [0, 2, 50],
+          [0, 3, 60],
+          [1, 0, 70],
+          [1, 1, 80],
+          [1, 2, 90],
+          [1, 3, 100],
+          [2, 0, 50],
+          [2, 1, 60],
+          [2, 2, 70],
+          [2, 3, 80],
+          [3, 0, 90],
+          [3, 1, 100],
+          [3, 2, 30],
+          [3, 3, 40],
+          [4, 0, 60],
+          [4, 1, 70],
+          [4, 2, 80],
+          [4, 3, 90],
+          [5, 0, 40],
+          [5, 1, 50],
+          [5, 2, 60],
+          [5, 3, 70],
+          [6, 0, 80],
+          [6, 1, 90],
+          [6, 2, 100],
+          [6, 3, 50]
+        ],
+        label: {
+          show: false,
+        },
       }
     ]
   };
@@ -141,25 +183,16 @@ async function renderChart3() {
             <div class="absolute left-1 ml-2 text-white rounded-md text-sm font-bold">
               请选择图表类型:
             </div>
-            <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700" @click="renderChart">
+            <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+              @click="renderChart">
               订单数按星期分布饼状图
             </button>
-            <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700" @click="renderChart2">
+            <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+              @click="renderChart2">
               不同时间单车需求散点图
             </button>
-            <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700" @click="renderChart3">
-              不同位置单车需求热力图
-            </button>
-            <button class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700"
-              @click="() => { router.push('/Visualone') }">
-              订单数按星期分布饼状图
-            </button>
-            <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
-              @click="() => { router.push('/Visualtwo') }">
-              不同时间单车需求散点图
-            </button>
-            <button class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
-              @click="() => { router.push('/Visualthree') }">
+            <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
+              @click="renderChart3">
               不同位置单车需求热力图
             </button>
           </div>

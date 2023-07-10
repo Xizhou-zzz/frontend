@@ -17,24 +17,24 @@ export default {
     gotoRegister() {
       this.$router.push('/Register')
     },
-    gotoUser() {
-      axios.post('http://localhost:5000/api/login',
-        {
-          username: this.username,
-          password: this.password
-        }
-      )
-        .then(response => {
-          // 处理成功响应
-          console.log(response.data);
-          if (response.data.result == "success") {
-            this.$router.push('/Main');
-            this.message = "";
-          } else {
-            this.message = "用户名不存在或密码错误";
-          }
-        });
-    }
+    // gotoUser() {
+    //   axios.post('http://localhost:5000/api/login',
+    //     {
+    //       username: this.username,
+    //       password: this.password
+    //     }
+    //   )
+    //     .then(response => {
+    //       // 处理成功响应
+    //       console.log(response.data);
+    //       if (response.data.result == "success") {
+    //         this.$router.push('/Main');
+    //         this.message = "";
+    //       } else {
+    //         this.message = "用户名不存在或密码错误";
+    //       }
+    //     });
+    // }
   }
 }
 </script>
