@@ -1,8 +1,10 @@
 <script setup>
 import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router'
 import axios from "axios";
 import { getUser } from '../lib/axios'
-import { useRouter } from 'vue-router'
+import { deleteRow } from '../lib/axios'
+
 
 const router = useRouter()
 onMounted(() => {
@@ -13,13 +15,12 @@ function gotoLogin() {
     router.push('/');
 }
 
-let people 
+let people
 let dataLoaded = ref(false)
 async function getUserData() {
     people = await getUser()
     dataLoaded.value = true
 }
-
 
 // export default {
 //     name: "Manageuser",
@@ -109,7 +110,7 @@ async function getUserData() {
                         <td class="px-4 py-2 text-center border border-slate-300">{{ person.password }}</td>
                         <td class="px-4 py-2 text-center border border-slate-300">{{ person.typology }}</td>
                         <td class="px-4 py-2 text-center border border-slate-300 space-x-1">
-                            <button @click="deleteRow(index)"
+                            <button @click="deleteRow(person.username)"
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除
                             </button>
                             <button @click=""

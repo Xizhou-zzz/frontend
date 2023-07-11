@@ -27,8 +27,13 @@ export async function getVisualThreeData() {
     const res = await axios.get('http://localhost:5000/api/Visualthree')
     return res.data
 }
-
+//获得数据库中的所有数据
 export async function getUser() {
     const res = await axios.get('http://localhost:5000/api/getUsers')
+    return res.data
+}
+//删除一行数据，将要删除的行的用户名传给后端
+export async function deleteRow(username) {
+    const res = await axios.post('http://localhost:5000/api/deleteRow', username)
     return res.data
 }
