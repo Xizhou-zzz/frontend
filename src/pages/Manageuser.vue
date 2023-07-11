@@ -15,8 +15,21 @@ function gotoLogin() {
     router.push('/');
 }
 
-let people
-let dataLoaded = ref(false)
+let isEditable = false;
+function toggleEdit() {
+    isEditable = !isEditable;
+    router.push('/Manageuser');
+}
+let people = [
+                { id: 1, username: '张三', password: 25, typology: '男' },
+                { id: 2, username: '李四', password: 30, typology: '女' },
+                { id: 3, username: '王五', password: 28, typology: '男' },
+                { id: 4, username: '王哈哈', password: 28, typology: '男' },
+                { id: 5, username: '王六', password: 28, typology: '男' },
+                { id: 6, username: '王七', password: 28, typology: '女' },
+            ]
+// let dataLoaded = ref(false)
+let dataLoaded = true
 async function getUserData() {
     people = await getUser()
     dataLoaded.value = true
@@ -106,14 +119,30 @@ async function getUserData() {
                 </thead>
                 <tbody>
                     <tr v-for="(person, index) in people" :key="index">
-                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.username }}</td>
-                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.password }}</td>
-                        <td class="px-4 py-2 text-center border border-slate-300">{{ person.typology }}</td>
+                        <td class="px-4 py-2 text-center border border-slate-300"> 
+                        <input
+                            v-if="isEditable"
+                                v-model="person.username"/>   
+                            <span v-else>{{ person.username }}</span>
+                        </td>
+
+                        <td class="px-4 py-2 text-center border border-slate-300">
+                            <input
+                            v-if="isEditable"
+                                v-model="person.password"/>   
+                            <span v-else class="disabled">{{ person.password }}</span>
+                        </td>
+                        <td class="px-4 py-2 text-center border border-slate-300">
+                            <input
+                            v-if="isEditable"
+                                v-model="person.typology"/>   
+                            <span v-else>{{ person.typology }}</span>
+                        </td>
                         <td class="px-4 py-2 text-center border border-slate-300 space-x-1">
                             <button @click="deleteRow(person.username)"
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除
                             </button>
-                            <button @click=""
+                            <button @click="toggleEdit"
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">修改
                             </button>
                             <button @click=""
