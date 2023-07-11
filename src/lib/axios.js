@@ -36,3 +36,8 @@ export async function getUser() {
 export async function deleteRow(username) {
     await axios.post('http://localhost:5000/api/deleteRow', username)
 }
+
+export async function addRow(info) {
+    await axios.post('http://localhost:5000/api/addRow',info)
+}
+

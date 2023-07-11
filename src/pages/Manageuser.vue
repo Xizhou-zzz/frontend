@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router'
 import { getUser } from '../lib/axios'
 import { deleteRow } from '../lib/axios'
+import { addRow } from '../lib/axios'
 const router = useRouter()
 
 onMounted(() => {
@@ -16,13 +17,26 @@ function gotoLogin() {
 let people = ref([])
 let dataLoaded = ref(false)
 
+let emptyRow =  { name: '', email: '' }// 空行数据对象
+let showEmptyRow = ref(false)// 控制是否显示空行
+
+
+function addOne(){
+    showEmptyRow.value = true
+}
+
 async function getUserData() {
     people.value = await getUser()
     dataLoaded.value = true
 }
-
+//刷新删除后的数据
 async function refreshdeleteddata(person) {
     await deleteRow({ username: person.username })
+    await getUserData()
+}
+//刷新新增后的数据
+async function refreshaddeddata() {
+    await addRow({name:emptyRow.name,password:emptyRow.password,type:emptyRow.type})
     await getUserData()
 }
 
@@ -55,6 +69,9 @@ async function refreshdeleteddata(person) {
                 </div>
             </div>
         </nav>
+        <el-button type="primary" round class="absolute left-4 top-32" @click="addOne">
+            增加用户
+        </el-button>
 
         <div class="flex justify-center table-container max-h-96 overflow-y-auto space-x-10">
             <table v-if="dataLoaded" class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
@@ -82,17 +99,29 @@ async function refreshdeleteddata(person) {
                             <span v-else>{{ person.typology }}</span>
                         </td>
                         <td class="px-4 py-2 text-center border border-slate-300 space-x-1">
-                            <button @click="refreshdeleteddata(person)"
+                            <el-button type="primary" round  @click="refreshdeleteddata(person)">删除</el-button>
+                            <el-button type="primary" round>修改</el-button>
+                            <!-- <button @click="refreshdeleteddata(person)"
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除
                             </button>
                             <button @click="toggleEdit"
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">修改
-                            </button>
-                            <button @click=""
+                            </button> -->
+                            <!-- <button @click=""
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">增加
-                            </button>
+                            </button> -->
 
 
+                        </td>
+                    </tr>
+                    <tr v-if="showEmptyRow">
+                        <td><input v-model="emptyRow.name" placeholder="Enter name"></td>
+                        <td><input v-model="emptyRow.password" placeholder="Enter password"></td>
+                        <td><input v-model="emptyRow.type" placeholder="Enter type"></td>
+                        <td>
+                            <el-button type="primary" round @click="refreshaddeddata">
+                                确认
+                             </el-button>
                         </td>
                     </tr>
 
