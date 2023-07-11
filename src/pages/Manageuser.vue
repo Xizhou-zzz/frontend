@@ -1,51 +1,88 @@
 <script lang="ts">
+import { onMounted } from 'vue';
+import axios from "axios";
 export default {
     name: "Manageuser",
+    mounted() {
+        this.getUsers();
+    },
     methods: {
         gotoLogin() {
             this.$router.push('/')
         },
-        deleteRow(index) {
+        deleteRow(index: any) {
             this.people.splice(index, 1);
-        }
+        },
+        getUsers(){
+            axios.get('/api/getUsers') 
+            .then(response => {
+                this.username = response.data.username;
+                this.password = response.data.password;
+                this.typology = response.data.typology;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+         }
     },
     data() {
         return {
             people: [
-                { id: 1, username: '张三', password: 25, typology: '男' },
-                { id: 2, username: '李四', password: 30, typology: '女' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-
+            {
+                username: '',
+                password: '',
+                typology: ''
+            }
+            // 可以继续添加更多用户对象
             ]
+            // people: [
+            //     { id: 1, username: '张三', password: 25, typology: '男' },
+            //     { id: 2, username: '李四', password: 30, typology: '女' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+            //     { id: 3, username: '王五', password: 28, typology: '男' },
+
+            // ]
         }
-    },
-    mounted() {
-        // 在组件挂载后执行的操作
-        //getUsers();
     }
 
+
+
 }
+
+    // function getUser (){
+    //     get("/api/course")
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     courses = res.data.data;
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    // }
+
+    // onMounted(() => {
+    //     getUser();
+    // })
 </script>
 
 <template>
@@ -65,18 +102,6 @@ export default {
                         <a href="#/Manageuser" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
                             管理用户
                         </a>
-                        <!-- <a href="#/Visualone"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            增加用户数据
-                        </a>
-                        <a href="#/Predict"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            删除用户数据
-                        </a>
-                        <a href="#/Price"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            修改用户数据
-                        </a> -->
                     </div>
                 </div>
 
