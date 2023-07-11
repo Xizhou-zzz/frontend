@@ -129,7 +129,7 @@ export default {
                         <td class="px-4 py-2 text-center border border-slate-300">{{ person.password }}</td>
                         <td class="px-4 py-2 text-center border border-slate-300">{{ person.typology }}</td>
                         <td class="px-4 py-2 text-center border border-slate-300">
-                            <button @click="deleteRow(index)"
+                            <button @click="getUsers"
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除
                             </button>
                         </td>
