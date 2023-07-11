@@ -1,35 +1,26 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import axios from "axios";
 import { getUser } from '../lib/axios'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 onMounted(() => {
-
+    getUserData()
 })
 
 function gotoLogin() {
     router.push('/');
 }
 
-let people = []
-let dataLoaded = false
-
+let people 
+let dataLoaded = ref(false)
 async function getUserData() {
-    dataLoaded = false;
-    // people = await getUser()
-    people = [
-        { id: 1, username: '张三', password: 25, typology: '男' },
-        { id: 2, username: '李四', password: 30, typology: '女' },
-        { id: 3, username: '王五', password: 28, typology: '男' },
-        { id: 4, username: '王哈哈', password: 28, typology: '男' },
-        { id: 5, username: '王六', password: 28, typology: '男' },
-        { id: 6, username: '王七', password: 28, typology: '女' },
-    ]
-
-    dataLoaded = true;
+    people = await getUser()
+    dataLoaded.value = true
 }
+
+
 // export default {
 //     name: "Manageuser",
 //     mounted() {
@@ -103,13 +94,6 @@ async function getUserData() {
         </nav>
 
         <div class="flex justify-center table-container max-h-96 overflow-y-auto space-x-10">
-            <button @click="
-                
-                
-                "
-                class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ... h-7 absolute top-20 left-10">
-                获取用户数据
-            </button>
             <table v-if="dataLoaded" class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
                 <thead>
                     <tr>
