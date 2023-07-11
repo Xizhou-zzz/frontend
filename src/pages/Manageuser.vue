@@ -21,8 +21,8 @@ async function getUserData() {
     dataLoaded.value = true
 }
 
-async function refreshdeleteddata(person){
-    await deleteRow({username: person.username})
+async function refreshdeleteddata(person) {
+    await deleteRow({ username: person.username })
     await getUserData()
 }
 
@@ -68,23 +68,17 @@ async function refreshdeleteddata(person){
                 </thead>
                 <tbody>
                     <tr v-for="(person, index) in people" :key="index">
-                        <td class="px-4 py-2 text-center border border-slate-300"> 
-                        <input
-                            v-if="isEditable"
-                                v-model="person.username"/>   
+                        <td class="px-4 py-2 text-center border border-slate-300">
+                            <input v-if="isEditable" v-model="person.username" />
                             <span v-else>{{ person.username }}</span>
                         </td>
 
                         <td class="px-4 py-2 text-center border border-slate-300">
-                            <input
-                            v-if="isEditable"
-                                v-model="person.password"/>   
+                            <input v-if="isEditable" v-model="person.password" />
                             <span v-else class="disabled">{{ person.password }}</span>
                         </td>
                         <td class="px-4 py-2 text-center border border-slate-300">
-                            <input
-                            v-if="isEditable"
-                                v-model="person.typology"/>   
+                            <input v-if="isEditable" v-model="person.typology" />
                             <span v-else>{{ person.typology }}</span>
                         </td>
                         <td class="px-4 py-2 text-center border border-slate-300 space-x-1">
@@ -97,6 +91,7 @@ async function refreshdeleteddata(person){
                             <button @click=""
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">增加
                             </button>
+
 
                         </td>
                     </tr>
