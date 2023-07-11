@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 onMounted(() => {
-
+    getUserData()
 })
 
 function gotoLogin() {
@@ -14,7 +14,7 @@ function gotoLogin() {
 }
 
 let people = []
-let dataLoaded = false
+let dataLoaded = true
 
 async function getUserData() {
     dataLoaded = false;
