@@ -6,11 +6,17 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 onMounted(() => {
-    getUser();
+
 })
 
 function gotoLogin() {
-    this.$router.push('/');
+    router.push('/');
+}
+
+let people
+async function getUserData() {
+    people = await getUser();
+
 }
 
 // export default {
@@ -103,7 +109,11 @@ function gotoLogin() {
             </div>
         </nav>
 
-        <div class="flex justify-center table-container max-h-96 overflow-y-auto">
+        <div class="flex justify-center table-container max-h-96 overflow-y-auto space-x-10">
+            <button @click="getUserData"
+                class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ... h-7 absolute top-20 left-10">
+                获取用户数据
+            </button>
             <table class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
                 <thead>
                     <tr>
