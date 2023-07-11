@@ -25,7 +25,6 @@ async function renderChart() {
   echart = echarts.init(chart.value);
   echart.showLoading();//显示加载动画
   const data = await getVisualOneData()
-  // console.log(data)
   const options = {
     series: [
       {

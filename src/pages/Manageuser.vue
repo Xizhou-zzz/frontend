@@ -14,20 +14,18 @@ function gotoLogin() {
 }
 
 let people
+let dataLoaded = false;
+
 async function getUserData() {
-    people = await getUser();
-
+    people = await getUser()
+    dataLoaded = true;
 }
-
 // export default {
 //     name: "Manageuser",
 //     mounted() {
 //         this.getUsers();
 //     },
 //     methods: {
-//         gotoLogin() {
-//             this.$router.push('/')
-//         },
 //         deleteRow(index: any) {
 //             this.people.splice(index, 1);
 //         },
@@ -64,21 +62,6 @@ async function getUserData() {
 //         }
 //     }
 // }
-
-    // function getUser (){
-    //     get("/api/course")
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     courses = res.data.data;
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    // }
-
-    // onMounted(() => {
-    //     getUser();
-    // })
 </script>
 
 <template>
@@ -114,7 +97,7 @@ async function getUserData() {
                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ... h-7 absolute top-20 left-10">
                 获取用户数据
             </button>
-            <table class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
+            <table v-if="dataLoaded" class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
                 <thead>
                     <tr>
                         <th class="px-4 py-2 border border-slate-300">用户名</th>
@@ -144,6 +127,9 @@ async function getUserData() {
 
                 </tbody>
             </table>
+            <div v-else>
+                数据加载中...
+            </div>
         </div>
 
     </div>
