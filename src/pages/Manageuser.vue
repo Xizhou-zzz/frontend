@@ -13,11 +13,21 @@ function gotoLogin() {
     router.push('/');
 }
 
-let people
-let dataLoaded = false;
+let people = []
+let dataLoaded = false
 
 async function getUserData() {
-    people = await getUser()
+    dataLoaded = false;
+    // people = await getUser()
+    people = [
+        { id: 1, username: '张三', password: 25, typology: '男' },
+        { id: 2, username: '李四', password: 30, typology: '女' },
+        { id: 3, username: '王五', password: 28, typology: '男' },
+        { id: 4, username: '王哈哈', password: 28, typology: '男' },
+        { id: 5, username: '王六', password: 28, typology: '男' },
+        { id: 6, username: '王七', password: 28, typology: '女' },
+    ]
+
     dataLoaded = true;
 }
 // export default {
