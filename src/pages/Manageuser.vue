@@ -123,11 +123,11 @@ async function refreshaddeddata() {
                     </tr>
                     <tr v-if="showEmptyRow">
                         <!-- 新增加的一行 -->
-                        <td><input class="px-4 py-2 border border-slate-300" v-model="emptyRow.name" placeholder="Enter name"></td>
-                        <td><input class="px-4 py-2 border border-slate-300" v-model="emptyRow.password" placeholder="Enter password"></td>
-                        <td><input class="px-4 py-2 border border-slate-300" v-model="emptyRow.type" placeholder="Enter type"></td>
+                        <td class="text-center border border-slate-300"><input class="px-4 py-2 border border-slate-300 mx-auto" v-model="emptyRow.name" placeholder="Enter name"></td>
+                        <td class="text-center border border-slate-300"><input class="px-4 py-2 border border-slate-300 mx-auto" v-model="emptyRow.password" placeholder="Enter password"></td>
+                        <td class="text-center border border-slate-300"><input class="px-4 py-2 border border-slate-300 mx-auto" v-model="emptyRow.type" placeholder="Enter type"></td>
                         <!-- 确认增加或取消增加 -->
-                        <td class="px-4 py-2 space-x-1 text-center">
+                        <td class="px-4 py-2 space-x-1 text-center border border-slate-300">
                             <el-button type="primary" round @click="refreshaddeddata">
                                 确认
                              </el-button>
