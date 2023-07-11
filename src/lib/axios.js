@@ -27,3 +27,8 @@ export async function getVisualThreeData() {
     const res = await axios.get('http://localhost:5000/api/Visualthree')
     return res.data
 }
+
+export async function getUser() {
+    const res = await axios.get('http://localhost:5000/api/getUsers')
+    return res.data
+}

@@ -1,52 +1,63 @@
-<script lang="ts">
+<script setup>
 import { onMounted } from 'vue';
 import axios from "axios";
+import { getUser } from '../lib/axios'
+import { useRouter } from 'vue-router'
 
-export default {
-    name: "Manageuser",
-    mounted() {
-        this.getUsers();
-    },
-    methods: {
-        gotoLogin() {
-            this.$router.push('/')
-        },
-        deleteRow(index: any) {
-            this.people.splice(index, 1);
-        },
-        getUsers() {
-            axios.get('/api/getUsers')
-                .then(response => {
-                    this.username = response.data.username;
-                    this.password = response.data.password;
-                    this.typology = response.data.typology;
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        }
-    },
-    data() {
-        return {
-            people: [
-                {
-                    username: '',
-                    password: '',
-                    typology: ''
-                }
-                // 可以继续添加更多用户对象
-            ]
-            // people: [
-            //     { id: 1, username: '张三', password: 25, typology: '男' },
-            //     { id: 2, username: '李四', password: 30, typology: '女' },
-            //     { id: 3, username: '王五', password: 28, typology: '男' },
-            //     { id: 4, username: '王哈哈', password: 28, typology: '男' },
-            //     { id: 5, username: '王六', password: 28, typology: '男' },
-            //     { id: 6, username: '王七', password: 28, typology: '女' },
-            // ]
-        }
-    }
+const router = useRouter()
+onMounted(() => {
+    getUser();
+})
+
+function gotoLogin() {
+    this.$router.push('/');
 }
+
+// export default {
+//     name: "Manageuser",
+//     mounted() {
+//         this.getUsers();
+//     },
+//     methods: {
+//         gotoLogin() {
+//             this.$router.push('/')
+//         },
+//         deleteRow(index: any) {
+//             this.people.splice(index, 1);
+//         },
+//         // getUsers() {
+//         //     axios.get('/api/getUsers')
+//         //         .then(response => {
+//         //             this.username = response.data.username;
+//         //             this.password = response.data.password;
+//         //             this.typology = response.data.typology;
+//         //         })
+//         //         .catch(error => {
+//         //             console.error(error);
+//         //         });
+//         // }
+//     },
+//     data() {
+//         return {
+//             people: [
+//                 {
+//                     username: '',
+//                     password: '',
+//                     typology: ''
+//                 }
+//                 // 可以继续添加更多用户对象
+//             ]
+//             // people: [
+//             //     { id: 1, username: '张三', password: 25, typology: '男' },
+//             //     { id: 2, username: '李四', password: 30, typology: '女' },
+//             //     { id: 3, username: '王五', password: 28, typology: '男' },
+//             //     { id: 4, username: '王哈哈', password: 28, typology: '男' },
+//             //     { id: 5, username: '王六', password: 28, typology: '男' },
+//             //     { id: 6, username: '王七', password: 28, typology: '女' },
+//             // ]
+//         }
+//     }
+// }
 
     // function getUser (){
     //     get("/api/course")
@@ -92,11 +103,7 @@ export default {
             </div>
         </nav>
 
-        <div class="flex justify-center table-container max-h-96 overflow-y-auto space-x-10">
-            <button @click="getUsers"
-                class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 h-6 absolute top-20 left-10">
-                获取用户数据
-            </button>
+        <div class="flex justify-center table-container max-h-96 overflow-y-auto">
             <table class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
                 <thead>
                     <tr>
