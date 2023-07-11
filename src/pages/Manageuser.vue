@@ -14,16 +14,22 @@ function gotoLogin() {
     router.push('/');
 }
 
-let people = ref([])
-let dataLoaded = ref(false)
-
-let emptyRow =  { name: '', password: '' ,type:''}// 空行数据对象
+let people = ref([])//表格数据
+let dataLoaded = ref(false)//数据是否加载完成
 let showEmptyRow = ref(false)// 控制是否显示空行
+let editable = ref([])//控制表格某行是否可编辑
+let emptyRow =  { name: '', password: '' ,type:''}// 空行数据对象
+
 
 
 function addOne(){
     showEmptyRow.value = true
 }
+
+function updateOne(index){
+    editable[index] = !editable[index]
+}
+
 //点击取消后取消增加一行
 function canceladd(){
     emptyRow = { name: '', password: '' ,type:''}
@@ -34,17 +40,21 @@ async function getUserData() {
     people.value = await getUser()
     dataLoaded.value = true
 }
-//刷新删除后的数据
+//刷新删除一行后的数据
 async function refreshdeleteddata(person) {
     await deleteRow({ username: person.username })
     await getUserData()
 }
-//刷新新增后的数据
+//刷新增加一行后的数据
 async function refreshaddeddata() {
     await addRow({name:emptyRow.name,password:emptyRow.password,type:emptyRow.type})
     await getUserData()
     emptyRow = { name: '', password: '' ,type:''}
     showEmptyRow.value = false
+}
+//刷新更改一行后的数据
+async function refreshupdateddata(){
+
 }
 
 </script>
@@ -59,8 +69,6 @@ async function refreshaddeddata() {
                 <div class="flex-shrink-0">
                     <h1 class="text-white text-lg font-semibold">共享单车调度系统</h1>
                 </div>
-
-
                 <div class="hidden md:block ml-20">
                     <div class="flex items-baseline space-x-10">
                         <a href="#/Manageuser" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
@@ -68,18 +76,17 @@ async function refreshaddeddata() {
                         </a>
                     </div>
                 </div>
-
-
                 <div class="absolute top-3 right-5">
                     <button @click="gotoLogin" class="bg-exit bg-cover bg-center py-4 px-4 rounded" title="退出登录">
                     </button>
                 </div>
             </div>
         </nav>
+        <!-- 增加用户按钮 -->
         <el-button type="primary" round class="absolute left-4 top-32" @click="addOne">
             增加用户
         </el-button>
-
+        <!-- 表格 -->
         <div class="flex justify-center table-container max-h-full overflow-y-auto space-x-10">
             <table v-if="dataLoaded" class="table bg-white h-full w-5/6 my-4 border-collapse border border-slate-400 table-fixed">
                 <thead>
@@ -92,33 +99,29 @@ async function refreshaddeddata() {
                 </thead>
                 <tbody>
                     <tr v-for="(person, index) in people" :key="index">
-                        <td class="px-4 py-2 text-center border border-slate-300">
-                            <input v-if="isEditable" v-model="person.username" />
+                        <!-- <td class="px-4 py-2 text-center border border-slate-300">
+                            <input v-if="editable[index]" v-model="person.username" />
                             <span v-else>{{ person.username }}</span>
+                        </td> -->
+
+                        <td class="px-4 py-2 text-center border border-slate-300" v-if="editable[index]">
+                            <input v-model="person.username" />
+                        </td>
+                        <td class="px-4 py-2 text-center border border-slate-300" v-else>
+                            {{ person.username }}
                         </td>
 
                         <td class="px-4 py-2 text-center border border-slate-300">
-                            <input v-if="isEditable" v-model="person.password" />
+                            <input v-if="editable[index]" v-model="person.password" />
                             <span v-else class="disabled">{{ person.password }}</span>
                         </td>
                         <td class="px-4 py-2 text-center border border-slate-300">
-                            <input v-if="isEditable" v-model="person.typology" />
+                            <input v-if="editable[index]" v-model="person.typology" />
                             <span v-else>{{ person.typology }}</span>
                         </td>
                         <td class="px-4 py-2 text-center border border-slate-300 space-x-1">
                             <el-button type="primary" round  @click="refreshdeleteddata(person)">删除</el-button>
-                            <el-button type="primary" round>修改</el-button>
-                            <!-- <button @click="refreshdeleteddata(person)"
-                                class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除
-                            </button>
-                            <button @click="toggleEdit"
-                                class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">修改
-                            </button> -->
-                            <!-- <button @click=""
-                                class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">增加
-                            </button> -->
-
-
+                            <el-button type="primary" round @click="updateOne(index)">修改</el-button>
                         </td>
                     </tr>
                     <tr v-if="showEmptyRow">
