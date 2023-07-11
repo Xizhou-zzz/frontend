@@ -18,7 +18,6 @@ function gotoLogin() {
 let isEditable = false;
 function toggleEdit() {
     isEditable = !isEditable;
-    router.push('/Manageuser');
 }
 let people = [
                 { id: 1, username: '张三', password: 25, typology: '男' },
