@@ -1,12 +1,11 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router'
-import axios from "axios";
 import { getUser } from '../lib/axios'
 import { deleteRow } from '../lib/axios'
-
-
+import { addRow } from '../lib/axios'
 const router = useRouter()
+
 onMounted(() => {
     getUserData()
 })
@@ -19,63 +18,24 @@ let isEditable = false;
 function toggleEdit() {
     isEditable = !isEditable;
 }
-let people = [
-                { id: 1, username: '张三', password: 25, typology: '男' },
-                { id: 2, username: '李四', password: 30, typology: '女' },
-                { id: 3, username: '王五', password: 28, typology: '男' },
-                { id: 4, username: '王哈哈', password: 28, typology: '男' },
-                { id: 5, username: '王六', password: 28, typology: '男' },
-                { id: 6, username: '王七', password: 28, typology: '女' },
-            ]
-// let dataLoaded = ref(false)
-let dataLoaded = true
+
 async function getUserData() {
-    people = await getUser()
+    people.value = await getUser()
     dataLoaded.value = true
 }
+//刷新删除后的数据
+async function refreshdeleteddata(person) {
+    await deleteRow({ username: person.username })
+    await getUserData()
+}
+//刷新新增后的数据
+async function refreshaddeddata() {
+    await addRow({name:emptyRow.name,password:emptyRow.password,type:emptyRow.type})
+    await getUserData()
+    emptyRow = { name: '', password: '' ,type:''}
+    showEmptyRow.value = false
+}
 
-// export default {
-//     name: "Manageuser",
-//     mounted() {
-//         this.getUsers();
-//     },
-//     methods: {
-//         deleteRow(index: any) {
-//             this.people.splice(index, 1);
-//         },
-//         // getUsers() {
-//         //     axios.get('/api/getUsers')
-//         //         .then(response => {
-//         //             this.username = response.data.username;
-//         //             this.password = response.data.password;
-//         //             this.typology = response.data.typology;
-//         //         })
-//         //         .catch(error => {
-//         //             console.error(error);
-//         //         });
-//         // }
-//     },
-//     data() {
-//         return {
-//             people: [
-//                 {
-//                     username: '',
-//                     password: '',
-//                     typology: ''
-//                 }
-//                 // 可以继续添加更多用户对象
-//             ]
-//             // people: [
-//             //     { id: 1, username: '张三', password: 25, typology: '男' },
-//             //     { id: 2, username: '李四', password: 30, typology: '女' },
-//             //     { id: 3, username: '王五', password: 28, typology: '男' },
-//             //     { id: 4, username: '王哈哈', password: 28, typology: '男' },
-//             //     { id: 5, username: '王六', password: 28, typology: '男' },
-//             //     { id: 6, username: '王七', password: 28, typology: '女' },
-//             // ]
-//         }
-//     }
-// }
 </script>
 
 <template>
@@ -105,9 +65,12 @@ async function getUserData() {
                 </div>
             </div>
         </nav>
+        <el-button type="primary" round class="absolute left-4 top-32" @click="addOne">
+            增加用户
+        </el-button>
 
-        <div class="flex justify-center table-container max-h-96 overflow-y-auto space-x-10">
-            <table v-if="dataLoaded" class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
+        <div class="flex justify-center table-container max-h-full overflow-y-auto space-x-10">
+            <table v-if="dataLoaded" class="table bg-white h-full w-5/6 my-4 border-collapse border border-slate-400 table-fixed">
                 <thead>
                     <tr>
                         <th class="px-4 py-2 border border-slate-300">用户名</th>
@@ -118,44 +81,53 @@ async function getUserData() {
                 </thead>
                 <tbody>
                     <tr v-for="(person, index) in people" :key="index">
-                        <td class="px-4 py-2 text-center border border-slate-300"> 
-                        <input
-                            v-if="isEditable"
-                                v-model="person.username"/>   
+                        <td class="px-4 py-2 text-center border border-slate-300">
+                            <input v-if="isEditable" v-model="person.username" />
                             <span v-else>{{ person.username }}</span>
                         </td>
 
                         <td class="px-4 py-2 text-center border border-slate-300">
-                            <input
-                            v-if="isEditable"
-                                v-model="person.password"/>   
+                            <input v-if="isEditable" v-model="person.password" />
                             <span v-else class="disabled">{{ person.password }}</span>
                         </td>
                         <td class="px-4 py-2 text-center border border-slate-300">
-                            <input
-                            v-if="isEditable"
-                                v-model="person.typology"/>   
+                            <input v-if="isEditable" v-model="person.typology" />
                             <span v-else>{{ person.typology }}</span>
                         </td>
                         <td class="px-4 py-2 text-center border border-slate-300 space-x-1">
-                            <button @click="deleteRow(person.username)"
+                            <el-button type="primary" round  @click="refreshdeleteddata(person)">删除</el-button>
+                            <el-button type="primary" round>修改</el-button>
+                            <!-- <button @click="refreshdeleteddata(person)"
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">删除
                             </button>
                             <button @click="toggleEdit"
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">修改
-                            </button>
-                            <button @click=""
+                            </button> -->
+                            <!-- <button @click=""
                                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ...">增加
-                            </button>
+                            </button> -->
 
+
+                        </td>
+                    </tr>
+                    <tr v-if="showEmptyRow">
+                        <!-- 新增加的一行 -->
+                        <td class="text-center border border-slate-300"><input class="px-4 py-2 border border-slate-300 mx-auto" v-model="emptyRow.name" placeholder="Enter name"></td>
+                        <td class="text-center border border-slate-300"><input class="px-4 py-2 border border-slate-300 mx-auto" v-model="emptyRow.password" placeholder="Enter password"></td>
+                        <td class="text-center border border-slate-300"><input class="px-4 py-2 border border-slate-300 mx-auto" v-model="emptyRow.type" placeholder="Enter type"></td>
+                        <!-- 确认增加或取消增加 -->
+                        <td class="px-4 py-2 space-x-1 text-center border border-slate-300">
+                            <el-button type="primary" round @click="refreshaddeddata">
+                                确认
+                             </el-button>
+                             <el-button type="primary" round @click="canceladd">
+                                取消
+                             </el-button>
                         </td>
                     </tr>
 
                 </tbody>
             </table>
-            <div v-else>
-                数据加载中...
-            </div>
         </div>
 
     </div>

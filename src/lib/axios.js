@@ -34,6 +34,10 @@ export async function getUser() {
 }
 //删除一行数据，将要删除的行的用户名传给后端
 export async function deleteRow(username) {
-    const res = await axios.post('http://localhost:5000/api/deleteRow', username)
-    return res.data
+    await axios.post('http://localhost:5000/api/deleteRow', username)
 }
+
+export async function addRow(info) {
+    await axios.post('http://localhost:5000/api/addRow',info)
+}
+
