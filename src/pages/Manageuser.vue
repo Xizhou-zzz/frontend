@@ -17,12 +17,17 @@ function gotoLogin() {
 let people = ref([])
 let dataLoaded = ref(false)
 
-let emptyRow =  { name: '', email: '' }// 空行数据对象
+let emptyRow =  { name: '', password: '' ,type:''}// 空行数据对象
 let showEmptyRow = ref(false)// 控制是否显示空行
 
 
 function addOne(){
     showEmptyRow.value = true
+}
+//点击取消后取消增加一行
+function canceladd(){
+    emptyRow = { name: '', password: '' ,type:''}
+    showEmptyRow.value = false
 }
 
 async function getUserData() {
@@ -38,6 +43,8 @@ async function refreshdeleteddata(person) {
 async function refreshaddeddata() {
     await addRow({name:emptyRow.name,password:emptyRow.password,type:emptyRow.type})
     await getUserData()
+    emptyRow = { name: '', password: '' ,type:''}
+    showEmptyRow.value = false
 }
 
 </script>
@@ -73,8 +80,8 @@ async function refreshaddeddata() {
             增加用户
         </el-button>
 
-        <div class="flex justify-center table-container max-h-96 overflow-y-auto space-x-10">
-            <table v-if="dataLoaded" class="table bg-white w-5/6 my-4 border-collapse border border-slate-400">
+        <div class="flex justify-center table-container max-h-full overflow-y-auto space-x-10">
+            <table v-if="dataLoaded" class="table bg-white h-full w-5/6 my-4 border-collapse border border-slate-400 table-fixed">
                 <thead>
                     <tr>
                         <th class="px-4 py-2 border border-slate-300">用户名</th>
@@ -115,12 +122,17 @@ async function refreshaddeddata() {
                         </td>
                     </tr>
                     <tr v-if="showEmptyRow">
-                        <td><input v-model="emptyRow.name" placeholder="Enter name"></td>
-                        <td><input v-model="emptyRow.password" placeholder="Enter password"></td>
-                        <td><input v-model="emptyRow.type" placeholder="Enter type"></td>
-                        <td>
+                        <!-- 新增加的一行 -->
+                        <td><input class="px-4 py-2 border border-slate-300" v-model="emptyRow.name" placeholder="Enter name"></td>
+                        <td><input class="px-4 py-2 border border-slate-300" v-model="emptyRow.password" placeholder="Enter password"></td>
+                        <td><input class="px-4 py-2 border border-slate-300" v-model="emptyRow.type" placeholder="Enter type"></td>
+                        <!-- 确认增加或取消增加 -->
+                        <td class="px-4 py-2 space-x-1 text-center">
                             <el-button type="primary" round @click="refreshaddeddata">
                                 确认
+                             </el-button>
+                             <el-button type="primary" round @click="canceladd">
+                                取消
                              </el-button>
                         </td>
                     </tr>
