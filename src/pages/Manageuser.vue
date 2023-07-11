@@ -110,7 +110,10 @@ async function getUserData() {
         </nav>
 
         <div class="flex justify-center table-container max-h-96 overflow-y-auto space-x-10">
-            <button @click="getUserData"
+            <button @click="
+                
+                
+                "
                 class="rounded bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ... h-7 absolute top-20 left-10">
                 获取用户数据
             </button>
