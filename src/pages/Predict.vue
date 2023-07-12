@@ -16,8 +16,7 @@ const value1 = ref('')
 //     methods: {
 //         gotoLogin() {
 //             this.$router.push('/')
-//         }
-//     }
+//         }q
 
 // }
 </script>
@@ -69,7 +68,9 @@ const value1 = ref('')
             type="datetime"
             placeholder="Select date and time"
             class="w-full"
-            />
+            >
+            
+            </el-date-picker>
         </div>
         </div>
 
