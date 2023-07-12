@@ -84,11 +84,13 @@ const options = [
 
     <div class="relative absolute left-64 h-8/12 w-8/12">
         <div class="flex gap-4 mt-6 h-1/9 mb-4">
-        <div class="demo-datetime-picker">
+
+            
+        <div class="demo-date-picker">
         <div class="block">
             <el-date-picker
             v-model="value1"
-            type="datetime"
+            type="date"
             placeholder="选择时间"
             class="w-full"
             >
