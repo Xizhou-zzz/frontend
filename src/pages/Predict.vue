@@ -19,6 +19,11 @@ function goto(){
         });
 }
 
+const disabledDate = (time: Date) => {
+    const startDate = new Date('2023-06-30');
+    const endDate = new Date('2023-07-31');
+    return time < startDate || time > endDate;
+}
 const value = ref('')
 const options = [
   {
@@ -92,6 +97,7 @@ const options = [
             v-model="value1"
             type="date"
             placeholder="选择时间"
+            :disabled-date="disabledDate"
             class="w-full"
             >
             
