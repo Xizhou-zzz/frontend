@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import axios from "axios";
+import { Line } from 'vue-chartjs';
 const input = ref('')
 function gotoLogin(){
     this.$router.push('/')
 }
 
 const value1 = ref('')
-
+let isChartVisible = false;
 function goto(){
     axios.post('http://localhost:5000/api/Predict',
         {
@@ -121,6 +122,33 @@ const options = [
         <div class="flex h-8/9">
             <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
         </div>
+
+        <div v-if="isChartVisible" class="mt-4 border border-gray-300 rounded">
+            <canvas ref="chart"></canvas>
+        </div>
+
+        <button class="bg-blue-500  absolute left-16 bottom-64">
+            你好，世界1
+        </button>
+
+        <button class="bg-blue-500  absolute left-64 top-32">
+            你好，世界2
+        </button>
+
+        <button class="bg-blue-500  absolute left-64 top-80">
+            你好，世界3
+        </button>
+
+        <button class="bg-blue-500  absolute right-64 top-48">
+            你好，世界4
+        </button>
+
+        <button class="bg-blue-500  absolute right-64 bottom-8">
+            你好，世界5
+        </button>
+
+
+
     </div>
     </div>
 
