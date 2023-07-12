@@ -36,3 +36,12 @@ export async function getUser() {
 export async function deleteRow(username) {
     await axios.post('http://localhost:5000/api/deleteRow', username)
 }
+//增加一行数据，将增加的行的数据传给后端
+export async function addRow(info) {
+    await axios.post('http://localhost:5000/api/addRow',info)
+}
+//更新一行数据，将更新的行的数据传给后端
+export async function updateRow(info) {
+    await axios.post('http://localhost:5000/api/updateRow',info)
+}
+

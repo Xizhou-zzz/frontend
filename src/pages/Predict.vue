@@ -1,12 +1,24 @@
-<script lang="ts">
-export default {
-    name: "Predict",
-    methods: {
-        gotoLogin() {
-            this.$router.push('/')
-        }
-    }
+<script lang="ts" setup>
+import { ref } from 'vue'
+const input = ref('')
+function gotoLogin(){
+    this.$router.push('/')
 }
+
+const value1 = ref('')
+// export default {
+//     name: "Predict",
+//     data() {
+//     return {
+//       selectedTime: '',
+//     };
+//   },
+//     methods: {
+//         gotoLogin() {
+//             this.$router.push('/')
+//         }q
+
+// }
 </script>
 
 <template>
@@ -46,7 +58,32 @@ export default {
             </div>
         </nav>
     </div>
-    <div>
-        这是预测单车需求界面
+
+    <div class="relative absolute left-64">
+        <div class="flex gap-4 mt-6 h-1/9 mb-4">
+        <div class="demo-datetime-picker">
+        <div class="block">
+            <el-date-picker
+            v-model="value1"
+            type="datetime"
+            placeholder="Select date and time"
+            class="w-full"
+            >
+            
+            </el-date-picker>
+        </div>
+        </div>
+
+        <el-input v-model="input" placeholder="Please input" class="w-full" />
+
+        <el-input v-model="input" placeholder="Please input" class="w-full" />
+        </div>
+
+
+        <div class="flex h-8/9">
+            <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
+        </div>
     </div>
+
+
 </template>
