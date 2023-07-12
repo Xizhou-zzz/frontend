@@ -1,28 +1,73 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import axios from "axios";
+import { Line } from 'vue-chartjs';
 const input = ref('')
 function gotoLogin(){
     this.$router.push('/')
 }
+import { ElMessage, ElMessageBox } from 'element-plus'
+import type { Action } from 'element-plus'
 
+const open = () => {
+  ElMessageBox.alert('This is a message', 'Title', {
+    // if you want to disable its autofocus
+    // autofocus: false,
+    confirmButtonText: 'OK',
+    callback: (action: Action) => {
+      ElMessage({
+        type: 'info',
+        message: `action: ${action}`,
+      })
+    },
+  })
+}
 const value1 = ref('')
-// export default {
-//     name: "Predict",
-//     data() {
-//     return {
-//       selectedTime: '',
-//     };
-//   },
-//     methods: {
-//         gotoLogin() {
-//             this.$router.push('/')
-//         }q
+let isChartVisible = false;
+function goto(){
+    axios.post('http://localhost:5000/api/Predict',
+        {
+            
+        }
+      )
+        .then(response => {
+          
+        });
+}
 
-// }
+const disabledDate = (time: Date) => {
+    const startDate = new Date('2023-06-30');
+    const endDate = new Date('2023-07-31');
+    return time < startDate || time > endDate;
+}
+const value = ref('')
+const options = [
+  {
+    value: '1',
+    label: '赛克勒博物馆',
+  },
+  {
+    value: '2',
+    label: '清华天文台',
+  },
+  {
+    value: '3',
+    label: '万圣书园',
+  },
+  {
+    value: '4',
+    label: '林大银杏大道',
+  },
+  {
+    value: '5',
+    label: '清华园火车站',
+  },
+]
 </script>
 
 <template>
     <div class="absolute inset-0  bg-cover bg-center bg-background2 -z-50"></div>
+
     <div class="absolute inset-0">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
             <div class="flex items-center h-16">
@@ -57,16 +102,18 @@ const value1 = ref('')
 
             </div>
         </nav>
-    </div>
 
-    <div class="relative absolute left-64">
+    <div class="relative absolute left-64 h-8/12 w-8/12">
         <div class="flex gap-4 mt-6 h-1/9 mb-4">
-        <div class="demo-datetime-picker">
+
+            
+        <div class="demo-date-picker">
         <div class="block">
             <el-date-picker
             v-model="value1"
-            type="datetime"
-            placeholder="Select date and time"
+            type="date"
+            placeholder="选择时间"
+            :disabled-date="disabledDate"
             class="w-full"
             >
             
@@ -74,16 +121,50 @@ const value1 = ref('')
         </div>
         </div>
 
-        <el-input v-model="input" placeholder="Please input" class="w-full" />
+        <el-select v-model="value" placeholder="选择预测地点">
+            <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            />
+        </el-select>
 
-        <el-input v-model="input" placeholder="Please input" class="w-full" />
+        <el-button type="primary" round @click="open">预测</el-button>
         </div>
 
 
         <div class="flex h-8/9">
             <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
         </div>
-    </div>
 
+        <div v-if="isChartVisible" class="mt-4 border border-gray-300 rounded">
+            <canvas ref="chart"></canvas>
+        </div>
+
+        <button @click="open" class="bg-blue-500  absolute left-16 bottom-64">
+            你好，世界1
+        </button>
+
+        <button @click="open" class="bg-blue-500  absolute left-64 top-32">
+            你好，世界2
+        </button>
+
+        <button @click="open" class="bg-blue-500  absolute left-64 top-80">
+            你好，世界3
+        </button>
+
+        <button @click="open" class="bg-blue-500  absolute right-64 top-48">
+            你好，世界4
+        </button>
+
+        <button @click="open" class="bg-blue-500  absolute right-64 bottom-8">
+            你好，世界5
+        </button>
+
+
+
+    </div>
+    </div>
 
 </template>
