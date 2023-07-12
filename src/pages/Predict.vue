@@ -1,11 +1,23 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import axios from "axios";
 const input = ref('')
 function gotoLogin(){
     this.$router.push('/')
 }
 
 const value1 = ref('')
+
+function goto(){
+    axios.post('http://localhost:5000/api/Predict',
+        {
+            
+        }
+      )
+        .then(response => {
+          
+        });
+}
 // export default {
 //     name: "Predict",
 //     data() {
