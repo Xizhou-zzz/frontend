@@ -71,25 +71,24 @@ export default {
     <div class="m-2 flex flex-col gap-2 basis-1/4 space-y-2">
 
       <div class="text-center basis-1/4">
-        <el-input class="h-9" style="width: 270px" type="text" maxlength=30 placeholder="请输入用户名..." v-model="username"
-          prefix-icon="User" round clearable />
+        <input class="h-9 rounded-full pl-2 w-60" type="text" maxlength=30 placeholder="请输入用户名..." v-model="username" />
       </div>
 
       <div class="text-center basis-1/4">
-        <el-input class="h-9" style="width: 270px" type="password" maxlength=30 placeholder="请输入密码..." v-model="password"
-          prefix-icon="Lock" round show-password />
+        <input class="h-9 rounded-full pl-2 w-60" style="max-width: 270px" type="password" maxlength=30
+          placeholder="请输入密码..." v-model="password" prefix-icon="Lock" round show-password />
       </div>
 
       <div class="text-center basis-1/4">
-        <el-input class="h-9" style="width: 270px" type="password" maxlength=30 placeholder="请再次输入密码..."
-          v-model="againpassword" prefix-icon="Lock" round show-password />
+        <input class="h-9 rounded-full pl-2 w-60" style="max-width: 270px" type="password" maxlength=30
+          placeholder="请再次输入密码..." v-model="againpassword" prefix-icon="Lock" round show-password />
       </div>
     </div>
 
-    <div class="flex flex-col gap-x-12 justify-center basis-1/2">
-      <el-button @click="goRegister" class="mt-0 ml-40" type="primary" style="width: 270px;" size="large"
-        round>确认</el-button>
-      <el-link class="mt-5 ml-56" @click="gotoLogin" style="width: 140px">已有账号？点击此登录</el-link>
+    <div class="flex justify-center flex-col basis-1/2 space-y-2">
+      <el-button @click="goRegister" class="flex justify-center text-center" type="primary" style="max-width: 250px;"
+        size="large" round>确认</el-button>
+      <el-link class="" @click="gotoLogin" style="max-width: 140px">已有账号？点击此登录</el-link>
     </div>
   </Card>
 </template>
