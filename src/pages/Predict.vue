@@ -46,6 +46,7 @@ const options = [
 
 <template>
     <div class="absolute inset-0  bg-cover bg-center bg-background2 -z-50"></div>
+
     <div class="absolute inset-0">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
             <div class="flex items-center h-16">
@@ -80,9 +81,8 @@ const options = [
 
             </div>
         </nav>
-    </div>
 
-    <div class="relative absolute left-64">
+    <div class="relative absolute left-64 h-8/12 w-8/12">
         <div class="flex gap-4 mt-6 h-1/9 mb-4">
         <div class="demo-datetime-picker">
         <div class="block">
@@ -106,7 +106,7 @@ const options = [
             />
         </el-select>
 
-        <el-button type="primary" round @click="">预测</el-button>
+        <el-button type="primary" round @click="goto">预测</el-button>
         </div>
 
 
@@ -114,6 +114,6 @@ const options = [
             <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
         </div>
     </div>
-
+    </div>
 
 </template>
