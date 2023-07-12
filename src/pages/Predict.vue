@@ -18,19 +18,30 @@ function goto(){
           
         });
 }
-// export default {
-//     name: "Predict",
-//     data() {
-//     return {
-//       selectedTime: '',
-//     };
-//   },
-//     methods: {
-//         gotoLogin() {
-//             this.$router.push('/')
-//         }q
 
-// }
+const value = ref('')
+const options = [
+  {
+    value: '1',
+    label: '赛克勒博物馆',
+  },
+  {
+    value: '2',
+    label: '清华天文台',
+  },
+  {
+    value: '3',
+    label: '万圣书园',
+  },
+  {
+    value: '4',
+    label: '林大银杏大道',
+  },
+  {
+    value: '5',
+    label: '清华园火车站',
+  },
+]
 </script>
 
 <template>
@@ -78,7 +89,7 @@ function goto(){
             <el-date-picker
             v-model="value1"
             type="datetime"
-            placeholder="Select date and time"
+            placeholder="选择时间"
             class="w-full"
             >
             
@@ -86,9 +97,16 @@ function goto(){
         </div>
         </div>
 
-        <el-input v-model="input" placeholder="Please input" class="w-full" />
+        <el-select v-model="value" placeholder="选择预测地点">
+            <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            />
+        </el-select>
 
-        <el-input v-model="input" placeholder="Please input" class="w-full" />
+        <el-button type="primary" round @click="">预测</el-button>
         </div>
 
 
