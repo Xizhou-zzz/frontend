@@ -75,5 +75,7 @@ export default {
         round>登录</el-button>
       <el-link class="mt-5 ml-56" @click="gotoRegister" style="max-width: 140px">还没有账号？立即注册</el-link>
     </div>
+
+    
   </Card>
 </template>
