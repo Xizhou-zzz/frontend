@@ -1,5 +1,8 @@
 <script lang="ts">
 import axios from "axios";
+import { ElMessage } from "element-plus";
+
+
 export default {
   name: "Register",
   data() {
@@ -16,13 +19,18 @@ export default {
     },
 
     goRegister() {
-      if (this.password != this.againpassword)
+      if (this.password != this.againpassword) {
         this.message = '前后两次输入密码不同'
+        ElMessage.error(this.message)
+      }
+
       else if (this.username == "") {
         this.message = '用户名不能为空'
+        ElMessage.error(this.message)
       }
       else if (this.password == "") {
         this.message = '密码不能为空'
+        ElMessage.error(this.message)
       }
       else {
         this.message = ''
@@ -35,52 +43,53 @@ export default {
           .then(response => {
             console.log(response.data);
             if (response.data.result == "NOTFOUND") {
-              // this.$router.push('/Main');
               this.message = "注册成功！";
+              ElMessage({
+                message: this.message,
+                type: 'success',
+              })
             }
             else {
               this.message = "用户名已存在，请输入新的用户名";
+              ElMessage.error(this.message)
             }
           });
       }
+
     }
   }
 }
 </script>
 
 <template>
-  <div class="absolute inset-0 bg-cover bg-center bg-background -z-50"></div>
-  <Card class="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-2/5 h-2/5 flex flex-col gap-2">
-    <div class="absolute inset-0 bg-white/75 -z-20 dark:bg-black/40"></div>
+  <div class="absolute inset-0 bg-cover bg-center bg-background5 -z-50"></div>
+  <Card class="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-2/5 h-3/5 flex flex-col gap-2">
+    <div class="absolute inset-0 bg-white/75 -z-20 dark:bg-black/40 rounded-lg"></div>
 
-    <span class="text-2xl text-center font-semibold basis-1/4">共享单车调度系统</span>
+    <span class="text-4xl text-center font-semibold basis-1/4 mt-8">用户注册</span>
 
-    <div class="m-2 flex flex-col gap-2 basis-1/2">
-
-      <div class="text-center basis-1/4">
-        <label for="username" class="mb-2 ml-0 font-semibold">用户名</label>
-        <input class=" rounded" type="text" maxlength=30 placeholder="请输入用户名..." v-model="username" />
-      </div>
+    <div class="m-2 flex flex-col gap-2 basis-1/4 space-y-2">
 
       <div class="text-center basis-1/4">
-        <label for="password" class="mb-2 ml-3 font-semibold">密码</label>
-        <input rounded class=" rounded" type="password" maxlength=30 placeholder="请输入密码..." v-model="password" />
+        <el-input class="h-9" style="width: 270px" type="text" maxlength=30 placeholder="请输入用户名..." v-model="username"
+          prefix-icon="User" round clearable />
       </div>
 
-      <div class="text-center basis-1/4 mr-20">
-        <label for="password" class="mb-2 ml-3 font-semibold">请再次输入密码</label>
-        <input rounded class=" rounded" type="password" maxlength=30 placeholder="请再次输入密码..." v-model="againpassword" />
+      <div class="text-center basis-1/4">
+        <el-input class="h-9" style="width: 270px" type="password" maxlength=30 placeholder="请输入密码..." v-model="password"
+          prefix-icon="Lock" round show-password />
       </div>
 
-      <div class="text-red-400 text-center basis-1/4">{{ message }}</div>
-
+      <div class="text-center basis-1/4">
+        <el-input class="h-9" style="width: 270px" type="password" maxlength=30 placeholder="请再次输入密码..."
+          v-model="againpassword" prefix-icon="Lock" round show-password />
+      </div>
     </div>
 
-    <div class="flex gap-4 justify-center basis-1/4">
-      <button @click="gotoLogin"
-        class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold">已有账号？登录...</button>
-      <button @click="goRegister" class="rounded outline outline-offset-2 outline-cyan-500 ... w-1/4 h-1/2 font-bold"
-        color="alternative">确认</button>
+    <div class="flex flex-col gap-x-12 justify-center basis-1/2">
+      <el-button @click="goRegister" class="mt-0 ml-40" type="primary" style="width: 270px;" size="large"
+        round>确认</el-button>
+      <el-link class="mt-5 ml-56" @click="gotoLogin" style="width: 140px">已有账号？点击此登录</el-link>
     </div>
   </Card>
 </template>
