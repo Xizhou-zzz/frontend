@@ -24,16 +24,16 @@ const open = () => {
 }
 const value1 = ref('')
 let isChartVisible = false;
-function goto(){
-    axios.post('http://localhost:5000/api/Predict',
-        {
+// function goto(){
+//     axios.post('http://localhost:5000/api/Predict',
+//         {
             
-        }
-      )
-        .then(response => {
+//         }
+//       )
+//         .then(response => {
           
-        });
-}
+//         });
+// }
 
 const disabledDate = (time: Date) => {
     const startDate = new Date('2023-06-30');
@@ -142,23 +142,23 @@ const options = [
             <canvas ref="chart"></canvas>
         </div>
 
-        <button @click="open" class="bg-blue-500  absolute left-16 bottom-64">
+        <button @click="open" value =1 class="bg-blue-500  absolute left-16 bottom-64">
             你好，世界1
         </button>
 
-        <button @click="open" class="bg-blue-500  absolute left-64 top-32">
+        <button @click="open" value =2 class="bg-blue-500  absolute left-64 top-32">
             你好，世界2
         </button>
 
-        <button @click="open" class="bg-blue-500  absolute left-64 top-80">
+        <button @click="open" value =3 class="bg-blue-500  absolute left-64 top-80">
             你好，世界3
         </button>
 
-        <button @click="open" class="bg-blue-500  absolute right-64 top-48">
+        <button @click="open" value =4 class="bg-blue-500  absolute right-64 top-48">
             你好，世界4
         </button>
 
-        <button @click="open" class="bg-blue-500  absolute right-64 bottom-8">
+        <button @click="open" value =5 class="bg-blue-500  absolute right-64 bottom-8">
             你好，世界5
         </button>
 
