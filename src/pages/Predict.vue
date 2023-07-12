@@ -6,7 +6,22 @@ const input = ref('')
 function gotoLogin(){
     this.$router.push('/')
 }
+import { ElMessage, ElMessageBox } from 'element-plus'
+import type { Action } from 'element-plus'
 
+const open = () => {
+  ElMessageBox.alert('This is a message', 'Title', {
+    // if you want to disable its autofocus
+    // autofocus: false,
+    confirmButtonText: 'OK',
+    callback: (action: Action) => {
+      ElMessage({
+        type: 'info',
+        message: `action: ${action}`,
+      })
+    },
+  })
+}
 const value1 = ref('')
 let isChartVisible = false;
 function goto(){
@@ -115,7 +130,7 @@ const options = [
             />
         </el-select>
 
-        <el-button type="primary" round @click="goto">预测</el-button>
+        <el-button type="primary" round @click="open">预测</el-button>
         </div>
 
 
@@ -127,23 +142,23 @@ const options = [
             <canvas ref="chart"></canvas>
         </div>
 
-        <button class="bg-blue-500  absolute left-16 bottom-64">
+        <button @click="open" class="bg-blue-500  absolute left-16 bottom-64">
             你好，世界1
         </button>
 
-        <button class="bg-blue-500  absolute left-64 top-32">
+        <button @click="open" class="bg-blue-500  absolute left-64 top-32">
             你好，世界2
         </button>
 
-        <button class="bg-blue-500  absolute left-64 top-80">
+        <button @click="open" class="bg-blue-500  absolute left-64 top-80">
             你好，世界3
         </button>
 
-        <button class="bg-blue-500  absolute right-64 top-48">
+        <button @click="open" class="bg-blue-500  absolute right-64 top-48">
             你好，世界4
         </button>
 
-        <button class="bg-blue-500  absolute right-64 bottom-8">
+        <button @click="open" class="bg-blue-500  absolute right-64 bottom-8">
             你好，世界5
         </button>
 
