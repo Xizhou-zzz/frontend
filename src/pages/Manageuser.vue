@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { getUser } from '../lib/axios'
 import { deleteRow } from '../lib/axios'
 import { addRow } from '../lib/axios'
+import { updateRow } from '../lib/axios'
 const router = useRouter()
 
 onMounted(() => {
@@ -17,7 +18,6 @@ function gotoLogin() {
 let people = ref([])//表格数据
 let dataLoaded = ref(false)//数据是否加载完成
 let showEmptyRow = ref(false)// 控制是否显示空行
-let editable = ref([])//控制表格某行是否可编辑
 let emptyRow = { name: '', password: '', type: '' }// 空行数据对象
 
 let editingRow = ref(-1)
@@ -30,11 +30,6 @@ const editType = ref(0)
 function addOne() {
     showEmptyRow.value = true
 }
-
-function updateOne(index) {
-    editable[index] = !editable[index]
-}
-
 //点击取消后取消增加一行
 function canceladd() {
     emptyRow = { name: '', password: '', type: '' }
@@ -58,10 +53,10 @@ async function refreshaddeddata() {
     showEmptyRow.value = false
 }
 //刷新更改一行后的数据
-async function refreshupdateddata() {
-    await updateRow({ name: editUserName, password: editPassword, type: editType})
+async function refreshupdateddata(person) {
+    await updateRow({ name: person.username, password: person.password, type: person.typology})
     await getUserData()
-    editingRow = -1
+    editingRow.value = -1
 }
 </script>
 
@@ -131,14 +126,14 @@ async function refreshupdateddata() {
                         <td class="px-4 py-2 text-center border border-slate-300 space-x-1">
                             <el-button type="primary" round @click="refreshdeleteddata(person)">删除</el-button>
 
-                            <el-button type="primary" round @click="() => {
-                                editUserName = person.username
-                                editPassword = person.password
-                                editType = person.typology
+                            <el-button type="primary" round @click="
+                                editUserName = person.username,
+                                editPassword = person.password,
+                                editType = person.typology,
                                 editingRow = index
-                            }" v-if="editingRow != index">修改</el-button>
+                            " v-if="editingRow != index">修改</el-button>
 
-                            <el-button type="primary" round @click="() => {refreshupdateddata}" v-else>确定</el-button>
+                            <el-button type="primary" round @click="refreshupdateddata(person)" v-else>确定</el-button>
 
                         </td>
                     </tr>
