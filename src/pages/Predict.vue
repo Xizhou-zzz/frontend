@@ -17,44 +17,47 @@ function changeState() {
 
 function goto() {
     changeState();
-    open();
     axios.post('http://localhost:5000/api/Predict',
         {
             date: value1.value,
             id: value.value
         }
     )
-        .then(response => {    
-            
+        .then(response => {
+            const t = response.data.hours;
+            const c = response.data.count;
+            initEcharts(t, c);
         });
 }
 
-function initEcharts() {
+function initEcharts(t,c) {
     // 基于准备好的dom，初始化echarts实例
     const myChart = echarts.init(document.getElementById('newEcharts'));
     // 绘制图表
     const option = {
         title: {
-            text: 'ECharts 入门示例'
+            text: '预测结果'
         },
         tooltip: {},
         xAxis: {
-            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            type: 'category',
+            data: t
         },
-        yAxis: {},
-        series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+            data: c,
+            type: 'line'
+            }
+        ]
     };
     myChart.setOption(option)
-    console.log("helo")
 }
 
 function open() {
-    initEcharts()
-    console.log("hello") 
+        initEcharts()
 }
 
 
@@ -141,14 +144,12 @@ const options = [
                 <div class="app-container">
                     <el-button type="primary" round @click="goto">预测</el-button>
 
-                    <el-dialog v-model="dialogVisible" title="新建" :modal-append-to-body='false'
+                    <el-dialog v-model="dialogVisible" title="预测数据" :modal-append-to-body='false'
                         @open="open" append-to-body>
                         <el-form :inline="true" size="medium" label-width="80px">
                             <el-row :gutter="10">
-                                <el-col :xs="24" :sm="24" :md="24" :lg="24">
-                                    <el-form-item label="样本曲线">
+                                <el-col :xs="24" :sm="24" :md="24" :lg="24">                 
                                         <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
-                                    </el-form-item>
                                 </el-col>
                             </el-row>
                         </el-form>
