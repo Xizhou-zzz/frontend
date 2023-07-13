@@ -12,18 +12,15 @@ const value1 = ref('')
 let dialogVisible =  false;
 let newDialogFormVisible = false;
 
-
-
-
 function goto() {
     axios.post('http://localhost:5000/api/Predict',
         {
-            data: value1.value,
-            location: value.value
+            date: value1.value,
+            id: value.value
         }
     )
         .then(response => {
-
+            console.log(response.data)
         });
 }
 
