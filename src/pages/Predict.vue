@@ -17,23 +17,21 @@ function changeState() {
 
 function goto() {
     changeState();
-    axios.post('http://localhost:5000/api/Predict',
-        {
-            date: value1.value,
-            id: value.value
-        }
-    )
-        .then(response => {
-            const data = response.data
-            initEcharts(data)
-        });
+    const myChart = echarts.init(document.getElementById('newEcharts'));
+    myChart.showLoading(); // 显示加载动画
+
+    axios.post('http://localhost:5000/api/Predict', {
+        date: value1.value,
+        id: value.value
+    })
+    .then(response => {
+        const data = response.data;
+        initEcharts(myChart, data); // 将myChart作为参数传递给initEcharts函数
+        myChart.hideLoading(); // 隐藏加载动画
+    });
 }
 
-function initEcharts(data) {
-    // 基于准备好的dom，初始化echarts实例
-    const myChart = echarts.init(document.getElementById('newEcharts'));
-    myChart.showLoading();//显示加载动画
-    // 绘制图表
+function initEcharts(myChart, data) {
     const option = {
         title: {
             text: '预测结果'
@@ -46,7 +44,7 @@ function initEcharts(data) {
         '16:00-16:59', '17:00-17:59', '18:00-18:59', '19:00-19:59',
         '20:00-20:59', '21:00-21:59', '22:00-22:59', '23:00-23:59']     
         },
-        yAxis: {  },
+        yAxis: {},
         series: [
             {
                 data: data,
@@ -54,7 +52,6 @@ function initEcharts(data) {
             }
         ]
     };
-    myChart.hideLoading();//隐藏加载动画
     myChart.setOption(option);
 }
 
