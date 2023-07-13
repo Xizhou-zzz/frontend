@@ -3,25 +3,45 @@ import { ref } from 'vue'
 import axios from "axios";
 import * as echarts from 'echarts';
 const input = ref('')
-function gotoLogin(){
+function gotoLogin() {
     this.$router.push('/')
 }
 import { ElMessage} from 'element-plus'
 import type { Action } from 'element-plus'
 
+<<<<<<< HEAD
 
 const value1 = ref('')
 let isChartVisible = false;
 
 function goto(){
+=======
+const open = () => {
+    ElMessageBox.alert('This is a message', 'Title', {
+        // if you want to disable its autofocus
+        // autofocus: false,
+        confirmButtonText: 'OK',
+        callback: (action: Action) => {
+            ElMessage({
+                type: 'info',
+                message: `action: ${action}`,
+            })
+        },
+    })
+}
+const value1 = ref('')
+let isChartVisible = false;
+function goto() {
+    open();
+>>>>>>> 82b857dac512d134d3723c309fb13a5cee262379
     axios.post('http://localhost:5000/api/Predict',
         {
             data: value1.value,
             location: value.value
         }
-      )
+    )
         .then(response => {
-          
+
         });
 }
 
@@ -36,26 +56,26 @@ const disabledDate = (time: Date) => {
 }
 const value = ref('')
 const options = [
-  {
-    value: '1',
-    label: '赛克勒博物馆',
-  },
-  {
-    value: '2',
-    label: '清华天文台',
-  },
-  {
-    value: '3',
-    label: '万圣书园',
-  },
-  {
-    value: '4',
-    label: '林大银杏大道',
-  },
-  {
-    value: '5',
-    label: '清华园火车站',
-  },
+    {
+        value: '1',
+        label: '赛克勒博物馆',
+    },
+    {
+        value: '2',
+        label: '清华天文台',
+    },
+    {
+        value: '3',
+        label: '万圣书园',
+    },
+    {
+        value: '4',
+        label: '林大银杏大道',
+    },
+    {
+        value: '5',
+        label: '清华园火车站',
+    },
 ]
 </script>
 
@@ -70,10 +90,6 @@ const options = [
                 </div>
                 <div class="hidden md:block ml-20">
                     <div class="flex items-baseline space-x-10">
-                        <a href="#/Import"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            导入共享单车数据
-                        </a>
 
                         <a href="#/Visualone"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
@@ -84,81 +100,69 @@ const options = [
                         </a>
                         <a href="#/Price"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            动态定价
+                            单车调度和动态定价
                         </a>
                     </div>
                 </div>
 
                 <div class="absolute top-3 right-5">
-                    <button @click="gotoLogin" class="bg-exit bg-cover bg-center py-4 px-4 rounded" title="退出登录">
-                    </button>
+                    <el-button icon="SwitchButton" @click="gotoLogin" title="退出登录" circle />
                 </div>
 
             </div>
         </nav>
 
-    <div class="relative absolute left-64 h-8/12 w-8/12">
-        <div class="flex gap-4 mt-6 h-1/9 mb-4">
+        <div class="relative absolute left-64 h-8/12 w-8/12">
+            <div class="flex gap-4 mt-6 h-1/9 mb-4">
 
-            
-        <div class="demo-date-picker">
-        <div class="block">
-            <el-date-picker
-            v-model="value1"
-            type="date"
-            placeholder="选择时间"
-            :disabled-date="disabledDate"
-            class="w-full"
-            >
-            
-            </el-date-picker>
+
+                <div class="demo-date-picker">
+                    <div class="block">
+                        <el-date-picker v-model="value1" type="date" placeholder="选择时间" :disabled-date="disabledDate"
+                            class="w-full">
+
+                        </el-date-picker>
+                    </div>
+                </div>
+
+                <el-select v-model="value" placeholder="选择预测地点">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+                </el-select>
+
+                <el-button type="primary" round @click="goto">预测</el-button>
+            </div>
+
+
+            <div class="flex h-8/9">
+                <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
+            </div>
+
+            <div v-if="isChartVisible" class="mt-4 border border-gray-300 rounded">
+                <canvas ref="chart"></canvas>
+            </div>
+
+            <button @click="goto" value=1 class="bg-blue-500  absolute left-16 bottom-64">
+                你好,世界1
+            </button>
+
+            <button @click="goto" value=2 class="bg-blue-500  absolute left-64 top-32">
+                你好,世界2
+            </button>
+
+            <button @click="goto" value=3 class="bg-blue-500  absolute left-64 top-80">
+                你好,世界3
+            </button>
+
+            <button @click="goto" value=4 class="bg-blue-500  absolute right-64 top-48">
+                你好,世界4
+            </button>
+
+            <button @click="goto" value=5 class="bg-blue-500  absolute right-64 bottom-8">
+                你好,世界5
+            </button>
+
+
+
         </div>
-        </div>
-
-        <el-select v-model="value" placeholder="选择预测地点">
-            <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-            />
-        </el-select>
-
-        <el-button type="primary" round @click="goto">预测</el-button>
-        </div>
-
-
-        <div class="flex h-8/9">
-            <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
-        </div>
-
-        <div v-if="isChartVisible" class="mt-4 border border-gray-300 rounded">
-            <canvas ref="chart"></canvas>
-        </div>
-
-        <button @click="goto" value =1 class="bg-blue-500  absolute left-16 bottom-64">
-            你好,世界1
-        </button>
-
-        <button @click="goto" value =2 class="bg-blue-500  absolute left-64 top-32">
-            你好,世界2
-        </button>
-
-        <button @click="goto" value =3 class="bg-blue-500  absolute left-64 top-80">
-            你好,世界3
-        </button>
-
-        <button @click="goto" value =4 class="bg-blue-500  absolute right-64 top-48">
-            你好,世界4
-        </button>
-
-        <button @click="goto" value =5 class="bg-blue-500  absolute right-64 bottom-8">
-            你好,世界5
-        </button>
-
-
-
     </div>
-    </div>
-
 </template>

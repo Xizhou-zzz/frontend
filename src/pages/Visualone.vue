@@ -141,11 +141,6 @@ async function renderChart3() {
         </div>
         <div class="hidden md:block ml-20">
           <div class="flex items-baseline space-x-10">
-            <a href="#/Import"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-              导入共享单车数据
-            </a>
-
             <a href="#/Visualone" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
               可视化分析单车数据
             </a>
@@ -157,14 +152,13 @@ async function renderChart3() {
             </a>
             <a href="#/Price"
               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-              动态定价
+              单车调度和动态定价
             </a>
           </div>
         </div>
 
         <div class="absolute top-3 right-5">
-          <button @click="() => { router.push('/') }" class="bg-exit bg-cover bg-center py-4 px-4 rounded" title="退出登录">
-          </button>
+          <el-button icon="SwitchButton" @click="() => { router.push('/') }" title="退出登录" circle />
         </div>
 
       </div>
