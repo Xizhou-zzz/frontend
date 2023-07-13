@@ -9,7 +9,7 @@ function gotoLogin() {
 }
 const value1 = ref('')
 
-const dialogVisible = ref('false');
+const dialogVisible = ref(false);
 
 function changeState() {
     dialogVisible.value = !dialogVisible.value
@@ -17,6 +17,7 @@ function changeState() {
 
 function goto() {
     changeState();
+    open();
     axios.post('http://localhost:5000/api/Predict',
         {
             date: value1.value,
@@ -24,13 +25,11 @@ function goto() {
         }
     )
         .then(response => {
-            console.log(response.data)
+            
         });
 }
 
 function initEcharts() {
-    var echarts = require('echarts');
-
     // 基于准备好的dom，初始化echarts实例
     const myChart = echarts.init(document.getElementById('newEcharts'));
     // 绘制图表
@@ -54,11 +53,8 @@ function initEcharts() {
 }
 
 function open() {
-    () => {
-        //  执行echarts方法
-        initEcharts()
-        console.log("hello")
-    }
+    initEcharts()
+    console.log("hello") 
 }
 
 
