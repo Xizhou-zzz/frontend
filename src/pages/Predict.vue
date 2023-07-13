@@ -17,8 +17,6 @@ function changeState() {
 
 function goto() {
     changeState();
-    const myChart = echarts.init(document.getElementById('newEcharts'));
-    myChart.showLoading(); // 显示加载动画
 
     axios.post('http://localhost:5000/api/Predict', {
         date: value1.value,
@@ -26,12 +24,15 @@ function goto() {
     })
     .then(response => {
         const data = response.data;
-        initEcharts(myChart, data); // 将myChart作为参数传递给initEcharts函数
-        myChart.hideLoading(); // 隐藏加载动画
+        
+        initEcharts(data); // 将myChart作为参数传递给initEcharts函数
+        
     });
+     // 显示加载动画
 }
 
-function initEcharts(myChart, data) {
+function initEcharts(data) {
+    const myChart = echarts.init(document.getElementById('newEcharts'));
     const option = {
         title: {
             text: '预测结果'
@@ -51,8 +52,9 @@ function initEcharts(myChart, data) {
                 type: 'line'
             }
         ]
-    };
+    }; 
     myChart.setOption(option);
+    myChart.hideLoading(); // 隐藏加载动画
 }
 
 
