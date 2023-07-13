@@ -30,7 +30,7 @@ export default {
                             预测单车需求
                         </a>
                         <a href="#/Price" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
-                            单车调度和动态定价
+                            单车调度
                         </a>
                     </div>
                 </div>
