@@ -9,7 +9,7 @@ function gotoLogin() {
 }
 const value1 = ref('')
 
-const dialogVisible = ref('false');
+const dialogVisible = ref(false);
 
 function changeState() {
     dialogVisible.value = !dialogVisible.value
@@ -29,8 +29,6 @@ function goto() {
 }
 
 function initEcharts() {
-    var echarts = require('echarts');
-
     // 基于准备好的dom，初始化echarts实例
     const myChart = echarts.init(document.getElementById('newEcharts'));
     // 绘制图表
@@ -54,11 +52,8 @@ function initEcharts() {
 }
 
 function open() {
-    () => {
-        //  执行echarts方法
         initEcharts()
         console.log("hello")
-    }
 }
 
 
