@@ -9,58 +9,50 @@ function gotoLogin() {
 }
 const value1 = ref('')
 
-const dialogVisible = ref('false');
-const newDialogFormVisible = ref('false');
+const dialogVisible = ref(false);
 
 function changeState() {
     dialogVisible.value = !dialogVisible.value
 }
 
-function changeState1() {
-    newDialogFormVisible.value = !newDialogFormVisible.value
-}
-
 function goto() {
-    axios.post('http://localhost:5000/api/Predict',
-        {
-            date: value1.value,
-            id: value.value
-        }
-    )
-        .then(response => {
-            console.log(response.data)
-        });
+    changeState();
+    const myChart = echarts.init(document.getElementById('newEcharts'));
+    myChart.showLoading(); // 显示加载动画
+
+    axios.post('http://localhost:5000/api/Predict', {
+        date: value1.value,
+        id: value.value
+    })
+    .then(response => {
+        const data = response.data;
+        initEcharts(myChart, data); // 将myChart作为参数传递给initEcharts函数
+        myChart.hideLoading(); // 隐藏加载动画
+    });
 }
 
-function initEcharts() {
-    var echarts = require('echarts');
-
-    // 基于准备好的dom，初始化echarts实例
-    const myChart = echarts.init(document.getElementById('newEcharts'));
-    // 绘制图表
+function initEcharts(myChart, data) {
     const option = {
         title: {
-            text: 'ECharts 入门示例'
+            text: '预测结果'
         },
-        tooltip: {},
         xAxis: {
-            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            data:  ['0:00-0:59', '1:00-1:59', '2:00-2:59', '3:00-3:59',
+        '4:00-4:59', '5:00-5:59', '6:00-6:59', '7:00-7:59',
+        '8:00-8:59', '9:00-9:59', '10:00-10:59', '11:00-11:59',
+        '12:00-12:59', '13:00-13:59', '14:00-14:59', '15:00-15:59',
+        '16:00-16:59', '17:00-17:59', '18:00-18:59', '19:00-19:59',
+        '20:00-20:59', '21:00-21:59', '22:00-22:59', '23:00-23:59']     
         },
         yAxis: {},
-        series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
+        series: [
+            {
+                data: data,
+                type: 'line'
+            }
+        ]
     };
-    myChart.setOption(option)
-}
-
-function open() {
-    this.$nextTick(() => {
-        //  执行echarts方法
-        initEcharts()
-    })
+    myChart.setOption(option);
 }
 
 
@@ -69,11 +61,6 @@ const disabledDate = (time) => {
     const endDate = new Date('2023-07-31');
     return time < startDate || time > endDate;
 };
-// const disabledDate = (time: Date) => {
-//     const startDate = new Date('2023-06-30');
-//     const endDate = new Date('2023-07-31');
-//     return time < startDate || time > endDate;
-// }
 const value = ref('')
 const options = [
     {
@@ -149,58 +136,26 @@ const options = [
                     <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
                 </el-select>
 
-                <el-button type="primary" round @click="goto">预测</el-button>
+                <div class="app-container">
+                    <el-button type="primary" round @click="goto">预测</el-button>
+
+                    <el-dialog v-model="dialogVisible" title="预测数据" :modal-append-to-body='false'
+                        append-to-body>
+                        <el-form :inline="true" size="medium" label-width="80px">
+                            <el-row :gutter="10">
+                                <el-col :xs="24" :sm="24" :md="24" :lg="24">                 
+                                        <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
+                                </el-col>
+                            </el-row>
+                        </el-form>
+                    </el-dialog>
+                </div>
             </div>
 
 
             <div class="flex h-8/9">
                 <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
             </div>
-
-
-            <button @click="goto" value=1 class="bg-blue-500  absolute left-16 bottom-64">
-                你好,世界1
-            </button>
-
-            <button @click="goto" value=2 class="bg-blue-500  absolute left-64 top-32">
-                你好,世界2
-            </button>
-
-            <button @click="goto" value=3 class="bg-blue-500  absolute left-64 top-80">
-                你好,世界3
-            </button>
-
-            <button @click="goto" value=4 class="bg-blue-500  absolute right-64 top-48">
-                你好,世界4
-            </button>
-
-            <button @click="goto" value=5 class="bg-blue-500  absolute right-64 bottom-8">
-                你好,世界5
-            </button>
-
-
-
-        </div>
-
-        <div class="app-container">
-            <el-button type="text" @click="changeState">点击打开 Dialog</el-button>
-            <el-dialog v-model="dialogVisible" title="新建" :modal-append-to-body='false' :visible.sync="newDialogFormVisible"
-                @open="open()" append-to-body>
-                <el-form :inline="true" size="medium" label-width="80px">
-                    <el-row :gutter="10">
-
-                        <el-col :xs="24" :sm="24" :md="24" :lg="24">
-                            <el-form-item label="样本曲线">
-                                <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </el-form>
-            </el-dialog>
-            <el-button type="primary" @click="changeState1" icon="el-icon-edit"></el-button>
-
-
-
         </div>
     </div>
 </template>
