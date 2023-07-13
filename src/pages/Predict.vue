@@ -24,13 +24,12 @@ function goto() {
         }
     )
         .then(response => {
-            const t = response.data.hours;
-            const c = response.data.count;
-            initEcharts(t, c);
+            const data = response.data
+            initEcharts(data)
         });
 }
 
-function initEcharts(t,c) {
+function initEcharts(data) {
     // 基于准备好的dom，初始化echarts实例
     const myChart = echarts.init(document.getElementById('newEcharts'));
     // 绘制图表
@@ -38,26 +37,24 @@ function initEcharts(t,c) {
         title: {
             text: '预测结果'
         },
-        tooltip: {},
         xAxis: {
-            type: 'category',
-            data: t
+            data:  ['0:00-0:59', '1:00-1:59', '2:00-2:59', '3:00-3:59',
+        '4:00-4:59', '5:00-5:59', '6:00-6:59', '7:00-7:59',
+        '8:00-8:59', '9:00-9:59', '10:00-10:59', '11:00-11:59',
+        '12:00-12:59', '13:00-13:59', '14:00-14:59', '15:00-15:59',
+        '16:00-16:59', '17:00-17:59', '18:00-18:59', '19:00-19:59',
+        '20:00-20:59', '21:00-21:59', '22:00-22:59', '23:00-23:59']     
         },
-        yAxis: {
-            type: 'value'
-        },
+        yAxis: {  },
         series: [
             {
-            data: c,
-            type: 'line'
+                data: data,
+                type: 'line'
             }
         ]
     };
-    myChart.setOption(option)
-}
-
-function open() {
-        initEcharts()
+    myChart.hideLoading();
+    myChart.setOption(option);
 }
 
 
@@ -145,7 +142,7 @@ const options = [
                     <el-button type="primary" round @click="goto">预测</el-button>
 
                     <el-dialog v-model="dialogVisible" title="预测数据" :modal-append-to-body='false'
-                        @open="open" append-to-body>
+                        append-to-body>
                         <el-form :inline="true" size="medium" label-width="80px">
                             <el-row :gutter="10">
                                 <el-col :xs="24" :sm="24" :md="24" :lg="24">                 
