@@ -1,31 +1,19 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import axios from "axios";
-import { Line } from 'vue-chartjs';
+import * as echarts from 'echarts';
 const input = ref('')
 function gotoLogin(){
     this.$router.push('/')
 }
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessage} from 'element-plus'
 import type { Action } from 'element-plus'
 
-const open = () => {
-  ElMessageBox.alert('This is a message', 'Title', {
-    // if you want to disable its autofocus
-    // autofocus: false,
-    confirmButtonText: 'OK',
-    callback: (action: Action) => {
-      ElMessage({
-        type: 'info',
-        message: `action: ${action}`,
-      })
-    },
-  })
-}
+
 const value1 = ref('')
 let isChartVisible = false;
+
 function goto(){
-    open();
     axios.post('http://localhost:5000/api/Predict',
         {
             data: value1.value,
@@ -41,7 +29,6 @@ function goto(){
 //     console.log(value1.value)
 //     console.log(value.value)
 // }
-
 const disabledDate = (time: Date) => {
     const startDate = new Date('2023-06-30');
     const endDate = new Date('2023-07-31');

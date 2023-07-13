@@ -12,7 +12,6 @@ import Visualthree from "./pages/Visualthree.vue"
 import A from './pages/A.vue'
 import Mainforadmin from "./pages/Mainforadmin.vue"
 import Manageuser from "./pages/Manageuser.vue"
-
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
@@ -69,8 +68,6 @@ const router = createRouter({
             path: "/Manageuser",
             component: Manageuser
         }
-
-
 
     ]
 });
