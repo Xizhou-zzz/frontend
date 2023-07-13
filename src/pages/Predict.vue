@@ -32,6 +32,7 @@ function goto() {
 function initEcharts(data) {
     // 基于准备好的dom，初始化echarts实例
     const myChart = echarts.init(document.getElementById('newEcharts'));
+    myChart.showLoading();//显示加载动画
     // 绘制图表
     const option = {
         title: {
@@ -53,7 +54,7 @@ function initEcharts(data) {
             }
         ]
     };
-    myChart.hideLoading();
+    myChart.hideLoading();//隐藏加载动画
     myChart.setOption(option);
 }
 
