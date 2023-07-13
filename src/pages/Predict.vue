@@ -9,31 +9,12 @@ function gotoLogin() {
 import { ElMessage} from 'element-plus'
 import type { Action } from 'element-plus'
 
-<<<<<<< HEAD
+ 
 
-const value1 = ref('')
-let isChartVisible = false;
-
-function goto(){
-=======
-const open = () => {
-    ElMessageBox.alert('This is a message', 'Title', {
-        // if you want to disable its autofocus
-        // autofocus: false,
-        confirmButtonText: 'OK',
-        callback: (action: Action) => {
-            ElMessage({
-                type: 'info',
-                message: `action: ${action}`,
-            })
-        },
-    })
-}
 const value1 = ref('')
 let isChartVisible = false;
 function goto() {
     open();
->>>>>>> 82b857dac512d134d3723c309fb13a5cee262379
     axios.post('http://localhost:5000/api/Predict',
         {
             data: value1.value,
@@ -45,10 +26,6 @@ function goto() {
         });
 }
 
-// function goto(){
-//     console.log(value1.value)
-//     console.log(value.value)
-// }
 const disabledDate = (time: Date) => {
     const startDate = new Date('2023-06-30');
     const endDate = new Date('2023-07-31');
