@@ -9,8 +9,16 @@ function gotoLogin() {
 }
 const value1 = ref('')
 
-let dialogVisible =  false;
-let newDialogFormVisible = false;
+const dialogVisible = ref('false');
+const newDialogFormVisible = ref('false');
+
+function changeState() {
+    dialogVisible.value = !dialogVisible.value
+}
+
+function changeState1() {
+    newDialogFormVisible.value = !newDialogFormVisible.value
+}
 
 function goto() {
     axios.post('http://localhost:5000/api/Predict',
@@ -25,34 +33,34 @@ function goto() {
 }
 
 function initEcharts() {
-  var echarts = require('echarts');
+    var echarts = require('echarts');
 
-  // 基于准备好的dom，初始化echarts实例
-  const myChart = echarts.init(document.getElementById('newEcharts'));
-  // 绘制图表
-  const option = {
-    title: {
-      text: 'ECharts 入门示例'
-    },
-    tooltip: {},
-    xAxis: {
-      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-    },
-    yAxis: {},
-    series: [{
-      name: '销量',
-      type: 'bar',
-      data: [5, 20, 36, 10, 10, 20]
-    }]
-  };
-  myChart.setOption(option)
+    // 基于准备好的dom，初始化echarts实例
+    const myChart = echarts.init(document.getElementById('newEcharts'));
+    // 绘制图表
+    const option = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+    myChart.setOption(option)
 }
 
-      function open() {
-  this.$nextTick(() => {
-    //  执行echarts方法
-    initEcharts()
-  })
+function open() {
+    this.$nextTick(() => {
+        //  执行echarts方法
+        initEcharts()
+    })
 }
 
 
@@ -174,26 +182,23 @@ const options = [
 
         </div>
 
-            <div class="app-container">
-     <el-button type="text" @click="newDialogFormVisible = true">点击打开 Dialog</el-button>
-<el-dialog title="新建" 
-   :modal-append-to-body='false'
-   :visible.sync="newDialogFormVisible" 
-    @open="open()"
-    append-to-body>
-    <el-form :inline="true" size="medium" label-width="80px">
-       <el-row :gutter="10">
-          
-          <el-col :xs="24" :sm="24" :md="24" :lg="24">
-            <el-form-item label="样本曲线">
-              <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
-             </el-form-item>
-           </el-col>
-         </el-row>
-     </el-form>        
-</el-dialog>
-     <el-button type="primary" @click="dialogVisible = true" icon="el-icon-edit"></el-button>
- 
+        <div class="app-container">
+            <el-button type="text" @click="changeState">点击打开 Dialog</el-button>
+            <el-dialog v-model="dialogVisible" title="新建" :modal-append-to-body='false' :visible.sync="newDialogFormVisible"
+                @open="open()" append-to-body>
+                <el-form :inline="true" size="medium" label-width="80px">
+                    <el-row :gutter="10">
+
+                        <el-col :xs="24" :sm="24" :md="24" :lg="24">
+                            <el-form-item label="样本曲线">
+                                <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                </el-form>
+            </el-dialog>
+            <el-button type="primary" @click="changeState1" icon="el-icon-edit"></el-button>
+
 
 
         </div>
