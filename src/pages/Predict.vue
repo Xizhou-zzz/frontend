@@ -107,7 +107,7 @@ const options = [
                         </a>
                         <a href="#/Price"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            单车调度和动态定价
+                            单车调度
                         </a>
                     </div>
                 </div>
