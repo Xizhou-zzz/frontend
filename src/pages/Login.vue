@@ -59,21 +59,21 @@ export default {
 
     <div class="m-2 flex flex-col gap-2 basis-1/4">
       <div class="mb-3 text-center mt-5">
-        <el-input class="h-9" style="width: 270px" type="text" maxlength=30 placeholder="请输入用户名..." v-model="username"
-          prefix-icon="User" round clearable />
+        <input class="rounded-full pl-2 w-60 h-9" style="max-width: 270px" type="text" maxlength=30
+          placeholder="请输入用户名..." v-model="username" prefix-icon="User" round clearable />
 
       </div>
 
       <div class="text-center">
-        <el-input class="h-9" style="width: 270px" type="password" maxlength=30 placeholder="请输入密码..." v-model="password"
-          prefix-icon="Lock" round show-password />
+        <input class="rounded-full pl-2 w-60 h-9" style="max-width: 270px" type="password" maxlength=30
+          placeholder="请输入密码..." v-model="password" prefix-icon="Lock" round show-password />
       </div>
     </div>
 
     <div class="flex flex-col gap-x-12 justify-center basis-1/2">
-      <el-button @click="gotoUser" class="mt-0 ml-40" type="primary" style="width: 270px;" size="large"
+      <el-button @click="gotoUser" class="mt-0 ml-40" type="primary" style="max-width: 250px;" size="large"
         round>登录</el-button>
-      <el-link class="mt-5 ml-56" @click="gotoRegister" style="width: 140px">还没有账号？立即注册</el-link>
+      <el-link class="mt-5 ml-56" @click="gotoRegister" style="max-width: 140px">还没有账号？立即注册</el-link>
     </div>
 
     
