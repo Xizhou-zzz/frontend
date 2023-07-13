@@ -2,14 +2,33 @@
 import { ref } from 'vue'
 import axios from "axios";
 import * as echarts from 'echarts';
+import { useRouter } from 'vue-router'
 
-const input = ref('')
-function gotoLogin() {
-    this.$router.push('/')
-}
+const router = useRouter()
+const activeIndex = ref('2')
+
+
 const value1 = ref('')
 
 const dialogVisible = ref(false);
+const handleMenuSelect = (index) => {
+    switch (index) {
+        case '0':
+            router.push('/Main');
+            break;
+
+        case '1':
+            router.push('/Visualone');
+            break;
+
+        case '2':
+            router.push('/predict');
+            break;
+
+        default:
+            break;
+    }
+}
 
 function changeState() {
     dialogVisible.value = !dialogVisible.value
@@ -38,12 +57,12 @@ function initEcharts(data) {
             text: '预测结果'
         },
         xAxis: {
-            data:  ['0:00-0:59', '1:00-1:59', '2:00-2:59', '3:00-3:59',
-        '4:00-4:59', '5:00-5:59', '6:00-6:59', '7:00-7:59',
-        '8:00-8:59', '9:00-9:59', '10:00-10:59', '11:00-11:59',
-        '12:00-12:59', '13:00-13:59', '14:00-14:59', '15:00-15:59',
-        '16:00-16:59', '17:00-17:59', '18:00-18:59', '19:00-19:59',
-        '20:00-20:59', '21:00-21:59', '22:00-22:59', '23:00-23:59']     
+            data: ['0:00-0:59', '1:00-1:59', '2:00-2:59', '3:00-3:59',
+                '4:00-4:59', '5:00-5:59', '6:00-6:59', '7:00-7:59',
+                '8:00-8:59', '9:00-9:59', '10:00-10:59', '11:00-11:59',
+                '12:00-12:59', '13:00-13:59', '14:00-14:59', '15:00-15:59',
+                '16:00-16:59', '17:00-17:59', '18:00-18:59', '19:00-19:59',
+                '20:00-20:59', '21:00-21:59', '22:00-22:59', '23:00-23:59']
         },
         yAxis: {},
         series: [
@@ -89,10 +108,18 @@ const options = [
 </script>
 
 <template>
-    <div class="absolute inset-0  bg-cover bg-center bg-background2 -z-50"></div>
-
     <div class="absolute inset-0">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
+            @select="handleMenuSelect" background-color="#409EFF" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu-item index="0">共享单车调度系统</el-menu-item>
+            <div class="flex-grow" />
+            <el-menu-item index="1">可视化分析单车数据</el-menu-item>
+            <el-menu-item index="2">预测单车需求</el-menu-item>
+            <el-button type="primary" icon="SwitchButton" class="mt-3" @click="() => {
+                router.push('/')
+            }" title="退出登录" circle />
+        </el-menu>
+        <!-- <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
             <div class="flex items-center h-16">
                 <div class="flex-shrink-0">
                     <h1 class="text-white text-lg font-semibold">共享单车调度系统</h1>
@@ -115,11 +142,11 @@ const options = [
                 </div>
 
                 <div class="absolute top-3 right-5">
-                    <el-button icon="SwitchButton" @click="gotoLogin" title="退出登录" circle />
+                    <el-button icon="SwitchButton" @click="() => { router.push('/') }" title="退出登录" circle />
                 </div>
 
             </div>
-        </nav>
+        </nav> -->
 
         <div class="relative absolute left-64 h-8/12 w-8/12">
             <div class="flex gap-4 mt-6 h-1/9 mb-4">
@@ -141,12 +168,11 @@ const options = [
                 <div class="app-container">
                     <el-button type="primary" round @click="goto">预测</el-button>
 
-                    <el-dialog v-model="dialogVisible" title="预测数据" :modal-append-to-body='false'
-                        append-to-body>
+                    <el-dialog v-model="dialogVisible" title="预测数据" :modal-append-to-body='false' append-to-body>
                         <el-form :inline="true" size="medium" label-width="80px">
                             <el-row :gutter="10">
-                                <el-col :xs="24" :sm="24" :md="24" :lg="24">                 
-                                        <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
+                                <el-col :xs="24" :sm="24" :md="24" :lg="24">
+                                    <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
                                 </el-col>
                             </el-row>
                         </el-form>

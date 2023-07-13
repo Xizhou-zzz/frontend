@@ -1,16 +1,3 @@
-<!-- <script lang="ts">
-import { ref } from 'vue'
-
-const activeIndex = ref('0')
-export default {
-  name: "Main",
-  methods: {
-    gotoLogin() {
-      this.$router.push('/')
-    }
-  }
-}
-</script> -->
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -37,7 +24,6 @@ const handleMenuSelect = (index) => {
 </script>
 
 <template>
-  <!-- <div class="absolute inset-0  bg-cover bg-center bg-fixed bg-background2 -z-50"></div> -->
   <!-- 页面最上方导航栏 -->
   <div class="absolute inset-0 ">
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
@@ -49,7 +35,6 @@ const handleMenuSelect = (index) => {
       <el-button type="primary" icon="SwitchButton" class="mt-3" @click="() => {
         router.push('/')
       }" title="退出登录" circle />
-
     </el-menu>
     <!-- <nav class="w-full mx-auto px-4 sm:px-6 lg:px-8 ml-0">
       <div class="flex items-center h-16">
@@ -72,13 +57,12 @@ const handleMenuSelect = (index) => {
             </a>
           </div>
         </div>
-
         <div class="absolute top-4 right-5">
           <el-button icon="SwitchButton" @click="gotoLogin" title="退出登录" circle />
         </div>
       </div>
     </nav> -->
-    <div class="mt-56 font-bold text-black text-4xl text-center font-serif">
+    <div class="mt-10 font-bold text-black text-4xl text-center font-serif">
       欢迎来到共享单车调度系统！
     </div>
   </div>

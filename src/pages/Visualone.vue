@@ -14,6 +14,46 @@ const router = useRouter()
 
 let echart
 const chart = ref(null)
+const activeIndex = ref('1')
+//控制顶栏不同页面间的跳转
+const handleMenuSelect = (index) => {
+  switch (index) {
+    case '0':
+      router.push('/Main');
+      break;
+
+    case '1':
+      router.push('/Visualone');
+      break;
+
+    case '2':
+      router.push('/predict');
+      break;
+
+    default:
+      break;
+  }
+}
+
+//控制侧栏不同图表的切换
+const handleSelect = (index) => {
+  switch (index) {
+    case '1':
+      renderChart
+      break;
+
+    case '2':
+      renderChart2
+      break;
+
+    case '3':
+      renderChart3
+      break;
+
+    default:
+      break;
+  }
+}
 
 onMounted(() => {
   echart = echarts.init(chart.value);
@@ -130,44 +170,42 @@ async function renderChart3() {
 </script>
 
 <template>
-  <!-- 页面背景图片 -->
-  <div class="absolute inset-0  bg-cover bg-center bg-fixed bg-background2 -z-50"></div>
   <div class="absolute inset-0">
-    <!-- 页面最上方的导航栏 -->
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
-      <div class="flex items-center h-16">
-        <div class="flex-shrink-0">
-          <h1 class="text-white text-lg font-semibold">共享单车调度系统</h1>
-        </div>
-        <div class="hidden md:block ml-20">
-          <div class="flex items-baseline space-x-10">
-            <a href="#/Visualone" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
-              可视化分析单车数据
-            </a>
-
-
-            <a href="#/Predict"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-              预测单车需求
-            </a>
-            <a href="#/Price"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-              单车调度
-            </a>
-          </div>
-        </div>
-
-        <div class="absolute top-3 right-5">
-          <el-button icon="SwitchButton" @click="() => { router.push('/') }" title="退出登录" circle />
-        </div>
-
-      </div>
-    </nav>
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
+      @select="handleMenuSelect" background-color="#409EFF" text-color="#fff" active-text-color="#ffd04b">
+      <el-menu-item index="0">共享单车调度系统</el-menu-item>
+      <div class="flex-grow" />
+      <el-menu-item index="1">可视化分析单车数据</el-menu-item>
+      <el-menu-item index="2">预测单车需求</el-menu-item>
+      <el-button type="primary" icon="SwitchButton" class="mt-3" @click="() => {
+        router.push('/')
+      }" title="退出登录" circle />
+    </el-menu>
   </div>
 
   <!-- 页面左方的导航栏 -->
   <div class="absolute top-48 left-0">
-    <nav class="max-h-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
+    <el-menu default-active="0" class="el-menu-vertical-demo" @select="handleSelect">
+      <el-menu-item index="1">
+        <el-icon>
+          <Orange />
+        </el-icon>
+        <span>订单数按星期分布饼状图</span>
+      </el-menu-item>
+      <el-menu-item index="2">
+        <el-icon>
+          <Histogram />
+        </el-icon>
+        <span>不同时间单车需求散点图</span>
+      </el-menu-item>
+      <el-menu-item index="3">
+        <el-icon>
+          <Histogram />
+        </el-icon>
+        <span>不同位置单车需求热力图</span>
+      </el-menu-item>
+    </el-menu>
+    <!-- <nav class="max-h-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
 
       <div class="flex items-center h-16">
         <div class="hidden md:block ml-20">
@@ -193,10 +231,10 @@ async function renderChart3() {
         </div>
       </div>
 
-    </nav>
+    </nav> -->
   </div>
-  <!-- 图表一 -->
-  <div class="bg-slate-300 ml-20">
+  <!-- 图表绘制 -->
+  <div class="bg-slate-300 ml-56">
     <div ref="chart" style="width: 700px; height: 300px;"></div>
   </div>
 </template>
