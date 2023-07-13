@@ -1,20 +1,21 @@
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue'
 import axios from "axios";
 import * as echarts from 'echarts';
+
 const input = ref('')
 function gotoLogin() {
     this.$router.push('/')
 }
-import { ElMessage} from 'element-plus'
-import type { Action } from 'element-plus'
-
- 
-
 const value1 = ref('')
-let isChartVisible = false;
+
+let dialogVisible =  false;
+let newDialogFormVisible = false;
+
+
+
+
 function goto() {
-    open();
     axios.post('http://localhost:5000/api/Predict',
         {
             data: value1.value,
@@ -26,11 +27,48 @@ function goto() {
         });
 }
 
-const disabledDate = (time: Date) => {
+function initEcharts() {
+  var echarts = require('echarts');
+
+  // 基于准备好的dom，初始化echarts实例
+  const myChart = echarts.init(document.getElementById('newEcharts'));
+  // 绘制图表
+  const option = {
+    title: {
+      text: 'ECharts 入门示例'
+    },
+    tooltip: {},
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [{
+      name: '销量',
+      type: 'bar',
+      data: [5, 20, 36, 10, 10, 20]
+    }]
+  };
+  myChart.setOption(option)
+}
+
+      function open() {
+  this.$nextTick(() => {
+    //  执行echarts方法
+    initEcharts()
+  })
+}
+
+
+const disabledDate = (time) => {
     const startDate = new Date('2023-06-30');
     const endDate = new Date('2023-07-31');
     return time < startDate || time > endDate;
-}
+};
+// const disabledDate = (time: Date) => {
+//     const startDate = new Date('2023-06-30');
+//     const endDate = new Date('2023-07-31');
+//     return time < startDate || time > endDate;
+// }
 const value = ref('')
 const options = [
     {
@@ -114,9 +152,6 @@ const options = [
                 <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
             </div>
 
-            <div v-if="isChartVisible" class="mt-4 border border-gray-300 rounded">
-                <canvas ref="chart"></canvas>
-            </div>
 
             <button @click="goto" value=1 class="bg-blue-500  absolute left-16 bottom-64">
                 你好,世界1
@@ -138,6 +173,30 @@ const options = [
                 你好,世界5
             </button>
 
+
+
+        </div>
+
+            <div class="app-container">
+     <el-button type="text" @click="newDialogFormVisible = true">点击打开 Dialog</el-button>
+<el-dialog title="新建" 
+   :modal-append-to-body='false'
+   :visible.sync="newDialogFormVisible" 
+    @open="open()"
+    append-to-body>
+    <el-form :inline="true" size="medium" label-width="80px">
+       <el-row :gutter="10">
+          
+          <el-col :xs="24" :sm="24" :md="24" :lg="24">
+            <el-form-item label="样本曲线">
+              <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
+             </el-form-item>
+           </el-col>
+         </el-row>
+     </el-form>        
+</el-dialog>
+     <el-button type="primary" @click="dialogVisible = true" icon="el-icon-edit"></el-button>
+ 
 
 
         </div>
