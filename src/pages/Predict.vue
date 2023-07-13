@@ -10,17 +10,13 @@ function gotoLogin() {
 const value1 = ref('')
 
 const dialogVisible = ref('false');
-const newDialogFormVisible = ref('false');
 
 function changeState() {
     dialogVisible.value = !dialogVisible.value
 }
 
-function changeState1() {
-    newDialogFormVisible.value = !newDialogFormVisible.value
-}
-
 function goto() {
+    changeState();
     axios.post('http://localhost:5000/api/Predict',
         {
             date: value1.value,
@@ -54,13 +50,15 @@ function initEcharts() {
         }]
     };
     myChart.setOption(option)
+    console.log("helo")
 }
 
 function open() {
-    this.$nextTick(() => {
+    () => {
         //  执行echarts方法
         initEcharts()
-    })
+        console.log("hello")
+    }
 }
 
 
@@ -69,11 +67,6 @@ const disabledDate = (time) => {
     const endDate = new Date('2023-07-31');
     return time < startDate || time > endDate;
 };
-// const disabledDate = (time: Date) => {
-//     const startDate = new Date('2023-06-30');
-//     const endDate = new Date('2023-07-31');
-//     return time < startDate || time > endDate;
-// }
 const value = ref('')
 const options = [
     {
@@ -149,58 +142,28 @@ const options = [
                     <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
                 </el-select>
 
-                <el-button type="primary" round @click="goto">预测</el-button>
+                <div class="app-container">
+                    <el-button type="primary" round @click="goto">预测</el-button>
+
+                    <el-dialog v-model="dialogVisible" title="新建" :modal-append-to-body='false'
+                        @open="open" append-to-body>
+                        <el-form :inline="true" size="medium" label-width="80px">
+                            <el-row :gutter="10">
+                                <el-col :xs="24" :sm="24" :md="24" :lg="24">
+                                    <el-form-item label="样本曲线">
+                                        <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                        </el-form>
+                    </el-dialog>
+                </div>
             </div>
 
 
             <div class="flex h-8/9">
                 <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
             </div>
-
-
-            <button @click="goto" value=1 class="bg-blue-500  absolute left-16 bottom-64">
-                你好,世界1
-            </button>
-
-            <button @click="goto" value=2 class="bg-blue-500  absolute left-64 top-32">
-                你好,世界2
-            </button>
-
-            <button @click="goto" value=3 class="bg-blue-500  absolute left-64 top-80">
-                你好,世界3
-            </button>
-
-            <button @click="goto" value=4 class="bg-blue-500  absolute right-64 top-48">
-                你好,世界4
-            </button>
-
-            <button @click="goto" value=5 class="bg-blue-500  absolute right-64 bottom-8">
-                你好,世界5
-            </button>
-
-
-
-        </div>
-
-        <div class="app-container">
-            <el-button type="text" @click="changeState">点击打开 Dialog</el-button>
-            <el-dialog v-model="dialogVisible" title="新建" :modal-append-to-body='false' :visible.sync="newDialogFormVisible"
-                @open="open()" append-to-body>
-                <el-form :inline="true" size="medium" label-width="80px">
-                    <el-row :gutter="10">
-
-                        <el-col :xs="24" :sm="24" :md="24" :lg="24">
-                            <el-form-item label="样本曲线">
-                                <div id="newEcharts" style="width:500px;height:400px;padding-top:40px"></div>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </el-form>
-            </el-dialog>
-            <el-button type="primary" @click="changeState1" icon="el-icon-edit"></el-button>
-
-
-
         </div>
     </div>
 </template>
