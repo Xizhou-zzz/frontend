@@ -150,23 +150,23 @@ const options = [
         </div>
 
         <button @click="goto" value =1 class="bg-blue-500  absolute left-16 bottom-64">
-            你好，世界1
+            你好,世界1
         </button>
 
         <button @click="goto" value =2 class="bg-blue-500  absolute left-64 top-32">
-            你好，世界2
+            你好,世界2
         </button>
 
         <button @click="goto" value =3 class="bg-blue-500  absolute left-64 top-80">
-            你好，世界3
+            你好,世界3
         </button>
 
         <button @click="goto" value =4 class="bg-blue-500  absolute right-64 top-48">
-            你好，世界4
+            你好,世界4
         </button>
 
         <button @click="goto" value =5 class="bg-blue-500  absolute right-64 bottom-8">
-            你好，世界5
+            你好,世界5
         </button>
 
 
