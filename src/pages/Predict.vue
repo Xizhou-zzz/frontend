@@ -17,6 +17,7 @@ function changeState() {
 
 function goto() {
     changeState();
+    open();
     axios.post('http://localhost:5000/api/Predict',
         {
             date: value1.value,
@@ -24,7 +25,7 @@ function goto() {
         }
     )
         .then(response => {
-            console.log(response.data)
+            
         });
 }
 
@@ -52,8 +53,13 @@ function initEcharts() {
 }
 
 function open() {
+<<<<<<< HEAD
         initEcharts()
         console.log("hello")
+=======
+    initEcharts()
+    console.log("hello") 
+>>>>>>> 35cbe142298e548f2a90555363f019e1c2d282f9
 }
 
 
