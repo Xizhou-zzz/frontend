@@ -15,6 +15,7 @@ const router = useRouter()
 let echart
 const chart = ref(null)
 const activeIndex = ref('1')
+const actIndex = ref('1')
 //控制顶栏不同页面间的跳转
 const handleMenuSelect = (index) => {
   switch (index) {
@@ -185,7 +186,7 @@ async function renderChart3() {
 
   <!-- 页面左方的导航栏 -->
   <div class="absolute top-48 left-0">
-    <el-menu default-active="0" class="el-menu-vertical-demo" @select="handleSelect">
+    <el-menu :default-active="actIndex" class="el-menu-vertical-demo" @select="handleSelect">
       <el-menu-item index="1">
         <el-icon>
           <Orange />

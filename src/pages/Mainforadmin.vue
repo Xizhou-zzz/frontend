@@ -1,10 +1,32 @@
-<script lang="ts">
+<!-- <script lang="ts">
 export default {
     name: "Mainforadmin",
     methods: {
         gotoLogin() {
             this.$router.push('/')
         }
+    }
+}
+</script> -->
+
+<script set up>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const activeIndex = ref('1')
+const handleMenuSelect = (index) => {
+    switch (index) {
+        case '1':
+            router.push('/Main');
+            break;
+
+        case '2':
+            router.push('/Visualone');
+            break;
+
+
+        default:
+            break;
     }
 }
 </script>
