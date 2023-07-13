@@ -63,6 +63,7 @@ export default {
 
 <template>
   <div class="absolute inset-0 bg-cover bg-center bg-background5 -z-50"></div>
+  <div class="absolute left-1/3 top-8 text-6xl font-semibold">共享单车调度系统</div>
   <Card class="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-2/5 h-3/5 flex flex-col gap-2">
     <div class="absolute inset-0 bg-white/75 -z-20 dark:bg-black/40 rounded-lg"></div>
 
@@ -71,24 +72,25 @@ export default {
     <div class="m-2 flex flex-col gap-2 basis-1/4 space-y-2">
 
       <div class="text-center basis-1/4">
-        <input class="h-9 rounded-full pl-2 w-60" type="text" maxlength=30 placeholder="请输入用户名..." v-model="username" />
+        <el-input class="h-9 rounded-full pl-2 w-60" style="max-width: 270px" type="text" maxlength=30
+          placeholder="请输入用户名..." v-model="username" prefix-icon="User" />
       </div>
 
       <div class="text-center basis-1/4">
-        <input class="h-9 rounded-full pl-2 w-60" style="max-width: 270px" type="password" maxlength=30
+        <el-input class="h-9 rounded-full pl-2 w-60" style="max-width: 270px" type="password" maxlength=30
           placeholder="请输入密码..." v-model="password" prefix-icon="Lock" round show-password />
       </div>
 
       <div class="text-center basis-1/4">
-        <input class="h-9 rounded-full pl-2 w-60" style="max-width: 270px" type="password" maxlength=30
+        <el-input class="h-9 rounded-full pl-2 w-60" style="max-width: 270px" type="password" maxlength=30
           placeholder="请再次输入密码..." v-model="againpassword" prefix-icon="Lock" round show-password />
       </div>
     </div>
 
-    <div class="flex justify-center flex-col basis-1/2 space-y-2">
-      <el-button @click="goRegister" class="flex justify-center text-center" type="primary" style="max-width: 250px;"
-        size="large" round>确认</el-button>
-      <el-link class="" @click="gotoLogin" style="max-width: 140px">已有账号？点击此登录</el-link>
+    <div class="flex flex-col gap-x-12 justify-center basis-1/2">
+      <el-button @click="goRegister" class="mt-0 ml-40" type="primary" style="max-width: 270px;" size="large"
+        round>确认</el-button>
+      <el-link class="mt-5 ml-56" @click="gotoLogin" style="max-width: 140px">已有账号？点击此登录</el-link>
     </div>
   </Card>
 </template>

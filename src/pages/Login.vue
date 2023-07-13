@@ -51,7 +51,8 @@ export default {
 </script>
 
 <template>
-  <div class="absolute inset-0 bg-cover bg-center bg-background5 -z-50"></div>
+  <div class="absolute inset-0 flex flex-col bg-cover bg-center bg-background5 -z-50"></div>
+  <div class="absolute left-1/3 top-8 text-6xl font-semibold">共享单车调度系统</div>
   <Card class="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-2/5 h-3/5 flex flex-col gap-2">
     <div class="absolute inset-0 bg-white/75 -z-20 dark:bg-black/40 rounded-lg"></div>
 
@@ -59,23 +60,23 @@ export default {
 
     <div class="m-2 flex flex-col gap-2 basis-1/4">
       <div class="mb-3 text-center mt-5">
-        <input class="rounded-full pl-2 w-60 h-9" style="max-width: 270px" type="text" maxlength=30
+        <el-input class="rounded-full pl-2 w-60 h-9" style="max-width: 270px" type="text" maxlength=30
           placeholder="请输入用户名..." v-model="username" prefix-icon="User" round clearable />
 
       </div>
 
       <div class="text-center">
-        <input class="rounded-full pl-2 w-60 h-9" style="max-width: 270px" type="password" maxlength=30
+        <el-input class="rounded-full pl-2 w-60 h-9" style="max-width: 270px" type="password" maxlength=30
           placeholder="请输入密码..." v-model="password" prefix-icon="Lock" round show-password />
       </div>
     </div>
 
     <div class="flex flex-col gap-x-12 justify-center basis-1/2">
-      <el-button @click="gotoUser" class="mt-0 ml-40" type="primary" style="max-width: 250px;" size="large"
+      <el-button @click="gotoUser" class="mt-0 ml-40" type="primary" style="max-width: 270px;" size="large"
         round>登录</el-button>
       <el-link class="mt-5 ml-56" @click="gotoRegister" style="max-width: 140px">还没有账号？立即注册</el-link>
     </div>
 
-    
+
   </Card>
 </template>
