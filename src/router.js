@@ -2,7 +2,6 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Register from "./pages/Register.vue"
 import Login from "./pages/Login.vue"
 import Main from "./pages/Main.vue"
-import Visualize from "./pages/Visualize.vue"
 import Predict from "./pages/Predict.vue"
 import Price from "./pages/Price.vue"
 import Visualone from "./pages/Visualone.vue"
@@ -28,10 +27,6 @@ const router = createRouter({
             path: "/Main",
             component: Main
 
-        },
-        {
-            path: "/Visualize",
-            component: Visualize
         },
         {
             path: "/Predict",

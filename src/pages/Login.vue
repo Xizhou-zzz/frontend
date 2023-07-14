@@ -1,6 +1,5 @@
 <script lang="ts">
 import axios from "axios";
-import { User, Lock } from '@element-plus/icons-vue'
 import { ElMessage } from "element-plus";
 
 export default {
@@ -13,9 +12,6 @@ export default {
     };
   },
   methods: {
-    // gotoUser() {
-    //   this.$router.push('/Main');
-    // },
     gotoRegister() {
       this.$router.push('/Register')
     },

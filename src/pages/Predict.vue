@@ -1,15 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from "axios";
 import * as echarts from 'echarts';
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const activeIndex = ref('2')
-
-
 const value1 = ref('')
-
 const dialogVisible = ref(false);
 const handleMenuSelect = (index) => {
     switch (index) {
@@ -36,18 +33,16 @@ function changeState() {
 
 function goto() {
     changeState();
-
     axios.post('http://localhost:5000/api/Predict', {
         date: value1.value,
         id: value.value
     })
-    .then(response => {
-        const data = response.data;
-        
-        initEcharts(data); // 将myChart作为参数传递给initEcharts函数
-        
-    });
-     // 显示加载动画
+        .then(response => {
+            const data = response.data;
+
+            initEcharts(data); // 将myChart作为参数传递给initEcharts函数
+        });
+    // 显示加载动画
 }
 
 function initEcharts(data) {
@@ -71,11 +66,10 @@ function initEcharts(data) {
                 type: 'line'
             }
         ]
-    }; 
+    };
     myChart.setOption(option);
     myChart.hideLoading(); // 隐藏加载动画
 }
-
 
 const disabledDate = (time) => {
     const startDate = new Date('2023-06-30');
@@ -107,6 +101,9 @@ const options = [
 ]
 </script>
 
+
+
+
 <template>
     <div class="absolute inset-0">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
@@ -119,35 +116,6 @@ const options = [
                 router.push('/')
             }" title="退出登录" circle />
         </el-menu>
-        <!-- <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
-            <div class="flex items-center h-16">
-                <div class="flex-shrink-0">
-                    <h1 class="text-white text-lg font-semibold">共享单车调度系统</h1>
-                </div>
-                <div class="hidden md:block ml-20">
-                    <div class="flex items-baseline space-x-10">
-
-                        <a href="#/Visualone"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            可视化分析单车数据
-                        </a>
-                        <a href="#/Predict" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
-                            预测单车需求
-                        </a>
-                        <a href="#/Price"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">
-                            单车调度
-                        </a>
-                    </div>
-                </div>
-
-                <div class="absolute top-3 right-5">
-                    <el-button icon="SwitchButton" @click="() => { router.push('/') }" title="退出登录" circle />
-                </div>
-
-            </div>
-        </nav> -->
-
         <div class="relative absolute left-64 h-8/12 w-8/12">
             <div class="flex gap-4 mt-6 h-1/9 mb-4">
 
@@ -181,8 +149,9 @@ const options = [
             </div>
 
 
-            <div class="flex h-8/9">
-                <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
+            <div id="container" class="flex h-8/9">
+                <!-- <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500"> -->
+                <div ref="mapContainer" class="map"></div>
             </div>
         </div>
     </div>
