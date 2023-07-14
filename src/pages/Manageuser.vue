@@ -6,13 +6,24 @@ import { deleteRow } from '../lib/axios'
 import { addRow } from '../lib/axios'
 import { updateRow } from '../lib/axios'
 const router = useRouter()
-
+const activeIndex = ref('2')
 onMounted(() => {
     getUserData()
 })
 
-function gotoLogin() {
-    router.push('/');
+const handleMenuSelect = (index) => {
+    switch (index) {
+        case '1':
+            router.push('/Mainforadmin');
+            break;
+
+        case '2':
+            router.push('/Manageuser');
+            break;
+
+        default:
+            break;
+    }
 }
 
 let people = ref([])//表格数据
@@ -54,35 +65,24 @@ async function refreshaddeddata() {
 }
 //刷新更改一行后的数据
 async function refreshupdateddata(person) {
-    await updateRow({ name: person.username, password: person.password, type: person.typology})
+    await updateRow({ name: person.username, password: person.password, type: person.typology })
     await getUserData()
     editingRow.value = -1
 }
 </script>
 
 <template>
-    <!-- 页面背景图片 -->
-    <div class="absolute inset-0  bg-cover bg-center bg-background2 -z-50"></div>
     <!-- 页面最上方导航栏 -->
     <div class="absolute inset-0">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
-            <div class="flex items-center h-16">
-                <div class="flex-shrink-0">
-                    <h1 class="text-white text-lg font-semibold">共享单车调度系统</h1>
-                </div>
-                <div class="hidden md:block ml-20">
-                    <div class="flex items-baseline space-x-10">
-                        <a href="#/Manageuser" class="text-gray-300 px-3 py-2 rounded-md text-sm font-bold bg-gray-700">
-                            管理用户
-                        </a>
-                    </div>
-                </div>
-                <div class="absolute top-3 right-5">
-                    <button @click="gotoLogin" class="bg-exit bg-cover bg-center py-4 px-4 rounded" title="退出登录">
-                    </button>
-                </div>
-            </div>
-        </nav>
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
+            @select="handleMenuSelect" background-color="#409EFF" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu-item index="1">共享单车调度系统</el-menu-item>
+            <div class="flex-grow" />
+            <el-menu-item index="2">管理用户</el-menu-item>
+            <el-button type="primary" icon="SwitchButton" class="mt-3" @click="() => {
+                router.push('/')
+            }" title="退出登录" circle />
+        </el-menu>
         <!-- 增加用户按钮 -->
         <el-button type="primary" round class="absolute left-4 top-32" @click="addOne">
             增加用户
@@ -131,7 +131,7 @@ async function refreshupdateddata(person) {
                                 editPassword = person.password,
                                 editType = person.typology,
                                 editingRow = index
-                            " v-if="editingRow != index">修改</el-button>
+                                " v-if="editingRow != index">修改</el-button>
 
                             <el-button type="primary" round @click="refreshupdateddata(person)" v-else>确定</el-button>
 
@@ -175,4 +175,5 @@ async function refreshupdateddata(person) {
 th,
 td {
     @apply px-4 py-2;
-}</style>
+}
+</style>

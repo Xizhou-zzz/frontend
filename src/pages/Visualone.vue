@@ -16,6 +16,7 @@ let echart
 const chart = ref(null)
 const activeIndex = ref('1')
 const actIndex = ref('1')
+
 //控制顶栏不同页面间的跳转
 const handleMenuSelect = (index) => {
   switch (index) {
@@ -40,15 +41,15 @@ const handleMenuSelect = (index) => {
 const handleSelect = (index) => {
   switch (index) {
     case '1':
-      renderChart
+      renderChart();
       break;
 
     case '2':
-      renderChart2
+      renderChart2();
       break;
 
     case '3':
-      renderChart3
+      renderChart3();
       break;
 
     default:
@@ -235,7 +236,7 @@ async function renderChart3() {
     </nav> -->
   </div>
   <!-- 图表绘制 -->
-  <div class="bg-slate-300 ml-56">
+  <div class="ml-56">
     <div ref="chart" style="width: 700px; height: 300px;"></div>
   </div>
 </template>
