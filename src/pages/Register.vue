@@ -62,12 +62,12 @@ export default {
 </script>
 
 <template>
-  <div class="absolute inset-0 bg-cover bg-center bg-background5 -z-50"></div>
-  <div class="absolute left-1/3 top-8 text-6xl font-semibold">共享单车调度系统</div>
+  <div class="absolute inset-0 bg-cover bg-center bg-background1 -z-50"></div>
+  <div class="absolute left-1/3 top-8 text-6xl font-semibold text-black">共享单车调度系统</div>
   <Card class="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-2/5 h-3/5 flex flex-col gap-2">
     <div class="absolute inset-0 bg-white/75 -z-20 dark:bg-black/40 rounded-lg"></div>
 
-    <span class="text-4xl text-center font-semibold basis-1/4 mt-8">用户注册</span>
+    <span class="text-4xl text-center font-semibold basis-1/4 mt-8 text-black">用户注册</span>
 
     <div class="m-2 flex flex-col gap-2 basis-1/4 space-y-2">
 
@@ -88,9 +88,11 @@ export default {
     </div>
 
     <div class="flex flex-col gap-x-12 justify-center basis-1/2">
-      <el-button @click="goRegister" class="mt-0 ml-40" type="primary" style="max-width: 270px;" size="large"
+      <el-button @click="goRegister" class="mt-0 ml-40" type="warning" style="max-width: 270px;" size="large"
         round>确认</el-button>
-      <el-link class="mt-5 ml-56" @click="gotoLogin" style="max-width: 140px">已有账号？点击此登录</el-link>
+      <el-link class="mt-5 ml-56" @click="gotoLogin" type="warning" style="max-width: 160px">已有账号？点击此登录<el-icon>
+          <Right />
+        </el-icon></el-link>
     </div>
   </Card>
 </template>

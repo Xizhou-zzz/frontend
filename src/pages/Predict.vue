@@ -124,12 +124,14 @@ const options = [
 <template>
     <div class="absolute inset-0">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
-            @select="handleMenuSelect" background-color="#409EFF" text-color="#fff" active-text-color="#ffd04b">
-            <el-menu-item index="0">共享单车调度系统</el-menu-item>
+            @select="handleMenuSelect" background-color="#ffd04b" text-color="#000000" active-text-color="#000000">
+            <el-menu-item index="0"><el-icon>
+                    <Bicycle />
+                </el-icon>共享单车调度系统</el-menu-item>
             <div class="flex-grow" />
             <el-menu-item index="1">可视化分析单车数据</el-menu-item>
             <el-menu-item index="2">预测单车需求</el-menu-item>
-            <el-button type="primary" icon="SwitchButton" class="mt-3" @click="() => {
+            <el-button color="#ffd04b" icon="SwitchButton" class="mt-3" @click="() => {
                 router.push('/')
             }" title="退出登录" circle />
         </el-menu>
@@ -151,7 +153,7 @@ const options = [
                 </el-select>
 
                 <div class="app-container">
-                    <el-button type="primary" round @click="goto">预测</el-button>
+                    <el-button color="#ffd04b" round @click="goto">预测</el-button>
 
                     <el-dialog v-model="dialogVisible" title="预测数据" :modal-append-to-body='false' append-to-body>
                         <el-form :inline="true" size="medium" label-width="80px">
@@ -165,11 +167,6 @@ const options = [
                 </div>
             </div>
 
-
-            <!-- <div id="container" class="flex h-8/9">
-                <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
-     
-            </div> -->
             <div id="map" class="w-80 h-80">
                 <!-- <BMap :heading="64.5" :tilt="73" :center="{
                     lng: 116.28019,

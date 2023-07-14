@@ -75,16 +75,18 @@ async function refreshupdateddata(person) {
     <!-- 页面最上方导航栏 -->
     <div class="absolute inset-0">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
-            @select="handleMenuSelect" background-color="#409EFF" text-color="#fff" active-text-color="#ffd04b">
-            <el-menu-item index="1">共享单车调度系统</el-menu-item>
+            @select="handleMenuSelect" background-color="#ffd04b" text-color="#000000" active-text-color="#000000">
+            <el-menu-item index="1"><el-icon>
+                    <Bicycle />
+                </el-icon>共享单车调度系统</el-menu-item>
             <div class="flex-grow" />
             <el-menu-item index="2">管理用户</el-menu-item>
-            <el-button type="primary" icon="SwitchButton" class="mt-3" @click="() => {
+            <el-button color="#ffd04b" icon="SwitchButton" class="mt-3" @click="() => {
                 router.push('/')
             }" title="退出登录" circle />
         </el-menu>
         <!-- 增加用户按钮 -->
-        <el-button type="primary" round class="absolute left-4 top-32" @click="addOne">
+        <el-button color="#ffd04b" round class="absolute left-4 top-32" @click="addOne">
             增加用户
         </el-button>
         <!-- 表格 -->
@@ -124,16 +126,16 @@ async function refreshupdateddata(person) {
                         </td>
 
                         <td class="px-4 py-2 text-center border border-slate-300 space-x-1">
-                            <el-button type="primary" round @click="refreshdeleteddata(person)">删除</el-button>
+                            <el-button color="#ffd04b" round @click="refreshdeleteddata(person)">删除</el-button>
 
-                            <el-button type="primary" round @click="
+                            <el-button color="#ffd04b" round @click="
                                 editUserName = person.username,
                                 editPassword = person.password,
                                 editType = person.typology,
                                 editingRow = index
                                 " v-if="editingRow != index">修改</el-button>
 
-                            <el-button type="primary" round @click="refreshupdateddata(person)" v-else>确定</el-button>
+                            <el-button color="#ffd04b" round @click="refreshupdateddata(person)" v-else>确定</el-button>
 
                         </td>
                     </tr>
@@ -150,10 +152,10 @@ async function refreshupdateddata(person) {
                                 placeholder="Enter type"></td>
                         <!-- 确认增加或取消增加 -->
                         <td class="px-4 py-2 space-x-1 text-center border border-slate-300">
-                            <el-button type="primary" round @click="refreshaddeddata">
+                            <el-button color="#ffd04b" round @click="refreshaddeddata">
                                 确认
                             </el-button>
-                            <el-button type="primary" round @click="canceladd">
+                            <el-button color="#ffd04b" round @click="canceladd">
                                 取消
                             </el-button>
                         </td>

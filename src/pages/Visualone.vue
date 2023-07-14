@@ -174,12 +174,14 @@ async function renderChart3() {
 <template>
   <div class="absolute inset-0">
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
-      @select="handleMenuSelect" background-color="#409EFF" text-color="#fff" active-text-color="#ffd04b">
-      <el-menu-item index="0">共享单车调度系统</el-menu-item>
+      @select="handleMenuSelect" background-color="#ffd04b" text-color="#000000" active-text-color="#000000">
+      <el-menu-item index="0"><el-icon>
+          <Bicycle />
+        </el-icon>共享单车调度系统</el-menu-item>
       <div class="flex-grow" />
       <el-menu-item index="1">可视化分析单车数据</el-menu-item>
       <el-menu-item index="2">预测单车需求</el-menu-item>
-      <el-button type="primary" icon="SwitchButton" class="mt-3" @click="() => {
+      <el-button color="#ffd04b" icon="SwitchButton" class="mt-3" @click="() => {
         router.push('/')
       }" title="退出登录" circle />
     </el-menu>
@@ -187,7 +189,7 @@ async function renderChart3() {
 
   <!-- 页面左方的导航栏 -->
   <div class="absolute top-48 left-0">
-    <el-menu :default-active="actIndex" class="el-menu-vertical-demo" @select="handleSelect">
+    <el-menu :default-active="actIndex" class="el-menu-vertical-demo" @select="handleSelect" active-text-color="#ffd04b">
       <el-menu-item index="1">
         <el-icon>
           <Orange />
@@ -207,33 +209,7 @@ async function renderChart3() {
         <span>不同位置单车需求热力图</span>
       </el-menu-item>
     </el-menu>
-    <!-- <nav class="max-h-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
 
-      <div class="flex items-center h-16">
-        <div class="hidden md:block ml-20">
-
-          <div class="absolute left-5 top-0 flex items-baseline space-y-8 flex flex-col w-56">
-            <div class="absolute left-1 ml-2 text-white rounded-md text-sm font-bold">
-              请选择图表类型:
-            </div>
-            <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
-              @click="renderChart">
-              订单数按星期分布饼状图
-            </button>
-            <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
-              @click="renderChart2">
-              不同时间单车需求散点图
-            </button>
-            <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold"
-              @click="renderChart3">
-              不同位置单车需求热力图
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-    </nav> -->
   </div>
   <!-- 图表绘制 -->
   <div class="ml-56">
