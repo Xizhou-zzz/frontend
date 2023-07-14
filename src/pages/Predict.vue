@@ -1,8 +1,27 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import axios from "axios";
 import * as echarts from 'echarts';
 import { useRouter } from 'vue-router'
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { BMap } from 'vue3-baidu-map-gl'
+
+import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
+
+let map
+
+onMounted(() => {
+    // TO MAKE THE MAP APPEAR YOU MUST
+    // ADD YOUR ACCESS TOKEN FROM
+    // https://account.mapbox.com
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXp1cmljZSIsImEiOiJjbGp3NmM5OHkwOWdxM2Vwa2Jjb2tjdzZnIn0.-Ohkio-ahwFWJT3BcckSuA';
+    map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [-74.5, 40], // starting position [lng, lat]
+        zoom: 9, // starting zoom
+    });
+})
 
 const router = useRouter()
 const activeIndex = ref('2')
@@ -99,10 +118,8 @@ const options = [
         label: '清华园火车站',
     },
 ]
+
 </script>
-
-
-
 
 <template>
     <div class="absolute inset-0">
@@ -149,9 +166,16 @@ const options = [
             </div>
 
 
-            <div id="container" class="flex h-8/9">
-                <!-- <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500"> -->
-                <div ref="mapContainer" class="map"></div>
+            <!-- <div id="container" class="flex h-8/9">
+                <img src="../../public/map.jpg" alt="图片" class="w-auto h-auto border-2 border-gray-500">
+     
+            </div> -->
+            <div id="map" class="w-80 h-80">
+                <!-- <BMap :heading="64.5" :tilt="73" :center="{
+                    lng: 116.28019,
+                    lat: 40.049191
+                }" :zoom="19" :minZoom="3" /> -->
+
             </div>
         </div>
     </div>

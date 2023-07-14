@@ -14,11 +14,12 @@
     "echarts": "^5.4.2",
     "element-plus": "^2.3.7",
     "jquery": "^3.7.0",
+    "mapbox-gl": "^2.15.0",
     "vue": "^3.3.4",
-    "vue-baidu-map": "^0.21.22",
     "vue-chartjs": "^5.2.0",
     "vue-echarts": "^6.6.0",
-    "vue-router": "^4.2.2"
+    "vue-router": "^4.2.2",
+    "vue3-baidu-map-gl": "^2.2.2"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",
