@@ -14,13 +14,13 @@ onMounted(() => {
     // TO MAKE THE MAP APPEAR YOU MUST
     // ADD YOUR ACCESS TOKEN FROM
     // https://account.mapbox.com
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXp1cmljZSIsImEiOiJjbGp3NmM5OHkwOWdxM2Vwa2Jjb2tjdzZnIn0.-Ohkio-ahwFWJT3BcckSuA';
-    map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v12', // style URL
-        center: [-74.5, 40], // starting position [lng, lat]
-        zoom: 9, // starting zoom
-    });
+    // mapboxgl.accessToken = 'pk.eyJ1IjoiYXp1cmljZSIsImEiOiJjbGp3NmM5OHkwOWdxM2Vwa2Jjb2tjdzZnIn0.-Ohkio-ahwFWJT3BcckSuA';
+    // map = new mapboxgl.Map({
+    //     container: 'map', // container ID
+    //     style: 'mapbox://styles/mapbox/streets-v12', // style URL
+    //     center: [-74.5, 40], // starting position [lng, lat]
+    //     zoom: 9, // starting zoom
+    // });
 })
 
 const router = useRouter()
@@ -167,12 +167,12 @@ const options = [
                 </div>
             </div>
 
-            <div id="map" class="w-80 h-80">
-                <!-- <BMap :heading="64.5" :tilt="73" :center="{
-                    lng: 116.28019,
-                    lat: 40.049191
-                }" :zoom="19" :minZoom="3" /> -->
-
+            <div id="map" class="w-96 h-80">
+                <BMap :center="{ lng: 116.326759, lat: 40.003304 }" :zoom="14" :minZoom="3" />
+                <!-- <BMap :zoom="10" :center="{
+                    lng: 116.325909,
+                    lat: 39.992854
+                }" enableScrollWheelZoom mapStyleId="ee66c61531e8df3c2fd0374e96e58e81" /> -->
             </div>
         </div>
     </div>
