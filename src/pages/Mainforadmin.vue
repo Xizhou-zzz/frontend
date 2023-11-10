@@ -25,8 +25,8 @@ const handleMenuSelect = (index) => {
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
             @select="handleMenuSelect" background-color="#ffd04b" text-color="#000000" active-text-color="#000000">
             <el-menu-item index="1"><el-icon>
-                    <Bicycle />
-                </el-icon>共享单车调度系统</el-menu-item>
+
+                </el-icon>作业互评系统</el-menu-item>
             <div class="flex-grow" />
             <el-menu-item index="2">管理用户</el-menu-item>
             <el-button color="#ffd04b" icon="SwitchButton" class="mt-3" @click="() => {

@@ -29,8 +29,7 @@ const handleMenuSelect = (index) => {
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
       @select="handleMenuSelect" background-color="#ffd04b" text-color="#000000" active-text-color="#000000">
       <el-menu-item index="0"><el-icon>
-          <Bicycle />
-        </el-icon>共享单车调度系统</el-menu-item>
+        </el-icon>作业互评系统</el-menu-item>
       <div class="flex-grow" />
       <el-menu-item index="1">可视化分析单车数据</el-menu-item>
       <el-menu-item index="2">预测单车需求</el-menu-item>
@@ -39,7 +38,7 @@ const handleMenuSelect = (index) => {
       }" title="退出登录" circle />
     </el-menu>
     <div class="mt-10 font-bold text-black text-4xl text-center font-bold">
-      欢迎来到共享单车调度系统！
+      欢迎来到作业互评系统！
     </div>
 
   </div>

@@ -15,7 +15,7 @@ export default {
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ml-0">
             <div class="flex items-center h-16">
                 <div class="flex-shrink-0">
-                    <h1 class="text-white text-lg font-semibold">共享单车调度系统</h1>
+                    <h1 class="text-white text-lg font-semibold">作业互评系统</h1>
                 </div>
                 <div class="hidden md:block ml-20">
                     <div class="flex items-baseline space-x-10">

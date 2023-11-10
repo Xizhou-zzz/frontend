@@ -48,7 +48,7 @@ export default {
 
 <template>
   <div class="absolute inset-0 flex flex-col bg-cover bg-center bg-background1 -z-50"></div>
-  <div class="absolute left-1/3 top-8 text-6xl font-semibold text-black">共享单车调度系统</div>
+  <div class="absolute left-1/3 top-8 text-6xl font-semibold text-black">作业互评系统</div>
   <Card class="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] w-2/5 h-3/5 flex flex-col gap-2">
     <div class="absolute inset-0 bg-white/75 -z-20 dark:bg-black/40 rounded-lg"></div>
 

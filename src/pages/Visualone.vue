@@ -176,8 +176,7 @@ async function renderChart3() {
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
       @select="handleMenuSelect" background-color="#ffd04b" text-color="#000000" active-text-color="#000000">
       <el-menu-item index="0"><el-icon>
-          <Bicycle />
-        </el-icon>共享单车调度系统</el-menu-item>
+        </el-icon>作业互评系统</el-menu-item>
       <div class="flex-grow" />
       <el-menu-item index="1">可视化分析单车数据</el-menu-item>
       <el-menu-item index="2">预测单车需求</el-menu-item>
@@ -206,7 +205,7 @@ async function renderChart3() {
         <el-icon>
           <Histogram />
         </el-icon>
-        <span>不同位置单车需求热力图</span>
+        <span>不同时间单车需求热力图</span>
       </el-menu-item>
     </el-menu>
 

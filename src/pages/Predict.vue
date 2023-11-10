@@ -126,8 +126,8 @@ const options = [
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
             @select="handleMenuSelect" background-color="#ffd04b" text-color="#000000" active-text-color="#000000">
             <el-menu-item index="0"><el-icon>
-                    <Bicycle />
-                </el-icon>共享单车调度系统</el-menu-item>
+
+                </el-icon>作业互评系统</el-menu-item>
             <div class="flex-grow" />
             <el-menu-item index="1">可视化分析单车数据</el-menu-item>
             <el-menu-item index="2">预测单车需求</el-menu-item>
@@ -167,7 +167,7 @@ const options = [
                 </div>
             </div>
 
-            <div id="map" class="w-96 h-80">
+            <div id="map" class="w-full h-80">
                 <BMap :center="{ lng: 116.326759, lat: 40.003304 }" :zoom="14" :minZoom="3" />
                 <!-- <BMap :zoom="10" :center="{
                     lng: 116.325909,
